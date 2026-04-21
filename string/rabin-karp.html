@@ -30,7 +30,7 @@
     
     
       
-        <title>🇺🇸 Rabin-Karp for String Matching - Algoritmos para Programação Competitiva</title>
+        <title>🇧🇷 Algoritmo de Rabin-Karp para busca de padrões em strings - Algoritmos para Programação Competitiva</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rabin-karp-algorithm-for-string-matching" class="md-skip">
+        <a href="#algoritmo-de-rabin-karp-para-busca-de-padroes-em-strings" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
           <span class="md-ellipsis">
             <a href="#" onclick="scrollToTop()">
               
-                🇺🇸 Rabin-Karp for String Matching
+                🇧🇷 Algoritmo de Rabin-Karp para busca de padrões em strings
               
             </a>
           </span>
@@ -2679,7 +2679,7 @@
   <span class="md-ellipsis">
     
   
-    🇺🇸 String Hashing
+    🇧🇷 Hashing de Strings
   
 
     
@@ -2716,7 +2716,7 @@
   <span class="md-ellipsis">
     
   
-    🇺🇸 Rabin-Karp for String Matching
+    🇧🇷 Algoritmo de Rabin-Karp para busca de padrões em strings
   
 
     
@@ -2734,7 +2734,7 @@
   <span class="md-ellipsis">
     
   
-    🇺🇸 Rabin-Karp for String Matching
+    🇧🇷 Algoritmo de Rabin-Karp para busca de padrões em strings
   
 
     
@@ -2760,10 +2760,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#implementacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Implementação
       
     </span>
   </a>
@@ -2771,10 +2771,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#problemas-para-praticar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Problemas para praticar
       
     </span>
   </a>
@@ -2804,7 +2804,7 @@
   <span class="md-ellipsis">
     
   
-    🇺🇸 Prefix function - Knuth-Morris-Pratt
+    🇧🇷 Função de Prefixo - Algoritmo de Knuth–Morris–Pratt
   
 
     
@@ -7877,9 +7877,9 @@
                   <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
-  const issueTitle = "Problem on article " + "\ud83c\uddfa\ud83c\uddf8 Rabin-Karp for String Matching";
+  const issueTitle = "Problem on article " + "\ud83c\udde7\ud83c\uddf7 Algoritmo de Rabin-Karp para busca de padr\u00f5es em strings";
 	const issueBody = `
- **Article:** [`+ "\ud83c\uddfa\ud83c\uddf8 Rabin-Karp for String Matching" + `](${window.location.href})
+ **Article:** [`+ "\ud83c\udde7\ud83c\uddf7 Algoritmo de Rabin-Karp para busca de padr\u00f5es em strings" + `](${window.location.href})
 
 **Problem:**
 <!--
@@ -7918,63 +7918,9 @@ Describe the issue of this article in detail.
   
     
   
-    
-  
 
   
   
-  
-    
-  
-    
-  
-
-  
-  
-  
-    
-  
-
-  
-  
-  
-    
-  
-    
-  
-    
-  
-
-  
-  
-  
-    
-  
-
-  
-  
-  
-    
-  
-
-  
-  
-  
-    
-  
-
-  
-  
-  
-    
-  
-
-  
-  
-  
-    
-  
-    
   
     
   
@@ -7995,7 +7941,71 @@ Describe the issue of this article in detail.
     
   
 
+  
+  
+  
+    
+  
+    
+  
+    
+  
 
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+  
+  
+    
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+
+
+  
+  
+  
 
   
   
@@ -8032,7 +8042,7 @@ Describe the issue of this article in detail.
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
 
   Last update:
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 26, 2023 08:23:19 UTC">July 26, 2023</span>&emsp;
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 21, 2026 17:05:57 UTC">April 21, 2026</span>&emsp;
 
 <!-- Tags -->
 
@@ -8058,16 +8068,16 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="rabin-karp-algorithm-for-string-matching">Rabin-Karp Algorithm for string matching<a class="headerlink" href="#rabin-karp-algorithm-for-string-matching" title="Permanent link">&para;</a></h1>
-<p>This algorithm is based on the concept of hashing, so if you are not familiar with string hashing, refer to the <a href="string-hashing.html">string hashing</a> article.</p>
-<p>This algorithm was authored by Rabin and Karp in 1987.</p>
-<p>Problem: Given two strings - a pattern <span class="arithmatex">$s$</span> and a text <span class="arithmatex">$t$</span>, determine if the pattern appears in the text and if it does, enumerate all its occurrences in <span class="arithmatex">$O(|s| + |t|)$</span> time.</p>
-<p>Algorithm: Calculate the hash for the pattern <span class="arithmatex">$s$</span>.
-Calculate hash values for all the prefixes of the text <span class="arithmatex">$t$</span>.
-Now, we can compare a substring of length <span class="arithmatex">$|s|$</span> with <span class="arithmatex">$s$</span> in constant time using the calculated hashes.
-So, compare each substring of length <span class="arithmatex">$|s|$</span> with the pattern. This will take a total of <span class="arithmatex">$O(|t|)$</span> time.
-Hence the final complexity of the algorithm is <span class="arithmatex">$O(|t| + |s|)$</span>: <span class="arithmatex">$O(|s|)$</span> is required for calculating the hash of the pattern and <span class="arithmatex">$O(|t|)$</span> for comparing each substring of length <span class="arithmatex">$|s|$</span> with the pattern.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<h1 id="algoritmo-de-rabin-karp-para-busca-de-padroes-em-strings">Algoritmo de Rabin-Karp para busca de padrões em strings<a class="headerlink" href="#algoritmo-de-rabin-karp-para-busca-de-padroes-em-strings" title="Permanent link">&para;</a></h1>
+<p>Este algoritmo é baseado no conceito de hashing, então se você não estiver familiarizado com hashing de strings, consulte o artigo sobre <a href="string-hashing.html">hashing de strings</a>.</p>
+<p>Este algoritmo foi criado por Rabin e Karp em 1987.</p>
+<p>Problema: Dadas duas strings - um padrão <span class="arithmatex">$s$</span> e um texto <span class="arithmatex">$t$</span>, determine se o padrão aparece no texto e, se aparecer, enumere todas as suas ocorrências em tempo <span class="arithmatex">$O(|s| + |t|)$</span>.</p>
+<p>Algoritmo: Calcule o hash para o padrão <span class="arithmatex">$s$</span>.
+Calcule os valores de hash para todos os prefixos do texto <span class="arithmatex">$t$</span>.
+Agora, podemos comparar uma substring de comprimento <span class="arithmatex">$|s|$</span> com <span class="arithmatex">$s$</span> em tempo constante usando os hashes calculados.
+Então, compare cada substring de comprimento <span class="arithmatex">$|s|$</span> com o padrão. Isso levará um tempo total de <span class="arithmatex">$O(|t|)$</span>.
+Portanto, a complexidade final do algoritmo é <span class="arithmatex">$O(|t| + |s|)$</span>: <span class="arithmatex">$O(|s|)$</span> é necessário para calcular o hash do padrão e <span class="arithmatex">$O(|t|)$</span> para comparar cada substring de comprimento <span class="arithmatex">$|s|$</span> com o padrão.</p>
+<h2 id="implementacao">Implementação<a class="headerlink" href="#implementacao" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rabin_karp</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">31</span><span class="p">;</span><span class="w"> </span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e9</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span>
@@ -8094,7 +8104,7 @@ Hence the final complexity of the algorithm is <span class="arithmatex">$O(|t| +
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">occurrences</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<h2 id="problemas-para-praticar">Problemas para praticar<a class="headerlink" href="#problemas-para-praticar" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/NAJPF/">SPOJ - Pattern Find</a></li>
 <li><a href="http://codeforces.com/problemset/problem/271/D">Codeforces - Good Substrings</a></li>
@@ -8104,7 +8114,7 @@ Hence the final complexity of the algorithm is <span class="arithmatex">$O(|t| +
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (48.21%)</li><li><a href="https://github.com/paramsingh" title="paramsingh" data-bi-name="contributorprofile" target="_blank">paramsingh</a> (26.79%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (10.71%)</li><li><a href="https://github.com/hieplpvip" title="hieplpvip" data-bi-name="contributorprofile" target="_blank">hieplpvip</a> (5.36%)</li><li><a href="https://github.com/likecs" title="likecs" data-bi-name="contributorprofile" target="_blank">likecs</a> (5.36%)</li><li><a href="https://github.com/qubits-fan" title="qubits-fan" data-bi-name="contributorprofile" target="_blank">qubits-fan</a> (1.79%)</li><li><a href="https://github.com/joaquingx" title="joaquingx" data-bi-name="contributorprofile" target="_blank">joaquingx</a> (1.79%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (33.93%)</li><li><a href="https://github.com/paramsingh" title="paramsingh" data-bi-name="contributorprofile" target="_blank">paramsingh</a> (21.43%)</li><li><a href="https://github.com/filipemsilv4" title="filipemsilv4" data-bi-name="contributorprofile" target="_blank">filipemsilv4</a> (19.64%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (10.71%)</li><li><a href="https://github.com/hieplpvip" title="hieplpvip" data-bi-name="contributorprofile" target="_blank">hieplpvip</a> (5.36%)</li><li><a href="https://github.com/likecs" title="likecs" data-bi-name="contributorprofile" target="_blank">likecs</a> (5.36%)</li><li><a href="https://github.com/qubits-fan" title="qubits-fan" data-bi-name="contributorprofile" target="_blank">qubits-fan</a> (1.79%)</li><li><a href="https://github.com/joaquingx" title="joaquingx" data-bi-name="contributorprofile" target="_blank">joaquingx</a> (1.79%)</li></ul>
 </ul>
                 
               </article>
