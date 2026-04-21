@@ -10,6 +10,6 @@ O CP-Algorithms é um recurso valioso para programadores competitivos de todos o
 
 ## Contribuindo
 
-- [Informações para contribuidores](https://paulofilipe.com/cp-algorithms/contrib.html)
-- [Código de conduta](https://paulofilipe.com/cp-algorithms/code_of_conduct.html)
-- [Formulário Testar-Sua-Página](https://paulofilipe.com/cp-algorithms/preview.html)
+- [Informações para contribuidores](https://paulofilipe.com/cp-algorithms-pt_BR/contrib.html)
+- [Código de conduta](https://paulofilipe.com/cp-algorithms-pt_BR/code_of_conduct.html)
+- [Formulário Testar-Sua-Página](https://paulofilipe.com/cp-algorithms-pt_BR/preview.html)

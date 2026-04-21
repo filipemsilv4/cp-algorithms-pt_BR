@@ -6,7 +6,7 @@ search:
 
 Este site (artigos, design, ...) é hospedado no [Github](https://github.com/filipemsilv4/cp-algorithms-pt_BR). Contribuições para a tradução são bem-vindas. Tudo o que você precisa é uma conta Github.
 
-As páginas geradas são compiladas e publicadas em [https://paulofilipe.com/cp-algorithms/](https://paulofilipe.com/cp-algorithms/).
+As páginas geradas são compiladas e publicadas em [https://paulofilipe.com/cp-algorithms-pt_BR/](https://paulofilipe.com/cp-algorithms-pt_BR/).
 
 Para contribuir com a tradução, siga estes passos:
 
