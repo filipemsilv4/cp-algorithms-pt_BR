@@ -4,21 +4,21 @@ tags:
 e_maxx_link: rabin_karp
 ---
 
-# Rabin-Karp Algorithm for string matching
+# Algoritmo de Rabin-Karp para busca de padrões em strings
 
-This algorithm is based on the concept of hashing, so if you are not familiar with string hashing, refer to the [string hashing](string-hashing.md) article.
- 
-This algorithm was authored by Rabin and Karp in 1987.
+Este algoritmo é baseado no conceito de hashing, então se você não estiver familiarizado com hashing de strings, consulte o artigo sobre [hashing de strings](string-hashing.md).
 
-Problem: Given two strings - a pattern $s$ and a text $t$, determine if the pattern appears in the text and if it does, enumerate all its occurrences in $O(|s| + |t|)$ time.
+Este algoritmo foi criado por Rabin e Karp em 1987.
 
-Algorithm: Calculate the hash for the pattern $s$.
-Calculate hash values for all the prefixes of the text $t$.
-Now, we can compare a substring of length $|s|$ with $s$ in constant time using the calculated hashes.
-So, compare each substring of length $|s|$ with the pattern. This will take a total of $O(|t|)$ time.
-Hence the final complexity of the algorithm is $O(|t| + |s|)$: $O(|s|)$ is required for calculating the hash of the pattern and $O(|t|)$ for comparing each substring of length $|s|$ with the pattern.
+Problema: Dadas duas strings - um padrão $s$ e um texto $t$, determine se o padrão aparece no texto e, se aparecer, enumere todas as suas ocorrências em tempo $O(|s| + |t|)$.
 
-## Implementation
+Algoritmo: Calcule o hash para o padrão $s$.
+Calcule os valores de hash para todos os prefixos do texto $t$.
+Agora, podemos comparar uma substring de comprimento $|s|$ com $s$ em tempo constante usando os hashes calculados.
+Então, compare cada substring de comprimento $|s|$ com o padrão. Isso levará um tempo total de $O(|t|)$.
+Portanto, a complexidade final do algoritmo é $O(|t| + |s|)$: $O(|s|)$ é necessário para calcular o hash do padrão e $O(|t|)$ para comparar cada substring de comprimento $|s|$ com o padrão.
+
+## Implementação
 ```{.cpp file=rabin_karp}
 vector<int> rabin_karp(string const& s, string const& t) {
     const int p = 31; 
@@ -47,7 +47,7 @@ vector<int> rabin_karp(string const& s, string const& t) {
 }
 ```
 
-## Practice Problems
+## Problemas para praticar
 
 * [SPOJ - Pattern Find](http://www.spoj.com/problems/NAJPF/)
 * [Codeforces - Good Substrings](http://codeforces.com/problemset/problem/271/D)

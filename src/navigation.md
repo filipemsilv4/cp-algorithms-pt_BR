@@ -74,9 +74,9 @@ Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧�
         - [🇺🇸 Finding the largest zero submatrix](dynamic_programming/zero_matrix.md)
 - String Processing
     - Fundamentals
-        - [🇺🇸 String Hashing](string/string-hashing.md)
-        - [🇺🇸 Rabin-Karp for String Matching](string/rabin-karp.md)
-        - [🇺🇸 Prefix function - Knuth-Morris-Pratt](string/prefix-function.md)
+        - [🇧🇷 Hashing de Strings](string/string-hashing.md)
+        - [🇧🇷 Algoritmo de Rabin-Karp para busca de padrões em strings](string/rabin-karp.md)
+        - [🇧🇷 Função de Prefixo - Algoritmo de Knuth–Morris–Pratt](string/prefix-function.md)
         - [🇺🇸 Z-function](string/z-function.md)
         - [🇺🇸 Suffix Array](string/suffix-array.md)
         - [🇺🇸 Aho-Corasick algorithm](string/aho_corasick.md)
