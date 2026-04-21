@@ -14,7 +14,7 @@ Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧�
     - [🇧🇷 Preview](preview.md)
 - Algebra
     - Fundamentals
-        - [🇺🇸 Binary Exponentiation](algebra/binary-exp.md)
+        - [🇧🇷 Exponenciação Binária](algebra/binary-exp.md)
         - [🇺🇸 Euclidean algorithm for computing the greatest common divisor](algebra/euclid-algorithm.md)
         - [🇺🇸 Extended Euclidean Algorithm](algebra/extended-euclid-algorithm.md)
         - [🇺🇸 Linear Diophantine Equations](algebra/linear-diophantine-equation.md)
