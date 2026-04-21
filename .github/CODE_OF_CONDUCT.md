@@ -1,3 +1,3 @@
-# Code of conduct
+# Código de Conduta
 
-We endorse and follow the code of conduct of the International Olympiad of Informatics, available at the [IOI website](https://ioinformatics.org/page/code-of-conduct).
+Nós endossamos e seguimos o código de conduta da Olimpíada Internacional de Informática (IOI), disponível no [site da IOI](https://ioinformatics.org/page/code-of-conduct).

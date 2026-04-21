@@ -1,5 +1,5 @@
 # Tags
 
-This file contains a global index of all tags used on the pages.
+Este arquivo contém um índice global de todas as tags usadas nas páginas.
 
 <!-- material/tags -->

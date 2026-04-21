@@ -8,10 +8,10 @@ Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧�
 - Home
     - [🇧🇷 Página Inicial](index.md)
     - [🇧🇷 Navegação](navigation.md)
-    - [🇺🇸 Tag index](tags.md)
+    - [🇧🇷 Índice de Tags](tags.md)
     - [🇧🇷 Como Contribuir](contrib.md)
-    - [🇺🇸 Code of conduct](code_of_conduct.md)
-    - [🇺🇸 Preview](preview.md)
+    - [🇧🇷 Código de Conduta](code_of_conduct.md)
+    - [🇧🇷 Preview](preview.md)
 - Algebra
     - Fundamentals
         - [🇺🇸 Binary Exponentiation](algebra/binary-exp.md)
