@@ -6,8 +6,8 @@ search:
 Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧🇷 já foram traduzidos para o português.
 
 - Home
-    - [🇺🇸 Main Page](index.md)
-    - [🇺🇸 Navigation](navigation.md)
+    - [🇧🇷 Página Inicial](index.md)
+    - [🇧🇷 Navegação](navigation.md)
     - [🇺🇸 Tag index](tags.md)
     - [🇧🇷 Como Contribuir](contrib.md)
     - [🇺🇸 Code of conduct](code_of_conduct.md)
