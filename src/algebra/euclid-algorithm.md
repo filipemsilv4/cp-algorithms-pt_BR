@@ -27,7 +27,7 @@ Note que $a$ permanece como o número maior até que $b$ seja subtraído dele pe
 
 $$\gcd(a, b) = \begin{cases}a,&\text{se }b = 0 \\ \gcd(b, a \bmod b),&\text{caso contrário.}\end{cases}$$
 
-## Implementação
+## Implementation
 
 ```cpp
 int gcd (int a, int b) {
@@ -74,7 +74,7 @@ Outra maneira de estimar a complexidade é notar que $a \bmod b$ para o caso $a 
 
 ## Mínimo múltiplo comum
 
-O cálculo do mínimo múltiplo comum (comumente denotado como **MMC**) pode ser reduzido ao cálculo do MDC com a seguinte fórmula simples:
+O cálculo do mínimo múltiplo comum (comumente denotado por **LCM**, ou em português, **MMC**) pode ser reduzido ao cálculo do MDC com a seguinte fórmula simples:
 
 $$\text{lcm}(a, b) = \frac{a \cdot b}{\gcd(a, b)}$$
 
