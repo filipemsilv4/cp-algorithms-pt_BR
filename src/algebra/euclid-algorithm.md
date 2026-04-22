@@ -27,7 +27,7 @@ Note que $a$ permanece como o número maior até que $b$ seja subtraído dele pe
 
 $$\gcd(a, b) = \begin{cases}a,&\text{se }b = 0 \\ \gcd(b, a \bmod b),&\text{caso contrário.}\end{cases}$$
 
-## Implementation
+## Implementação
 
 ```cpp
 int gcd (int a, int b) {
