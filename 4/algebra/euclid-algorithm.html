@@ -716,10 +716,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#implementacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Implementação
       
     </span>
   </a>
@@ -8088,7 +8088,7 @@ Describe the issue of this article in detail.
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
 
   Last update:
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 22, 2026 21:49:12 UTC">April 22, 2026</span>&emsp;
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 22, 2026 23:32:43 UTC">April 22, 2026</span>&emsp;
 
 <!-- Tags -->
 
@@ -8126,7 +8126,7 @@ Describe the issue of this article in detail.
 <p>Originalmente, o algoritmo de Euclides foi formulado da seguinte maneira: subtraia o número menor do número maior até que um dos números seja zero. De fato, se <span class="arithmatex">$g$</span> divide <span class="arithmatex">$a$</span> e <span class="arithmatex">$b$</span>, ele também divide <span class="arithmatex">$a-b$</span>. Por outro lado, se <span class="arithmatex">$g$</span> divide <span class="arithmatex">$a-b$</span> e <span class="arithmatex">$b$</span>, então ele também divide <span class="arithmatex">$a = b + (a-b)$</span>, o que significa que os conjuntos dos divisores comuns de <span class="arithmatex">$\{a, b\}$</span> e <span class="arithmatex">$\{b,a-b\}$</span> coincidem.</p>
 <p>Note que <span class="arithmatex">$a$</span> permanece como o número maior até que <span class="arithmatex">$b$</span> seja subtraído dele pelo menos <span class="arithmatex">$\left\lfloor\frac{a}{b}\right\rfloor$</span> vezes. Portanto, para acelerar o processo, <span class="arithmatex">$a-b$</span> é substituído por <span class="arithmatex">$a-\left\lfloor\frac{a}{b}\right\rfloor b = a \bmod b$</span>. Então, o algoritmo é formulado de maneira extremamente simples:</p>
 <div class="arithmatex">$$\gcd(a, b) = \begin{cases}a,&amp;\text{se }b = 0 \\ \gcd(b, a \bmod b),&amp;\text{caso contrário.}\end{cases}$$</div>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<h2 id="implementacao">Implementação<a class="headerlink" href="#implementacao" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">gcd</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
