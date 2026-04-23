@@ -4,56 +4,56 @@ tags:
 e_maxx_link: extended_euclid_algorithm
 ---
 
-# Extended Euclidean Algorithm
+# Algoritmo de Euclides Estendido
 
-While the [Euclidean algorithm](euclid-algorithm.md) calculates only the greatest common divisor (GCD) of two integers $a$ and $b$, the extended version also finds a way to represent GCD in terms of $a$ and $b$, i.e. coefficients $x$ and $y$ for which:
+Enquanto o [Algoritmo de Euclides](euclid-algorithm.md) calcula apenas o máximo divisor comum (GCD, ou em português, MDC) de dois inteiros $a$ e $b$, a versão estendida também encontra uma maneira de representar o GCD em termos de $a$ e $b$, ou seja, coeficientes $x$ e $y$ para os quais:
 
 $$a \cdot x + b \cdot y = \gcd(a, b)$$
 
-It's important to note that by [Bézout's identity](https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity) we can always find such a representation. For instance, $\gcd(55, 80) = 5$, therefore we can represent $5$ as a linear combination with the terms $55$ and $80$: $55 \cdot 3 + 80 \cdot (-2) = 5$ 
+É importante notar que, pela [Identidade de Bézout](https://pt.wikipedia.org/wiki/Identidade_de_B%C3%A9zout) sempre podemos encontrar tal representação. Por exemplo, $\gcd(55, 80) = 5$, portanto podemos representar $5$ como uma combinação linear com os termos $55$ e $80$: $55 \cdot 3 + 80 \cdot (-2) = 5$
 
-A more general form of that problem is discussed in the article about [Linear Diophantine Equations](linear-diophantine-equation.md).
-It will build upon this algorithm.
+Uma forma mais geral desse problema é discutida no artigo sobre [Equações Diofantinas Lineares](linear-diophantine-equation.md).
+Isso será construído sobre este algoritmo.
 
-## Algorithm
+## Algoritmo
 
-We will denote the GCD of $a$ and $b$ with $g$ in this section.
+Denotaremos o GCD de $a$ e $b$ com $g$ nesta seção.
 
-The changes to the original algorithm are very simple.
-If we recall the algorithm, we can see that the algorithm ends with $b = 0$ and $a = g$.
-For these parameters we can easily find coefficients, namely $g \cdot 1 + 0 \cdot 0 = g$.
+As alterações no algoritmo original são muito simples.
+Se nos lembrarmos do algoritmo, podemos ver que o algoritmo termina com $b = 0$ e $a = g$.
+Para esses parâmetros podemos facilmente encontrar os coeficientes, a saber $g \cdot 1 + 0 \cdot 0 = g$.
 
-Starting from these coefficients $(x, y) = (1, 0)$, we can go backwards up the recursive calls.
-All we need to do is to figure out how the coefficients $x$ and $y$ change during the transition from $(a, b)$ to $(b, a \bmod b)$.
+Partindo desses coeficientes $(x, y) = (1, 0)$, podemos retroceder pelas chamadas recursivas.
+Tudo o que precisamos fazer é descobrir como os coeficientes $x$ e $y$ mudam durante a transição de $(a, b)$ para $(b, a \bmod b)$.
 
-Let us assume we found the coefficients $(x_1, y_1)$ for $(b, a \bmod b)$:
+Vamos supor que encontramos os coeficientes $(x_1, y_1)$ para $(b, a \bmod b)$:
 
 $$b \cdot x_1 + (a \bmod b) \cdot y_1 = g$$
 
-and we want to find the pair $(x, y)$ for $(a, b)$:
+e queremos encontrar o par $(x, y)$ para $(a, b)$:
 
 $$ a \cdot x + b \cdot y = g$$
 
-We can represent $a \bmod b$ as:
+Podemos representar $a \bmod b$ como:
 
 $$ a \bmod b = a - \left\lfloor \frac{a}{b} \right\rfloor \cdot b$$
 
-Substituting this expression in the coefficient equation of $(x_1, y_1)$ gives:
+Substituindo esta expressão na equação de coeficientes de $(x_1, y_1)$ nos dá:
 
 $$ g = b \cdot x_1 + (a \bmod b) \cdot y_1 = b \cdot x_1 + \left(a - \left\lfloor \frac{a}{b} \right\rfloor \cdot b \right) \cdot y_1$$
 
-and after rearranging the terms:
+e depois de rearranjar os termos:
 
 $$g = a \cdot y_1 + b \cdot \left( x_1 - y_1 \cdot \left\lfloor \frac{a}{b} \right\rfloor \right)$$
 
-We found the values of $x$ and $y$:
+Encontramos os valores de $x$ e $y$:
 
 $$\begin{cases}
 x = y_1 \\
 y = x_1 - y_1 \cdot \left\lfloor \frac{a}{b} \right\rfloor
 \end{cases} $$
 
-## Implementation
+## Implementação
 
 ```{.cpp file=extended_gcd}
 int gcd(int a, int b, int& x, int& y) {
@@ -70,14 +70,14 @@ int gcd(int a, int b, int& x, int& y) {
 }
 ```
 
-The recursive function above returns the GCD and the values of coefficients to `x` and `y` (which are passed by reference to the function).
+A função recursiva acima retorna o GCD e os valores dos coeficientes para `x` e `y` (que são passados por referência para a função).
 
-This implementation of extended Euclidean algorithm produces correct results for negative integers as well.
+Esta implementação do algoritmo de Euclides estendido produz resultados corretos também para inteiros negativos.
 
-## Iterative version
+## Versão iterativa
 
-It's also possible to write the Extended Euclidean algorithm in an iterative way.
-Because it avoids recursion, the code will run a little bit faster than the recursive one.
+Também é possível escrever o algoritmo de Euclides Estendido de forma iterativa.
+Como evita recursão, o código rodará um pouco mais rápido que o recursivo.
 
 ```{.cpp file=extended_gcd_iter}
 int gcd(int a, int b, int& x, int& y) {
@@ -93,42 +93,42 @@ int gcd(int a, int b, int& x, int& y) {
 }
 ```
 
-If you look closely at the variables `a1` and `b1`, you can notice that they take exactly the same values as in the iterative version of the normal [Euclidean algorithm](euclid-algorithm.md#implementation). So the algorithm will at least compute the correct GCD.
+Se você observar atentamente as variáveis `a1` e `b1`, perceberá que elas assumem exatamente os mesmos valores que na versão iterativa do [Algoritmo de Euclides](euclid-algorithm.md#implementation) normal. Então o algoritmo pelo menos calculará o GCD corretamente.
 
-To see why the algorithm computes the correct coefficients, consider that the following invariants hold at any given time (before the while loop begins and at the end of each iteration):
+Para ver por que o algoritmo calcula os coeficientes corretos, considere que as seguintes invariantes se mantêm a qualquer momento (antes do início do loop `while` e no final de cada iteração):
 
 $$x \cdot a + y \cdot b = a_1$$
 
 $$x_1 \cdot a + y_1 \cdot b = b_1$$
 
-Let the values at the end of an iteration be denoted by a prime ($'$), and assume $q = \frac{a_1}{b_1}$. From the [Euclidean algorithm](euclid-algorithm.md), we have:
+Deixe os valores no final de uma iteração serem indicados por uma linha ($'$), e suponha $q = \frac{a_1}{b_1}$. Do [Algoritmo de Euclides](euclid-algorithm.md), nós temos:
 
 $$a_1' = b_1$$
 
 $$b_1' = a_1 - q \cdot b_1$$
 
-For the first invariant to hold, the following should be true:
+Para a primeira invariante se manter, o seguinte deve ser verdadeiro:
 
 $$x' \cdot a + y' \cdot b = a_1' = b_1$$
 
 $$x' \cdot a + y' \cdot b = x_1 \cdot a + y_1 \cdot b$$
 
-Similarly for the second invariant, the following should hold:
+Da mesma forma para a segunda invariante, o seguinte deve ser válido:
 
 $$x_1' \cdot a + y_1' \cdot b = a_1 - q \cdot b_1$$
 
 $$x_1' \cdot a + y_1' \cdot b = (x - q \cdot x_1) \cdot a + (y - q \cdot y_1) \cdot b$$
 
-By comparing the coefficients of $a$ and $b$, the update equations for each variable can be derived, ensuring that the invariants are maintained throughout the algorithm.
+Ao comparar os coeficientes de $a$ e $b$, as equações de atualização para cada variável podem ser derivadas, garantindo que as invariantes sejam mantidas durante todo o algoritmo.
 
 
-At the end we know that $a_1$ contains the GCD, so $x \cdot a + y \cdot b = g$.
-Which means that we have found the required coefficients.
+No final, sabemos que $a_1$ contém o GCD, então $x \cdot a + y \cdot b = g$.
+O que significa que encontramos os coeficientes necessários.
 
-You can even optimize the code more, and remove the variable $a_1$ and $b_1$ from the code, and just reuse $a$ and $b$.
-However if you do so, you lose the ability to argue about the invariants.
+Você pode até otimizar mais o código e remover a variável $a_1$ e $b_1$ do código e apenas reutilizar $a$ e $b$.
+No entanto, se o fizer, perderá a capacidade de argumentar sobre as invariantes.
 
-## Practice Problems
+## Problemas Práticos
 
 * [UVA - 10104 - Euclid Problem](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1045)
 * [GYM - (J) Once Upon A Time](http://codeforces.com/gym/100963)
