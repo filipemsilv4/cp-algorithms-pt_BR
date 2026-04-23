@@ -30,7 +30,7 @@
     
     
       
-        <title>🇺🇸 Extended Euclidean Algorithm - Algoritmos para Programação Competitiva</title>
+        <title>🇧🇷 Algoritmo de Euclides Estendido - Algoritmos para Programação Competitiva</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#extended-euclidean-algorithm" class="md-skip">
+        <a href="#algoritmo-de-euclides-estendido" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
           <span class="md-ellipsis">
             <a href="#" onclick="scrollToTop()">
               
-                🇺🇸 Extended Euclidean Algorithm
+                🇧🇷 Algoritmo de Euclides Estendido
               
             </a>
           </span>
@@ -689,7 +689,7 @@
   <span class="md-ellipsis">
     
   
-    🇺🇸 Extended Euclidean Algorithm
+    🇧🇷 Algoritmo de Euclides Estendido
   
 
     
@@ -707,7 +707,7 @@
   <span class="md-ellipsis">
     
   
-    🇺🇸 Extended Euclidean Algorithm
+    🇧🇷 Algoritmo de Euclides Estendido
   
 
     
@@ -733,10 +733,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#algorithm" class="md-nav__link">
+  <a href="#algoritmo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Algorithm
+        Algoritmo
       
     </span>
   </a>
@@ -744,10 +744,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#implementacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Implementação
       
     </span>
   </a>
@@ -755,10 +755,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#iterative-version" class="md-nav__link">
+  <a href="#versao-iterativa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Iterative version
+        Versão iterativa
       
     </span>
   </a>
@@ -766,10 +766,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#problemas-praticos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Problemas Práticos
       
     </span>
   </a>
@@ -7899,9 +7899,9 @@
                   <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
-  const issueTitle = "Problem on article " + "\ud83c\uddfa\ud83c\uddf8 Extended Euclidean Algorithm";
+  const issueTitle = "Problem on article " + "\ud83c\udde7\ud83c\uddf7 Algoritmo de Euclides Estendido";
 	const issueBody = `
- **Article:** [`+ "\ud83c\uddfa\ud83c\uddf8 Extended Euclidean Algorithm" + `](${window.location.href})
+ **Article:** [`+ "\ud83c\udde7\ud83c\uddf7 Algoritmo de Euclides Estendido" + `](${window.location.href})
 
 **Problem:**
 <!--
@@ -8059,18 +8059,6 @@ Describe the issue of this article in detail.
   
   
 
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
 
 
 
@@ -8078,7 +8066,7 @@ Describe the issue of this article in detail.
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
 
   Last update:
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 22, 2026 23:32:43 UTC">April 22, 2026</span>&emsp;
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 23, 2026 12:51:52 UTC">April 23, 2026</span>&emsp;
 
 <!-- Tags -->
 
@@ -8104,35 +8092,35 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="extended-euclidean-algorithm">Extended Euclidean Algorithm<a class="headerlink" href="#extended-euclidean-algorithm" title="Permanent link">&para;</a></h1>
-<p>While the <a href="euclid-algorithm.html">Euclidean algorithm</a> calculates only the greatest common divisor (GCD) of two integers <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span>, the extended version also finds a way to represent GCD in terms of <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span>, i.e. coefficients <span class="arithmatex">$x$</span> and <span class="arithmatex">$y$</span> for which:</p>
+<h1 id="algoritmo-de-euclides-estendido">Algoritmo de Euclides Estendido<a class="headerlink" href="#algoritmo-de-euclides-estendido" title="Permanent link">&para;</a></h1>
+<p>Enquanto o <a href="euclid-algorithm.html">Algoritmo de Euclides</a> calcula apenas o máximo divisor comum (GCD, ou em português, MDC) de dois inteiros <span class="arithmatex">$a$</span> e <span class="arithmatex">$b$</span>, a versão estendida também encontra uma maneira de representar o GCD em termos de <span class="arithmatex">$a$</span> e <span class="arithmatex">$b$</span>, ou seja, coeficientes <span class="arithmatex">$x$</span> e <span class="arithmatex">$y$</span> para os quais:</p>
 <div class="arithmatex">$$a \cdot x + b \cdot y = \gcd(a, b)$$</div>
-<p>It's important to note that by <a href="https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity">Bézout's identity</a> we can always find such a representation. For instance, <span class="arithmatex">$\gcd(55, 80) = 5$</span>, therefore we can represent <span class="arithmatex">$5$</span> as a linear combination with the terms <span class="arithmatex">$55$</span> and <span class="arithmatex">$80$</span>: <span class="arithmatex">$55 \cdot 3 + 80 \cdot (-2) = 5$</span> </p>
-<p>A more general form of that problem is discussed in the article about <a href="linear-diophantine-equation.html">Linear Diophantine Equations</a>.
-It will build upon this algorithm.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
-<p>We will denote the GCD of <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span> with <span class="arithmatex">$g$</span> in this section.</p>
-<p>The changes to the original algorithm are very simple.
-If we recall the algorithm, we can see that the algorithm ends with <span class="arithmatex">$b = 0$</span> and <span class="arithmatex">$a = g$</span>.
-For these parameters we can easily find coefficients, namely <span class="arithmatex">$g \cdot 1 + 0 \cdot 0 = g$</span>.</p>
-<p>Starting from these coefficients <span class="arithmatex">$(x, y) = (1, 0)$</span>, we can go backwards up the recursive calls.
-All we need to do is to figure out how the coefficients <span class="arithmatex">$x$</span> and <span class="arithmatex">$y$</span> change during the transition from <span class="arithmatex">$(a, b)$</span> to <span class="arithmatex">$(b, a \bmod b)$</span>.</p>
-<p>Let us assume we found the coefficients <span class="arithmatex">$(x_1, y_1)$</span> for <span class="arithmatex">$(b, a \bmod b)$</span>:</p>
+<p>É importante notar que, pela <a href="https://pt.wikipedia.org/wiki/Identidade_de_B%C3%A9zout">Identidade de Bézout</a>, sempre podemos encontrar tal representação. Por exemplo, <span class="arithmatex">$\gcd(55, 80) = 5$</span>, portanto podemos representar <span class="arithmatex">$5$</span> como uma combinação linear com os termos <span class="arithmatex">$55$</span> e <span class="arithmatex">$80$</span>: <span class="arithmatex">$55 \cdot 3 + 80 \cdot (-2) = 5$</span></p>
+<p>Uma forma mais geral desse problema é discutida no artigo sobre <a href="linear-diophantine-equation.html">Equações Diofantinas Lineares</a>.
+Isso será construído sobre este algoritmo.</p>
+<h2 id="algoritmo">Algoritmo<a class="headerlink" href="#algoritmo" title="Permanent link">&para;</a></h2>
+<p>Denotaremos o GCD de <span class="arithmatex">$a$</span> e <span class="arithmatex">$b$</span> por <span class="arithmatex">$g$</span> nesta seção.</p>
+<p>As alterações no algoritmo original são muito simples.
+Se nos lembrarmos do algoritmo, podemos ver que o algoritmo termina com <span class="arithmatex">$b = 0$</span> e <span class="arithmatex">$a = g$</span>.
+Para esses parâmetros podemos facilmente encontrar os coeficientes, a saber, <span class="arithmatex">$g \cdot 1 + 0 \cdot 0 = g$</span>.</p>
+<p>Partindo desses coeficientes <span class="arithmatex">$(x, y) = (1, 0)$</span>, podemos retroceder pelas chamadas recursivas.
+Tudo o que precisamos fazer é descobrir como os coeficientes <span class="arithmatex">$x$</span> e <span class="arithmatex">$y$</span> mudam durante a transição de <span class="arithmatex">$(a, b)$</span> para <span class="arithmatex">$(b, a \bmod b)$</span>.</p>
+<p>Vamos supor que encontramos os coeficientes <span class="arithmatex">$(x_1, y_1)$</span> para <span class="arithmatex">$(b, a \bmod b)$</span>:</p>
 <div class="arithmatex">$$b \cdot x_1 + (a \bmod b) \cdot y_1 = g$$</div>
-<p>and we want to find the pair <span class="arithmatex">$(x, y)$</span> for <span class="arithmatex">$(a, b)$</span>:</p>
+<p>e queremos encontrar o par <span class="arithmatex">$(x, y)$</span> para <span class="arithmatex">$(a, b)$</span>:</p>
 <div class="arithmatex">$$ a \cdot x + b \cdot y = g$$</div>
-<p>We can represent <span class="arithmatex">$a \bmod b$</span> as:</p>
+<p>Podemos representar <span class="arithmatex">$a \bmod b$</span> como:</p>
 <div class="arithmatex">$$ a \bmod b = a - \left\lfloor \frac{a}{b} \right\rfloor \cdot b$$</div>
-<p>Substituting this expression in the coefficient equation of <span class="arithmatex">$(x_1, y_1)$</span> gives:</p>
+<p>Substituindo esta expressão na equação de coeficientes de <span class="arithmatex">$(x_1, y_1)$</span> nos dá:</p>
 <div class="arithmatex">$$ g = b \cdot x_1 + (a \bmod b) \cdot y_1 = b \cdot x_1 + \left(a - \left\lfloor \frac{a}{b} \right\rfloor \cdot b \right) \cdot y_1$$</div>
-<p>and after rearranging the terms:</p>
+<p>e depois de rearranjar os termos:</p>
 <div class="arithmatex">$$g = a \cdot y_1 + b \cdot \left( x_1 - y_1 \cdot \left\lfloor \frac{a}{b} \right\rfloor \right)$$</div>
-<p>We found the values of <span class="arithmatex">$x$</span> and <span class="arithmatex">$y$</span>:</p>
+<p>Encontramos os valores de <span class="arithmatex">$x$</span> e <span class="arithmatex">$y$</span>:</p>
 <div class="arithmatex">$$\begin{cases}
 x = y_1 \\
 y = x_1 - y_1 \cdot \left\lfloor \frac{a}{b} \right\rfloor
 \end{cases} $$</div>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<h2 id="implementacao">Implementação<a class="headerlink" href="#implementacao" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -8146,11 +8134,11 @@ y = x_1 - y_1 \cdot \left\lfloor \frac{a}{b} \right\rfloor
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>The recursive function above returns the GCD and the values of coefficients to <code>x</code> and <code>y</code> (which are passed by reference to the function).</p>
-<p>This implementation of extended Euclidean algorithm produces correct results for negative integers as well.</p>
-<h2 id="iterative-version">Iterative version<a class="headerlink" href="#iterative-version" title="Permanent link">&para;</a></h2>
-<p>It's also possible to write the Extended Euclidean algorithm in an iterative way.
-Because it avoids recursion, the code will run a little bit faster than the recursive one.</p>
+<p>A função recursiva acima retorna o GCD e os valores dos coeficientes para <code>x</code> e <code>y</code> (que são passados por referência para a função).</p>
+<p>Esta implementação do algoritmo de Euclides estendido produz resultados corretos também para inteiros negativos.</p>
+<h2 id="versao-iterativa">Versão iterativa<a class="headerlink" href="#versao-iterativa" title="Permanent link">&para;</a></h2>
+<p>Também é possível escrever o algoritmo de Euclides Estendido de forma iterativa.
+Como evita recursão, o código rodará um pouco mais rápido que o recursivo.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
@@ -8163,25 +8151,25 @@ Because it avoids recursion, the code will run a little bit faster than the recu
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>If you look closely at the variables <code>a1</code> and <code>b1</code>, you can notice that they take exactly the same values as in the iterative version of the normal <a href="euclid-algorithm.html#implementacao">Euclidean algorithm</a>. So the algorithm will at least compute the correct GCD.</p>
-<p>To see why the algorithm computes the correct coefficients, consider that the following invariants hold at any given time (before the while loop begins and at the end of each iteration):</p>
+<p>Se você observar atentamente as variáveis <code>a1</code> e <code>b1</code>, perceberá que elas assumem exatamente os mesmos valores que na versão iterativa do <a href="euclid-algorithm.html#implementacao">Algoritmo de Euclides</a> normal. Então o algoritmo pelo menos calculará o GCD corretamente.</p>
+<p>Para ver por que o algoritmo calcula os coeficientes corretos, considere que as seguintes invariantes se mantêm a qualquer momento (antes do início do loop <code>while</code> e no final de cada iteração):</p>
 <div class="arithmatex">$$x \cdot a + y \cdot b = a_1$$</div>
 <div class="arithmatex">$$x_1 \cdot a + y_1 \cdot b = b_1$$</div>
-<p>Let the values at the end of an iteration be denoted by a prime (<span class="arithmatex">$'$</span>), and assume <span class="arithmatex">$q = \frac{a_1}{b_1}$</span>. From the <a href="euclid-algorithm.html">Euclidean algorithm</a>, we have:</p>
+<p>Sejam os valores ao final de uma iteração denotados por um apóstrofo (<span class="arithmatex">$'$</span>), e suponha <span class="arithmatex">$q = \frac{a_1}{b_1}$</span>. Do <a href="euclid-algorithm.html">Algoritmo de Euclides</a>, nós temos:</p>
 <div class="arithmatex">$$a_1' = b_1$$</div>
 <div class="arithmatex">$$b_1' = a_1 - q \cdot b_1$$</div>
-<p>For the first invariant to hold, the following should be true:</p>
+<p>Para a primeira invariante se manter, o seguinte deve ser verdadeiro:</p>
 <div class="arithmatex">$$x' \cdot a + y' \cdot b = a_1' = b_1$$</div>
 <div class="arithmatex">$$x' \cdot a + y' \cdot b = x_1 \cdot a + y_1 \cdot b$$</div>
-<p>Similarly for the second invariant, the following should hold:</p>
+<p>Da mesma forma para a segunda invariante, o seguinte deve ser válido:</p>
 <div class="arithmatex">$$x_1' \cdot a + y_1' \cdot b = a_1 - q \cdot b_1$$</div>
 <div class="arithmatex">$$x_1' \cdot a + y_1' \cdot b = (x - q \cdot x_1) \cdot a + (y - q \cdot y_1) \cdot b$$</div>
-<p>By comparing the coefficients of <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span>, the update equations for each variable can be derived, ensuring that the invariants are maintained throughout the algorithm.</p>
-<p>At the end we know that <span class="arithmatex">$a_1$</span> contains the GCD, so <span class="arithmatex">$x \cdot a + y \cdot b = g$</span>.
-Which means that we have found the required coefficients.</p>
-<p>You can even optimize the code more, and remove the variable <span class="arithmatex">$a_1$</span> and <span class="arithmatex">$b_1$</span> from the code, and just reuse <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span>.
-However if you do so, you lose the ability to argue about the invariants.</p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<p>Ao comparar os coeficientes de <span class="arithmatex">$a$</span> e <span class="arithmatex">$b$</span>, as equações de atualização para cada variável podem ser derivadas, garantindo que as invariantes sejam mantidas durante todo o algoritmo.</p>
+<p>No final, sabemos que <span class="arithmatex">$a_1$</span> contém o GCD, então <span class="arithmatex">$x \cdot a + y \cdot b = g$</span>.
+O que significa que encontramos os coeficientes necessários.</p>
+<p>Você pode até otimizar mais o código e remover as variáveis <span class="arithmatex">$a_1$</span> e <span class="arithmatex">$b_1$</span> do código e apenas reutilizar <span class="arithmatex">$a$</span> e <span class="arithmatex">$b$</span>.
+No entanto, se o fizer, perderá a capacidade de argumentar sobre as invariantes.</p>
+<h2 id="problemas-praticos">Problemas Práticos<a class="headerlink" href="#problemas-praticos" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=1045">UVA - 10104 - Euclid Problem</a></li>
 <li><a href="http://codeforces.com/gym/100963">GYM - (J) Once Upon A Time</a></li>
@@ -8190,7 +8178,7 @@ However if you do so, you lose the ability to argue about the invariants.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (43.7%)</li><li><a href="https://github.com/s9v" title="s9v" data-bi-name="contributorprofile" target="_blank">s9v</a> (23.7%)</li><li><a href="https://github.com/meetthehorizon" title="meetthehorizon" data-bi-name="contributorprofile" target="_blank">meetthehorizon</a> (19.26%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (4.44%)</li><li><a href="https://github.com/Morass" title="Morass" data-bi-name="contributorprofile" target="_blank">Morass</a> (2.96%)</li><li><a href="https://github.com/algmyr" title="algmyr" data-bi-name="contributorprofile" target="_blank">algmyr</a> (1.48%)</li><li><a href="https://github.com/tcNickolas" title="tcNickolas" data-bi-name="contributorprofile" target="_blank">tcNickolas</a> (1.48%)</li><li><a href="https://github.com/google-labs-jules%5Bbot%5D" title="google-labs-jules[bot]" data-bi-name="contributorprofile" target="_blank">google-labs-jules[bot]</a> (0.74%)</li><li><a href="https://github.com/boxlesscat" title="boxlesscat" data-bi-name="contributorprofile" target="_blank">boxlesscat</a> (0.74%)</li><li><a href="https://github.com/jxu" title="jxu" data-bi-name="contributorprofile" target="_blank">jxu</a> (0.74%)</li><li><a href="https://github.com/Zombiesalad1337" title="Zombiesalad1337" data-bi-name="contributorprofile" target="_blank">Zombiesalad1337</a> (0.74%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (29.63%)</li><li><a href="https://github.com/filipemsilv4" title="filipemsilv4" data-bi-name="contributorprofile" target="_blank">filipemsilv4</a> (25.93%)</li><li><a href="https://github.com/s9v" title="s9v" data-bi-name="contributorprofile" target="_blank">s9v</a> (20.0%)</li><li><a href="https://github.com/meetthehorizon" title="meetthehorizon" data-bi-name="contributorprofile" target="_blank">meetthehorizon</a> (15.56%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (4.44%)</li><li><a href="https://github.com/Morass" title="Morass" data-bi-name="contributorprofile" target="_blank">Morass</a> (2.22%)</li><li><a href="https://github.com/algmyr" title="algmyr" data-bi-name="contributorprofile" target="_blank">algmyr</a> (1.48%)</li><li><a href="https://github.com/boxlesscat" title="boxlesscat" data-bi-name="contributorprofile" target="_blank">boxlesscat</a> (0.74%)</li></ul>
 </ul>
                 
               </article>
