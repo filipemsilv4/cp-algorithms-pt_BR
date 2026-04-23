@@ -101,7 +101,7 @@ $$x \cdot a + y \cdot b = a_1$$
 
 $$x_1 \cdot a + y_1 \cdot b = b_1$$
 
-Deixe os valores no final de uma iteração serem indicados por uma linha ($'$), e suponha $q = \frac{a_1}{b_1}$. Do [Algoritmo de Euclides](euclid-algorithm.md), nós temos:
+Sejam os valores ao final de uma iteração denotados por um apóstrofo ($'$), e suponha $q = \frac{a_1}{b_1}$. Do [Algoritmo de Euclides](euclid-algorithm.md), nós temos:
 
 $$a_1' = b_1$$
 
