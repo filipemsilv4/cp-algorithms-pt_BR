@@ -16,7 +16,7 @@ Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧�
     - Fundamentals
         - [🇧🇷 Exponenciação Binária](algebra/binary-exp.md)
         - [🇧🇷 Algoritmo de Euclides para calcular o máximo divisor comum](algebra/euclid-algorithm.md)
-        - [🇺🇸 Extended Euclidean Algorithm](algebra/extended-euclid-algorithm.md)
+        - [🇧🇷 Algoritmo de Euclides Estendido](algebra/extended-euclid-algorithm.md)
         - [🇺🇸 Linear Diophantine Equations](algebra/linear-diophantine-equation.md)
         - [🇺🇸 Fibonacci Numbers](algebra/fibonacci-numbers.md)
     - Prime numbers
