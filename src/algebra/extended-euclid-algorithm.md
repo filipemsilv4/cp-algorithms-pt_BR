@@ -17,7 +17,7 @@ Isso será construído sobre este algoritmo.
 
 ## Algoritmo
 
-Denotaremos o GCD de $a$ e $b$ com $g$ nesta seção.
+Denotaremos o GCD de $a$ e $b$ por $g$ nesta seção.
 
 As alterações no algoritmo original são muito simples.
 Se nos lembrarmos do algoritmo, podemos ver que o algoritmo termina com $b = 0$ e $a = g$.
