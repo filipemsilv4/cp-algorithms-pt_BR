@@ -125,7 +125,7 @@ Ao comparar os coeficientes de $a$ e $b$, as equações de atualização para ca
 No final, sabemos que $a_1$ contém o GCD, então $x \cdot a + y \cdot b = g$.
 O que significa que encontramos os coeficientes necessários.
 
-Você pode até otimizar mais o código e remover a variável $a_1$ e $b_1$ do código e apenas reutilizar $a$ e $b$.
+Você pode até otimizar mais o código e remover as variáveis $a_1$ e $b_1$ do código e apenas reutilizar $a$ e $b$.
 No entanto, se o fizer, perderá a capacidade de argumentar sobre as invariantes.
 
 ## Problemas Práticos
