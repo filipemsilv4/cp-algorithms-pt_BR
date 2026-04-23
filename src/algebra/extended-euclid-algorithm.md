@@ -21,7 +21,7 @@ Denotaremos o GCD de $a$ e $b$ por $g$ nesta seção.
 
 As alterações no algoritmo original são muito simples.
 Se nos lembrarmos do algoritmo, podemos ver que o algoritmo termina com $b = 0$ e $a = g$.
-Para esses parâmetros podemos facilmente encontrar os coeficientes, a saber $g \cdot 1 + 0 \cdot 0 = g$.
+Para esses parâmetros podemos facilmente encontrar os coeficientes, a saber, $g \cdot 1 + 0 \cdot 0 = g$.
 
 Partindo desses coeficientes $(x, y) = (1, 0)$, podemos retroceder pelas chamadas recursivas.
 Tudo o que precisamos fazer é descobrir como os coeficientes $x$ e $y$ mudam durante a transição de $(a, b)$ para $(b, a \bmod b)$.
