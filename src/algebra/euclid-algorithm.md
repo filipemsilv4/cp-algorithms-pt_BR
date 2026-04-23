@@ -4,30 +4,30 @@ tags:
 e_maxx_link: euclid_algorithm
 ---
 
-# Euclidean algorithm for computing the greatest common divisor
+# Algoritmo de Euclides para calcular o máximo divisor comum
 
-Given two non-negative integers $a$ and $b$, we have to find their **GCD** (greatest common divisor), i.e. the largest number which is a divisor of both $a$ and $b$.
-It's commonly denoted by $\gcd(a, b)$. Mathematically it is defined as:
+Dados dois inteiros não-negativos $a$ e $b$, temos que encontrar seu **MDC** (máximo divisor comum), ou seja, o maior número que é divisor tanto de $a$ quanto de $b$.
+É comumente denotado por $\gcd(a, b)$ ou em português, $\text{mdc}(a, b)$. Matematicamente, ele é definido como:
 
-$$\gcd(a, b) = \max \{k > 0 : (k \mid a) \text{ and } (k \mid b) \}$$
+$$\gcd(a, b) = \max \{k > 0 : (k \mid a) \text{ e } (k \mid b) \}$$
 
-(here the symbol "$\mid$" denotes divisibility, i.e. "$k \mid a$" means "$k$ divides $a$")
+(aqui o símbolo "$\mid$" denota divisibilidade, ou seja, "$k \mid a$" significa que "$k$ divide $a$")
 
-When one of the numbers is zero, while the other is non-zero, their greatest common divisor, by definition, is the second number. When both numbers are zero, their greatest common divisor is undefined (it can be any arbitrarily large number), but it is convenient to define it as zero as well to preserve the associativity of $\gcd$. Which gives us a simple rule: if one of the numbers is zero, the greatest common divisor is the other number.
+Quando um dos números é zero, enquanto o outro é não-zero, o máximo divisor comum deles, por definição, é o segundo número. Quando ambos os números são zero, seu máximo divisor comum é indefinido (pode ser qualquer número arbitrariamente grande), mas é conveniente defini-lo como zero também para preservar a associatividade do $\gcd$. O que nos dá uma regra simples: se um dos números for zero, o máximo divisor comum é o outro número.
 
-The Euclidean algorithm, discussed below, allows to find the greatest common divisor of two numbers $a$ and $b$ in $O(\log \min(a, b))$. Since the function is **associative**, to find the GCD of **more than two numbers**, we can do $\gcd(a, b, c) = \gcd(a, \gcd(b, c))$ and so forth.
+O algoritmo de Euclides, discutido abaixo, permite encontrar o máximo divisor comum de dois números $a$ e $b$ em $O(\log \min(a, b))$. Como a função é **associativa**, para encontrar o MDC de **mais de dois números**, podemos fazer $\gcd(a, b, c) = \gcd(a, \gcd(b, c))$ e assim por diante.
 
-The algorithm was first described in Euclid's "Elements" (circa 300 BC), but it is possible that the algorithm has even earlier origins.
+O algoritmo foi descrito pela primeira vez em "Os Elementos" de Euclides (cerca de 300 a.C.), mas é possível que o algoritmo tenha origens ainda mais antigas.
 
-## Algorithm
+## Algoritmo
 
-Originally, the Euclidean algorithm was formulated as follows: subtract the smaller number from the larger one until one of the numbers is zero. Indeed, if $g$ divides $a$ and $b$, it also divides $a-b$. On the other hand, if $g$ divides $a-b$ and $b$, then it also divides $a = b + (a-b)$, which means that the sets of the common divisors of $\{a, b\}$ and $\{b,a-b\}$ coincide.
+Originalmente, o algoritmo de Euclides foi formulado da seguinte maneira: subtraia o número menor do número maior até que um dos números seja zero. De fato, se $g$ divide $a$ e $b$, ele também divide $a-b$. Por outro lado, se $g$ divide $a-b$ e $b$, então ele também divide $a = b + (a-b)$, o que significa que os conjuntos dos divisores comuns de $\{a, b\}$ e $\{b,a-b\}$ coincidem.
 
-Note that $a$ remains the larger number until $b$ is subtracted from it at least $\left\lfloor\frac{a}{b}\right\rfloor$ times. Therefore, to speed things up, $a-b$ is substituted with $a-\left\lfloor\frac{a}{b}\right\rfloor b = a \bmod b$. Then the algorithm is formulated in an extremely simple way:
+Note que $a$ permanece como o número maior até que $b$ seja subtraído dele pelo menos $\left\lfloor\frac{a}{b}\right\rfloor$ vezes. Portanto, para acelerar o processo, $a-b$ é substituído por $a-\left\lfloor\frac{a}{b}\right\rfloor b = a \bmod b$. Então, o algoritmo é formulado de maneira extremamente simples:
 
-$$\gcd(a, b) = \begin{cases}a,&\text{if }b = 0 \\ \gcd(b, a \bmod b),&\text{otherwise.}\end{cases}$$
+$$\gcd(a, b) = \begin{cases}a,&\text{se }b = 0 \\ \gcd(b, a \bmod b),&\text{caso contrário.}\end{cases}$$
 
-## Implementation
+## Implementação
 
 ```cpp
 int gcd (int a, int b) {
@@ -38,7 +38,7 @@ int gcd (int a, int b) {
 }
 ```
 
-Using the ternary operator in C++, we can write it as a one-liner.
+Usando o operador ternário em C++, podemos escrevê-lo em uma única linha.
 
 ```cpp
 int gcd (int a, int b) {
@@ -46,7 +46,7 @@ int gcd (int a, int b) {
 }
 ```
 
-And finally, here is a non-recursive implementation:
+E finalmente, aqui está uma implementação não-recursiva:
 
 ```cpp
 int gcd (int a, int b) {
@@ -58,29 +58,29 @@ int gcd (int a, int b) {
 }
 ```
 
-Note that since C++17, `gcd` is implemented as a [standard function](https://en.cppreference.com/w/cpp/numeric/gcd) in C++.
+Note que, desde o C++17, o `gcd` é implementado como uma [função padrão](https://en.cppreference.com/w/cpp/numeric/gcd) em C++.
 
-## Time Complexity
+## Complexidade de Tempo
 
-The running time of the algorithm is estimated by Lamé's theorem, which establishes a surprising connection between the Euclidean algorithm and the Fibonacci sequence:
+O tempo de execução do algoritmo é estimado pelo teorema de Lamé, que estabelece uma conexão surpreendente entre o algoritmo de Euclides e a sequência de Fibonacci:
 
-If $a > b \geq 1$ and $b < F_n$ for some $n$, the Euclidean algorithm performs at most $n-2$ recursive calls.
+Se $a > b \geq 1$ e $b < F_n$ para algum $n$, o algoritmo de Euclides realiza no máximo $n-2$ chamadas recursivas.
 
-Moreover, it is possible to show that the upper bound of this theorem is optimal. When $a = F_n$ and $b = F_{n-1}$, $gcd(a, b)$ will perform exactly $n-2$ recursive calls. In other words, consecutive Fibonacci numbers are the worst case input for Euclid's algorithm.
+Além disso, é possível mostrar que o limite superior deste teorema é ótimo. Quando $a = F_n$ e $b = F_{n-1}$, $\gcd(a, b)$ realizará exatamente $n-2$ chamadas recursivas. Em outras palavras, números consecutivos de Fibonacci são a entrada de pior caso para o algoritmo de Euclides.
 
-Given that Fibonacci numbers grow exponentially, we get that the Euclidean algorithm works in $O(\log \min(a, b))$.
+Dado que os números de Fibonacci crescem exponencialmente, obtemos que o algoritmo de Euclides funciona em $O(\log \min(a, b))$.
 
-Another way to estimate the complexity is to notice that $a \bmod b$ for the case $a \geq b$ is at least $2$ times smaller than $a$, so the larger number is reduced at least in half on each iteration of the algorithm. Applying this reasoning to the case when we compute the GCD of the set of numbers $a_1,\dots,a_n \leq C$, this also allows us to estimate the total runtime as $O(n + \log C)$, rather than $O(n \log C)$, since every non-trivial iteration of the algorithm reduces the current GCD candidate by at least a factor of $2$.
+Outra maneira de estimar a complexidade é notar que $a \bmod b$ para o caso $a \geq b$ é pelo menos $2$ vezes menor que $a$, portanto, o número maior é reduzido pela metade em cada iteração do algoritmo. Aplicando este raciocínio para o caso em que calculamos o MDC do conjunto de números $a_1,\dots,a_n \leq C$, isto também nos permite estimar o tempo de execução total como $O(n + \log C)$, ao invés de $O(n \log C)$, pois cada iteração não-trivial do algoritmo reduz o candidato atual a MDC por um fator de pelo menos $2$.
 
-## Least common multiple
+## Mínimo múltiplo comum
 
-Calculating the least common multiple (commonly denoted **LCM**) can be reduced to calculating the GCD with the following simple formula:
+O cálculo do mínimo múltiplo comum (comumente denotado por **LCM**, ou em português, **MMC**) pode ser reduzido ao cálculo do MDC com a seguinte fórmula simples:
 
 $$\text{lcm}(a, b) = \frac{a \cdot b}{\gcd(a, b)}$$
 
-Thus, LCM can be calculated using the Euclidean algorithm with the same time complexity:
+Assim, o MMC pode ser calculado usando o algoritmo de Euclides com a mesma complexidade de tempo:
 
-A possible implementation, that cleverly avoids integer overflows by first dividing $a$ with the GCD, is given here:
+Uma possível implementação, que evita inteligentemente overflow de inteiros dividindo primeiro $a$ com o MDC, é dada aqui:
 
 ```cpp
 int lcm (int a, int b) {
@@ -88,21 +88,21 @@ int lcm (int a, int b) {
 }
 ```
 
-## Binary GCD
+## MDC Binário
 
-The Binary GCD algorithm is an optimization to the normal Euclidean algorithm.
+O algoritmo de MDC Binário é uma otimização do algoritmo de Euclides normal.
 
-The slow part of the normal algorithm are the modulo operations. Modulo operations, although we see them as $O(1)$, are a lot slower than simpler operations like addition, subtraction or bitwise operations.
-So it would be better to avoid those.
+A parte lenta do algoritmo normal são as operações de módulo. Operações de módulo, embora as vejamos como $O(1)$, são muito mais lentas que operações mais simples como adição, subtração ou operações bitwise.
+Então seria melhor evitá-las.
 
-It turns out, that you can design a fast GCD algorithm that avoids modulo operations.
-It's based on a few properties:
+Acontece que você pode projetar um algoritmo rápido de MDC que evita operações de módulo.
+É baseado em algumas propriedades:
 
-  - If both numbers are even, then we can factor out a two of both and compute the GCD of the remaining numbers: $\gcd(2a, 2b) = 2 \gcd(a, b)$.
-  - If one of the numbers is even and the other one is odd, then we can remove the factor 2 from the even one: $\gcd(2a, b) = \gcd(a, b)$ if $b$ is odd.
-  - If both numbers are odd, then subtracting one number of the other one will not change the GCD: $\gcd(a, b) = \gcd(b, a-b)$
+  - Se ambos os números forem pares, podemos fatorar um dois de ambos e calcular o MDC dos números restantes: $\gcd(2a, 2b) = 2 \gcd(a, b)$.
+  - Se um dos números for par e o outro for ímpar, então podemos remover o fator 2 do número par: $\gcd(2a, b) = \gcd(a, b)$ se $b$ for ímpar.
+  - Se ambos os números forem ímpares, então a subtração de um número do outro não alterará o MDC: $\gcd(a, b) = \gcd(b, a-b)$
 
-Using only these properties, and some fast bitwise functions from GCC, we can implement a fast version:
+Usando apenas essas propriedades, e algumas funções bitwise rápidas do GCC, podemos implementar uma versão rápida:
 
 ```cpp
 int gcd(int a, int b) {
@@ -120,10 +120,10 @@ int gcd(int a, int b) {
 }
 ```
 
-Notice, that such an optimization is usually not necessary, and most programming languages already have a GCD function in their standard libraries.
-E.g. C++17 has such a function `std::gcd` in the `numeric` header.
+Note que essa otimização geralmente não é necessária, e a maioria das linguagens de programação já possui uma função de MDC em suas bibliotecas padrão.
+Por exemplo, C++17 possui essa função `std::gcd` no cabeçalho `numeric`.
 
-## Practice Problems
+## Problemas Práticos
 
 - [CSAcademy - Greatest Common Divisor](https://csacademy.com/contest/archive/task/gcd/)
 - [Codeforces 1916B - Two Divisors](https://codeforces.com/contest/1916/problem/B)

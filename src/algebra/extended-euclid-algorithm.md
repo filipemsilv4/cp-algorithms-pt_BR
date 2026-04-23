@@ -93,7 +93,7 @@ int gcd(int a, int b, int& x, int& y) {
 }
 ```
 
-Se você observar atentamente as variáveis `a1` e `b1`, perceberá que elas assumem exatamente os mesmos valores que na versão iterativa do [Algoritmo de Euclides](euclid-algorithm.md#implementation) normal. Então o algoritmo pelo menos calculará o GCD corretamente.
+Se você observar atentamente as variáveis `a1` e `b1`, perceberá que elas assumem exatamente os mesmos valores que na versão iterativa do [Algoritmo de Euclides](euclid-algorithm.md#implementacao) normal. Então o algoritmo pelo menos calculará o GCD corretamente.
 
 Para ver por que o algoritmo calcula os coeficientes corretos, considere que as seguintes invariantes se mantêm a qualquer momento (antes do início do loop `while` e no final de cada iteração):
 
