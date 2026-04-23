@@ -10,7 +10,7 @@ Enquanto o [Algoritmo de Euclides](euclid-algorithm.md) calcula apenas o máximo
 
 $$a \cdot x + b \cdot y = \gcd(a, b)$$
 
-É importante notar que, pela [Identidade de Bézout](https://pt.wikipedia.org/wiki/Identidade_de_B%C3%A9zout) sempre podemos encontrar tal representação. Por exemplo, $\gcd(55, 80) = 5$, portanto podemos representar $5$ como uma combinação linear com os termos $55$ e $80$: $55 \cdot 3 + 80 \cdot (-2) = 5$
+É importante notar que, pela [Identidade de Bézout](https://pt.wikipedia.org/wiki/Identidade_de_B%C3%A9zout), sempre podemos encontrar tal representação. Por exemplo, $\gcd(55, 80) = 5$, portanto podemos representar $5$ como uma combinação linear com os termos $55$ e $80$: $55 \cdot 3 + 80 \cdot (-2) = 5$
 
 Uma forma mais geral desse problema é discutida no artigo sobre [Equações Diofantinas Lineares](linear-diophantine-equation.md).
 Isso será construído sobre este algoritmo.
