@@ -117,7 +117,7 @@ Agora, devemos ver que adicionar $b / g$ a $x_0$, e, ao mesmo tempo subtrair $a 
 
 $$a \cdot \left(x_0 + \frac{b}{g}\right) + b \cdot \left(y_0 - \frac{a}{g}\right) = a \cdot x_0 + b \cdot y_0 + a \cdot \frac{b}{g} - b \cdot \frac{a}{g} = c$$
 
-Obviamente, este processo pode ser repetido novamente, então todos os números da forma:
+Obviamente, este processo pode ser repetido, então todos os números da forma:
 
 $$x = x_0 + k \cdot \frac{b}{g}$$
 
