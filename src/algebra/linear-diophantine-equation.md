@@ -205,7 +205,7 @@ Uma vez que temos $l_x$ e $r_x$, é também simples enumerar todas as soluções
 
 Aqui, $x$ e $y$ também precisam receber alguma restrição, caso contrário, a resposta pode se tornar infinito negativo.
 
-A ideia é semelhante a seção anterior: Encontramos qualquer solução da equação Diofantina, e então deslocamos a solução para satisfazer algumas condições.
+A ideia é semelhante à seção anterior: Encontramos qualquer solução da equação Diofantina, e então deslocamos a solução para satisfazer algumas condições.
 
 Finalmente, usamos o conhecimento do conjunto de todas as soluções para encontrar o mínimo:
 
