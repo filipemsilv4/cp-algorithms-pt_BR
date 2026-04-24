@@ -199,7 +199,7 @@ int find_all_solutions(int a, int b, int c, int minx, int maxx, int miny, int ma
 }
 ```
 
-Uma vez que temos $l_x$ e $r_x$, é também simples enumerar através de todas as soluções. Apenas precisamos iterar através de $x = l_x + k \cdot \frac{b}{g}$ para todo $k \ge 0$ até que $x = r_x$, e encontrar os valores $y$ correspondentes usando a equação $a x + b y = c$.
+Uma vez que temos $l_x$ e $r_x$, é também simples enumerar todas as soluções. Apenas precisamos iterar através de $x = l_x + k \cdot \frac{b}{g}$ para todo $k \ge 0$ até que $x = r_x$, e encontrar os valores $y$ correspondentes usando a equação $a x + b y = c$.
 
 ## Encontrar a solução com valor mínimo de $x + y$ { data-toc-label='Encontrar a solução com valor mínimo de <script type="math/tex">x + y</script>' }
 
