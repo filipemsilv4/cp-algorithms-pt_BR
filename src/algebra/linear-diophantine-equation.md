@@ -142,7 +142,7 @@ De forma semelhante, podemos encontrar o valor máximo de $x$ que satisfaz $x \l
 
 De forma semelhante, podemos encontrar o valor mínimo de $y$ $(y \ge min_y)$ e valor máximo de $y$ $(y \le max_y)$. Denote os valores correspondentes de $x$ por $l_{x2}$ e $r_{x2}$.
 
-A solução final é todas as soluções com x na intersecção de $[l_{x1}, r_{x1}]$ e $[l_{x2}, r_{x2}]$. Vamos denotar esta intersecção por $[l_x, r_x]$.
+As soluções finais são todas as soluções com x na intersecção de $[l_{x1}, r_{x1}]$ e $[l_{x2}, r_{x2}]$. Vamos denotar esta intersecção por $[l_x, r_x]$.
 
 Abaixo está o código implementando esta ideia.
 Note que nós dividimos $a$ e $b$ no início por $g$.
