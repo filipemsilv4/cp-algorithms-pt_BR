@@ -146,7 +146,7 @@ As soluções finais são todas as soluções com x na intersecção de $[l_{x1}
 
 Abaixo está o código implementando esta ideia.
 Note que nós dividimos $a$ e $b$ no início por $g$.
-Como a equação $a x + b y = c$ é equivalente a equação $\frac{a}{g} x + \frac{b}{g} y = \frac{c}{g}$, podemos usar esta aqui e ter $\gcd(\frac{a}{g}, \frac{b}{g}) = 1$, o que simplifica as fórmulas.
+Como a equação $a x + b y = c$ é equivalente à equação $\frac{a}{g} x + \frac{b}{g} y = \frac{c}{g}$, podemos usar esta aqui e ter $\gcd(\frac{a}{g}, \frac{b}{g}) = 1$, o que simplifica as fórmulas.
 
 ```{.cpp file=linear_diophantine_all}
 void shift_solution(int & x, int & y, int a, int b, int cnt) {
