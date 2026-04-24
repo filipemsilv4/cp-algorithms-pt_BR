@@ -4,78 +4,78 @@ tags:
 e_maxx_link: diofant_2_equation
 ---
 
-# Linear Diophantine Equation
+# Equações Diofantinas Lineares
 
-A Linear Diophantine Equation (in two variables) is an equation of the general form:
+Uma Equação Diofantina Linear (em duas variáveis) é uma equação da forma geral:
 
 $$ax + by = c$$
 
-where $a$, $b$, $c$ are given integers, and $x$, $y$ are unknown integers.
+onde $a$, $b$, $c$ são inteiros dados, e $x$, $y$ são inteiros desconhecidos.
 
-In this article, we consider several classical problems on these equations:
+Neste artigo, consideramos vários problemas clássicos sobre essas equações:
 
-* finding one solution
-* finding all solutions
-* finding the number of solutions and the solutions themselves in a given interval
-* finding a solution with minimum value of $x + y$
+* encontrar uma solução
+* encontrar todas as soluções
+* encontrar o número de soluções e as próprias soluções em um determinado intervalo
+* encontrar uma solução com valor mínimo de $x + y$
 
-## The degenerate case
+## O caso degenerado
 
-A degenerate case that needs to be taken care of is when $a = b = 0$. It is easy to see that we either have no solutions or infinitely many solutions, depending on whether $c = 0$ or not. In the rest of this article, we will ignore this case.
+Um caso degenerado que precisa ser tratado é quando $a = b = 0$. É fácil ver que ou não temos soluções ou temos infinitas soluções, dependendo se $c = 0$ ou não. No restante deste artigo, iremos ignorar este caso.
 
-## Analytic solution
+## Solução analítica
 
-When $a \neq 0$ and $b \neq 0$, the equation $ax+by=c$ can be equivalently treated as either of the following:
+Quando $a \neq 0$ e $b \neq 0$, a equação $ax+by=c$ pode ser tratada de forma equivalente como qualquer uma das seguintes:
 
 \begin{align}
 ax &\equiv c \pmod b \\
 by &\equiv c \pmod a
 \end{align}
 
-Without loss of generality, assume that $b \neq 0$ and consider the first equation. When $a$ and $b$ are co-prime, the solution to it is given as
+Sem perda de generalidade, suponha que $b \neq 0$ e considere a primeira equação. Quando $a$ e $b$ são coprimos, a solução para ela é dada como
 
 $$x \equiv ca^{-1} \pmod b,$$
 
-where $a^{-1}$ is the [modular inverse](module-inverse.md) of $a$ modulo $b$.
+onde $a^{-1}$ é o [inverso modular](module-inverse.md) de $a$ módulo $b$.
 
-When $a$ and $b$ are not co-prime, values of $ax$ modulo $b$ for all integer $x$ are divisible by $g=\gcd(a, b)$, so the solution only exists when $c$ is divisible by $g$. In this case, one of solutions can be found by reducing the equation by $g$:
+Quando $a$ e $b$ não são coprimos, os valores de $ax$ módulo $b$ para todo inteiro $x$ são divisíveis por $g=\gcd(a, b)$, então a solução só existe quando $c$ é divisível por $g$. Neste caso, uma das soluções pode ser encontrada reduzindo a equação por $g$:
 
 $$(a/g) x \equiv (c/g) \pmod{b/g}.$$
 
-By the definition of $g$, the numbers $a/g$ and $b/g$ are co-prime, so the solution is given explicitly as
+Pela definição de $g$, os números $a/g$ e $b/g$ são coprimos, então a solução é dada explicitamente como
 
 $$\begin{cases}
 x \equiv (c/g)(a/g)^{-1}\pmod{b/g},\\
 y = \frac{c-ax}{b}.
 \end{cases}$$
 
-## Algorithmic solution
+## Solução algorítmica
 
-**Bézout's lemma** (also called Bézout's identity) is a useful result that can be used to understand the following solution. 
+**Lema de Bézout** (também chamado de identidade de Bézout) é um resultado útil que pode ser usado para entender a seguinte solução.
 
-> Let $g = \gcd(a,b)$. Then there exist integers $x,y$ such that $ax + by = g$.
+> Seja $g = \gcd(a,b)$. Então existem inteiros $x,y$ tais que $ax + by = g$.
 > 
-> Moreover, $g$ is the least such positive integer that can be written as $ax + by$; all integers of the form $ax + by$ are multiples of $g$. 
+> Além disso, $g$ é o menor inteiro positivo que pode ser escrito como $ax + by$; todos os inteiros da forma $ax + by$ são múltiplos de $g$.
 
-To find one solution of the Diophantine equation with 2 unknowns, you can use the [Extended Euclidean algorithm](extended-euclid-algorithm.md). First, assume that $a$ and $b$ are non-negative. When we apply Extended Euclidean algorithm for $a$ and $b$, we can find their greatest common divisor $g$ and 2 numbers $x_g$ and $y_g$ such that:
+Para encontrar uma solução da equação Diofantina com 2 incógnitas, você pode usar o [Algoritmo de Euclides Estendido](extended-euclid-algorithm.md). Primeiro, suponha que $a$ e $b$ são não-negativos. Quando aplicamos o algoritmo de Euclides Estendido para $a$ e $b$, podemos encontrar seu máximo divisor comum $g$ e 2 números $x_g$ e $y_g$ tais que:
 
 $$a x_g + b y_g = g$$
 
-If $c$ is divisible by $g = \gcd(a, b)$, then the given Diophantine equation has a solution, otherwise it does not have any solution. The proof is straight-forward: a linear combination of two numbers is divisible by their common divisor.
+Se $c$ é divisível por $g = \gcd(a, b)$, então a equação Diofantina dada tem solução, caso contrário ela não tem nenhuma solução. A prova é direta: uma combinação linear de dois números é divisível por seu divisor comum.
 
-Now suppose that $c$ is divisible by $g$, then we have:
+Agora suponha que $c$ é divisível por $g$, então nós temos:
 
 $$a \cdot x_g \cdot \frac{c}{g} + b \cdot y_g \cdot \frac{c}{g} = c$$
 
-Therefore one of the solutions of the Diophantine equation is:
+Portanto, uma das soluções da equação Diofantina é:
 
 $$x_0 = x_g \cdot \frac{c}{g},$$
 
 $$y_0 = y_g \cdot \frac{c}{g}.$$
 
-The above idea still works when $a$ or $b$ or both of them are negative. We only need to change the sign of $x_0$ and $y_0$ when necessary.
+A ideia acima ainda funciona quando $a$ ou $b$ ou ambos são negativos. Nós só precisamos mudar o sinal de $x_0$ e $y_0$ quando necessário.
 
-Finally, we can implement this idea as follows (note that this code does not consider the case $a = b = 0$):
+Finalmente, podemos implementar essa ideia como a seguir (note que este código não considera o caso $a = b = 0$):
 
 ```{.cpp file=linear_diophantine_any}
 int gcd(int a, int b, int& x, int& y) {
@@ -105,48 +105,48 @@ bool find_any_solution(int a, int b, int c, int &x0, int &y0, int &g) {
 }
 ```
 
-## Getting all solutions
+## Obtendo todas as soluções
 
-From one solution $(x_0, y_0)$, we can obtain all the solutions of the given equation.
+A partir de uma solução $(x_0, y_0)$, podemos obter todas as soluções da equação dada.
 
-Let $g = \gcd(a, b)$ and let $x_0, y_0$ be integers which satisfy the following:
+Seja $g = \gcd(a, b)$ e sejam $x_0, y_0$ inteiros que satisfazem o seguinte:
 
 $$a \cdot x_0 + b \cdot y_0 = c$$
 
-Now, we should see that adding $b / g$ to $x_0$, and, at the same time subtracting $a / g$ from $y_0$ will not break the equality:
+Agora, devemos ver que adicionar $b / g$ a $x_0$, e, ao mesmo tempo subtrair $a / g$ de $y_0$ não irá quebrar a igualdade:
 
 $$a \cdot \left(x_0 + \frac{b}{g}\right) + b \cdot \left(y_0 - \frac{a}{g}\right) = a \cdot x_0 + b \cdot y_0 + a \cdot \frac{b}{g} - b \cdot \frac{a}{g} = c$$
 
-Obviously, this process can be repeated again, so all the numbers of the form:
+Obviamente, este processo pode ser repetido novamente, então todos os números da forma:
 
 $$x = x_0 + k \cdot \frac{b}{g}$$
 
 $$y = y_0 - k \cdot \frac{a}{g}$$
 
-are solutions of the given Diophantine equation.
+são soluções da equação Diofantina dada.
 
-Since the equation is linear, all solutions lie on the same line, and by the definition of $g$ this is the set of all possible solutions of the given Diophantine equation.
+Como a equação é linear, todas as soluções estão na mesma reta, e pela definição de $g$ este é o conjunto de todas as soluções possíveis da equação Diofantina dada.
 
-## Finding the number of solutions and the solutions in a given interval
+## Encontrando o número de soluções e as soluções em um determinado intervalo
 
-From previous section, it should be clear that if we don't impose any restrictions on the solutions, there would be infinite number of them. So in this section, we add some restrictions on the interval of $x$ and $y$, and we will try to count and enumerate all the solutions.
+Da seção anterior, deve estar claro que se não impusermos nenhuma restrição sobre as soluções, haveria um número infinito delas. Então nesta seção, adicionamos algumas restrições sobre o intervalo de $x$ e $y$, e tentaremos contar e enumerar todas as soluções.
 
-Let there be two intervals: $[min_x; max_x]$ and $[min_y; max_y]$ and let's say we only want to find the solutions in these two intervals.
+Sejam dois intervalos: $[min_x; max_x]$ e $[min_y; max_y]$ e digamos que só queremos encontrar as soluções nestes dois intervalos.
 
-Note that if $a$ or $b$ is $0$, then the problem only has one solution. We don't consider this case here.
+Note que se $a$ ou $b$ for $0$, então o problema tem apenas uma solução. Nós não consideramos este caso aqui.
 
-First, we can find a solution which has minimum value of $x$, such that $x \ge min_x$. To do this, we first find any solution of the Diophantine equation. Then, we shift this solution to get $x \ge min_x$ (using what we know about the set of all solutions in previous section). This can be done in $O(1)$.
-Denote this minimum value of $x$ by $l_{x1}$.
+Primeiro, podemos encontrar uma solução que tem valor mínimo de $x$, tal que $x \ge min_x$. Para fazer isso, primeiro encontramos qualquer solução da equação Diofantina. Então, nós deslocamos esta solução para obter $x \ge min_x$ (usando o que sabemos sobre o conjunto de todas as soluções na seção anterior). Isto pode ser feito em $O(1)$.
+Denote este valor mínimo de $x$ por $l_{x1}$.
 
-Similarly, we can find the maximum value of $x$ which satisfies $x \le max_x$. Denote this maximum value of $x$ by $r_{x1}$.
+De forma semelhante, podemos encontrar o valor máximo de $x$ que satisfaz $x \le max_x$. Denote este valor máximo de $x$ por $r_{x1}$.
 
-Similarly, we can find the minimum value of $y$ $(y \ge min_y)$ and maximum value of $y$ $(y \le max_y)$. Denote the corresponding values of $x$ by $l_{x2}$ and $r_{x2}$.
+De forma semelhante, podemos encontrar o valor mínimo de $y$ $(y \ge min_y)$ e valor máximo de $y$ $(y \le max_y)$. Denote os valores correspondentes de $x$ por $l_{x2}$ e $r_{x2}$.
 
-The final solution is all solutions with x in intersection of $[l_{x1}, r_{x1}]$ and $[l_{x2}, r_{x2}]$. Let denote this intersection by $[l_x, r_x]$.
+A solução final é todas as soluções com x na intersecção de $[l_{x1}, r_{x1}]$ e $[l_{x2}, r_{x2}]$. Vamos denotar esta intersecção por $[l_x, r_x]$.
 
-Following is the code implementing this idea.
-Notice that we divide $a$ and $b$ at the beginning by $g$.
-Since the equation $a x + b y = c$ is equivalent to the equation $\frac{a}{g} x + \frac{b}{g} y = \frac{c}{g}$, we can use this one instead and have $\gcd(\frac{a}{g}, \frac{b}{g}) = 1$, which simplifies the formulas.
+Abaixo está o código implementando esta ideia.
+Note que nós dividimos $a$ e $b$ no início por $g$.
+Como a equação $a x + b y = c$ é equivalente a equação $\frac{a}{g} x + \frac{b}{g} y = \frac{c}{g}$, podemos usar esta aqui e ter $\gcd(\frac{a}{g}, \frac{b}{g}) = 1$, o que simplifica as fórmulas.
 
 ```{.cpp file=linear_diophantine_all}
 void shift_solution(int & x, int & y, int a, int b, int cnt) {
@@ -199,27 +199,27 @@ int find_all_solutions(int a, int b, int c, int minx, int maxx, int miny, int ma
 }
 ```
 
-Once we have $l_x$ and $r_x$, it is also simple to enumerate through all the solutions. Just need to iterate through $x = l_x + k \cdot \frac{b}{g}$ for all $k \ge 0$ until $x = r_x$, and find the corresponding $y$ values using the equation $a x + b y = c$.
+Uma vez que temos $l_x$ e $r_x$, é também simples enumerar através de todas as soluções. Apenas precisamos iterar através de $x = l_x + k \cdot \frac{b}{g}$ para todo $k \ge 0$ até que $x = r_x$, e encontrar os valores $y$ correspondentes usando a equação $a x + b y = c$.
 
-## Find the solution with minimum value of $x + y$ { data-toc-label='Find the solution with minimum value of <script type="math/tex">x + y</script>' }
+## Encontrar a solução com valor mínimo de $x + y$ { data-toc-label='Encontrar a solução com valor mínimo de <script type="math/tex">x + y</script>' }
 
-Here, $x$ and $y$ also need to be given some restriction, otherwise, the answer may become negative infinity.
+Aqui, $x$ e $y$ também precisam receber alguma restrição, caso contrário, a resposta pode se tornar infinito negativo.
 
-The idea is similar to previous section: We find any solution of the Diophantine equation, and then shift the solution to satisfy some conditions.
+A ideia é semelhante a seção anterior: Encontramos qualquer solução da equação Diofantina, e então deslocamos a solução para satisfazer algumas condições.
 
-Finally, use the knowledge of the set of all solutions to find the minimum:
+Finalmente, usamos o conhecimento do conjunto de todas as soluções para encontrar o mínimo:
 
 $$x' = x + k \cdot \frac{b}{g},$$
 
 $$y' = y - k \cdot \frac{a}{g}.$$
 
-Note that $x + y$ change as follows:
+Note que $x + y$ muda da seguinte forma:
 
 $$x' + y' = x + y + k \cdot \left(\frac{b}{g} - \frac{a}{g}\right) = x + y + k \cdot \frac{b-a}{g}$$
 
-If $a < b$, we need to select smallest possible value of $k$. If $a > b$, we need to select the largest possible value of $k$. If $a = b$, all solution will have the same sum $x + y$.
+Se $a < b$, nós precisamos selecionar o menor valor possível de $k$. Se $a > b$, nós precisamos selecionar o maior valor possível de $k$. Se $a = b$, todas as soluções terão a mesma soma $x + y$.
 
-## Practice Problems
+## Problemas de Prática
 
 * [Spoj - Crucial Equation](http://www.spoj.com/problems/CEQU/)
 * [SGU 106](http://codeforces.com/problemsets/acmsguru/problem/99999/106)
