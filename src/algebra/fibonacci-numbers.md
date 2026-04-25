@@ -4,56 +4,56 @@ tags:
 e_maxx_link: fibonacci_numbers
 ---
 
-# Fibonacci Numbers
+# Números de Fibonacci
 
-The Fibonacci sequence is defined as follows:
+A sequência de Fibonacci é definida da seguinte forma:
 
 $$F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2}$$
 
-The first elements of the sequence ([OEIS A000045](http://oeis.org/A000045)) are:
+Os primeiros elementos da sequência ([OEIS A000045](http://oeis.org/A000045)) são:
 
 $$0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...$$
 
-## Properties
+## Propriedades
 
-Fibonacci numbers possess a lot of interesting properties. Here are a few of them:
+Os números de Fibonacci possuem muitas propriedades interessantes. Aqui estão algumas delas:
 
-* Cassini's identity:
+* Identidade de Cassini:
   
 $$F_{n-1} F_{n+1} - F_n^2 = (-1)^n$$
 
->This can be proved by induction. A one-line proof by Knuth comes from taking the determinant of the 2x2 matrix form below.
+>Isso pode ser provado por indução. Uma prova de uma linha de Knuth vem de tomar o determinante da forma de matriz 2x2 abaixo.
 
-* The "addition" rule:
+* A regra da "adição":
   
 $$F_{n+k} = F_k F_{n+1} + F_{k-1} F_n$$
 
-* Applying the previous identity to the case $k = n$, we get:
+* Aplicando a identidade anterior para o caso $k = n$, obtemos:
   
 $$F_{2n} = F_n (F_{n+1} + F_{n-1})$$
 
-* From this we can prove by induction that for any positive integer $k$,  $F_{nk}$ is multiple of $F_n$.
+* A partir disso, podemos provar por indução que para qualquer inteiro positivo $k$, $F_{nk}$ é múltiplo de $F_n$.
 
-* The inverse is also true: if $F_m$ is multiple of $F_n$, then $m$ is multiple of $n$.
+* O inverso também é verdadeiro: se $F_m$ é múltiplo de $F_n$, então $m$ é múltiplo de $n$.
 
-* GCD identity:
+* Identidade do MDC (GCD, ou em português, MDC):
   
 $$GCD(F_m, F_n) = F_{GCD(m, n)}$$
 
-* Fibonacci numbers are the worst possible inputs for Euclidean algorithm (see Lame's theorem in [Euclidean algorithm](euclid-algorithm.md))
+* Os números de Fibonacci são os piores casos de entrada possíveis para o Algoritmo de Euclides (veja o Teorema de Lamé no [Algoritmo de Euclides](euclid-algorithm.md))
 
-## Fibonacci Coding
+## Codificação de Fibonacci
 
-We can use the sequence to encode positive integers into binary code words. According to Zeckendorf's theorem, any natural number $n$ can be uniquely represented as a sum of Fibonacci numbers:
+Podemos usar a sequência para codificar números inteiros positivos em palavras de código binário. De acordo com o teorema de Zeckendorf, qualquer número natural $n$ pode ser representado de forma única como uma soma de números de Fibonacci:
 
 $$N = F_{k_1} + F_{k_2} + \ldots + F_{k_r}$$
 
-such that $k_1 \ge k_2 + 2,\ k_2 \ge k_3 + 2,\  \ldots,\  k_r \ge 2$ (i.e.: the representation cannot use two consecutive Fibonacci numbers).
+tal que $k_1 \ge k_2 + 2,\ k_2 \ge k_3 + 2,\  \ldots,\  k_r \ge 2$ (ou seja: a representação não pode usar dois números de Fibonacci consecutivos).
 
-It follows that any number can be uniquely encoded in the Fibonacci coding.
-And we can describe this representation with binary codes $d_0 d_1 d_2 \dots d_s 1$, where $d_i$ is $1$ if $F_{i+2}$ is used in the representation.
-The code will be appended by a $1$ to indicate the end of the code word.
-Notice that this is the only occurrence where two consecutive 1-bits appear.
+Segue-se que qualquer número pode ser codificado de forma única na codificação de Fibonacci.
+E podemos descrever essa representação com códigos binários $d_0 d_1 d_2 \dots d_s 1$, onde $d_i$ é $1$ se $F_{i+2}$ é usado na representação.
+O código será acrescentado de um $1$ para indicar o fim da palavra de código.
+Note que esta é a única ocorrência em que dois bits 1 consecutivos aparecem.
 
 $$\begin{eqnarray}
 1 &=& 1 &=& F_2 &=& (11)_F \\
@@ -64,42 +64,42 @@ $$\begin{eqnarray}
 19 &=& 13 + 5 + 1 &=& F_7 + F_5 + F_2 &=& (1001011)_F
 \end{eqnarray}$$
 
-The encoding of an integer $n$ can be done with a simple greedy algorithm:
+A codificação de um inteiro $n$ pode ser feita com um simples algoritmo guloso (greedy algorithm):
 
-1. Iterate through the Fibonacci numbers from the largest to the smallest until you find one less than or equal to $n$.
+1. Itere pelos números de Fibonacci do maior para o menor até encontrar um que seja menor ou igual a $n$.
 
-2. Suppose this number was $F_i$. Subtract $F_i$ from $n$ and put a $1$ in the $i-2$ position of the code word (indexing from 0 from the leftmost to the rightmost bit).
+2. Suponha que esse número seja $F_i$. Subtraia $F_i$ de $n$ e coloque um $1$ na posição $i-2$ da palavra de código (indexando a partir do 0 do bit mais à esquerda para o mais à direita).
 
-3. Repeat until there is no remainder.
+3. Repita até que não haja mais resto.
 
-4. Add a final $1$ to the codeword to indicate its end.
+4. Adicione um $1$ final à palavra de código para indicar o seu fim.
 
-To decode a code word, first remove the final $1$. Then, if the $i$-th bit is set (indexing from 0 from the leftmost to the rightmost bit), sum $F_{i+2}$ to the number.
+Para decodificar uma palavra de código, primeiro remova o $1$ final. Então, se o $i$-ésimo bit estiver definido (indexando a partir de 0 do bit mais à esquerda para o mais à direita), some $F_{i+2}$ ao número.
 
 
-## Formulas for the $n^{\text{th}}$ Fibonacci number { data-toc-label="Formulas for the <script type='math/tex'>n</script>-th Fibonacci number" }
+## Fórmulas para o $n^{\text{ésimo}}$ número de Fibonacci { data-toc-label="Fórmulas para o <script type='math/tex'>n</script>-ésimo número de Fibonacci" }
 
-### Closed-form expression
+### Expressão de forma fechada
 
-There is a formula known as "Binet's formula", even though it was already known by Moivre:
+Existe uma fórmula conhecida como "Fórmula de Binet", embora já fosse conhecida por Moivre:
 
 $$F_n = \frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{2}\right)^n}{\sqrt{5}}$$
 
-This formula is easy to prove by induction, but it can be deduced with the help of the concept of generating functions or by solving a functional equation.
+Essa fórmula é fácil de provar por indução, mas pode ser deduzida com a ajuda do conceito de funções geradoras ou resolvendo uma equação funcional.
 
-You can immediately notice that the second term's absolute value is always less than $1$, and it also decreases very rapidly (exponentially). Hence the value of the first term alone is "almost" $F_n$. This can be written strictly as: 
+Você pode notar imediatamente que o valor absoluto do segundo termo é sempre menor que $1$, e também decresce muito rapidamente (exponencialmente). Portanto, o valor do primeiro termo sozinho é "quase" $F_n$. Isso pode ser escrito estritamente como:
 
 $$F_n = \left[\frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n}{\sqrt{5}}\right]$$
 
-where the square brackets denote rounding to the nearest integer.
+onde os colchetes denotam o arredondamento para o inteiro mais próximo.
 
-As these two formulas would require very high accuracy when working with fractional numbers, they are of little use in practical calculations.
+Como essas duas fórmulas exigiriam uma precisão muito alta ao trabalhar com números fracionários, elas são de pouco uso em cálculos práticos.
 
-### Fibonacci in linear time
+### Fibonacci em tempo linear
 
-The $n$-th Fibonacci number can be easily found in $O(n)$ by computing the numbers one by one up to $n$. However, there are also faster ways, as we will see.
+O $n$-ésimo número de Fibonacci pode ser facilmente encontrado em $O(n)$ computando os números um por um até $n$. No entanto, existem formas mais rápidas, como veremos.
 
-We can start from an iterative approach, to take advantage of the use of the formula $F_n = F_{n-1} + F_{n-2}$, therefore, we will simply precalculate those values in an array. Taking into account the base cases for $F_0$ and $F_1$.
+Podemos começar a partir de uma abordagem iterativa, para aproveitar o uso da fórmula $F_n = F_{n-1} + F_{n-2}$, assim, simplesmente precalcularemos esses valores em um array. Levando em conta os casos base para $F_0$ e $F_1$.
 
 ```{.cpp file=fibonacci_linear}
 int fib(int n) {
@@ -114,11 +114,11 @@ int fib(int n) {
 }
 ```
 
-In this way, we obtain a linear solution, $O(n)$ time, saving all the values prior to $n$ in the sequence.
+Dessa forma, obtemos uma solução linear, em tempo $O(n)$, salvando todos os valores anteriores a $n$ na sequência.
 
-### Matrix form
+### Forma de Matriz
 
-To go from $(F_n, F_{n-1})$ to $(F_{n+1}, F_n)$, we can express the linear recurrence as a 2x2 matrix multiplication:
+Para ir de $(F_n, F_{n-1})$ para $(F_{n+1}, F_n)$, podemos expressar a recorrência linear como uma multiplicação de matriz 2x2:
 
 $$
 \begin{pmatrix}
@@ -141,7 +141,7 @@ F_{n}
 \end{pmatrix}
 $$
 
-This lets us treat iterating the recurrence as repeated matrix multiplication, which has nice properties. In particular,
+Isso nos permite tratar a iteração da recorrência como uma multiplicação repetida de matrizes, o que possui propriedades interessantes. Em particular,
 
 $$
 \begin{pmatrix}
@@ -159,22 +159,22 @@ F_{n}
 \end{pmatrix}
 $$
 
-where $F_1 = 1, F_0 = 0$. 
-In fact, since 
+onde $F_1 = 1, F_0 = 0$.
+Na verdade, uma vez que
 
 $$
 \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}
 = \begin{pmatrix} F_2 & F_1 \\ F_1 & F_0 \end{pmatrix}
 $$
 
-we can use the matrix directly:
+podemos usar a matriz diretamente:
 
 $$
 \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}^n
 = \begin{pmatrix} F_{n+1} & F_n \\ F_n & F_{n-1} \end{pmatrix}
 $$
 
-Thus, in order to find $F_n$ in $O(\log  n)$ time, we must raise the matrix to n. (See [Binary exponentiation](binary-exp.md))
+Portanto, para encontrar $F_n$ em tempo $O(\log n)$, precisamos elevar a matriz a $n$. (Veja [Exponenciação Binária](binary-exp.md))
 
 ```{.cpp file=fibonacci_matrix}
 struct matrix {
@@ -216,9 +216,9 @@ long long fib(int n) {
 }
 ```
 
-### Fast Doubling Method
+### Método de Duplicação Rápida (Fast Doubling)
 
-By expanding the above matrix expression for $n = 2\cdot k$
+Expandindo a expressão de matriz acima para $n = 2\cdot k$
 
 $$
 \begin{pmatrix}
@@ -238,14 +238,14 @@ F_{k} & F_{k-1}
 ^2
 $$
 
-we can find these simpler equations:
+podemos encontrar estas equações mais simples:
 
 $$ \begin{align}
 F_{2k+1} &= F_{k+1}^2 + F_{k}^2 \\
 F_{2k} &= F_k(F_{k+1}+F_{k-1}) = F_k (2F_{k+1} - F_{k})\\
 \end{align}.$$
 
-Thus using above two equations Fibonacci numbers can be calculated easily by the following code:
+Assim, usando as duas equações acima, os números de Fibonacci podem ser calculados facilmente pelo seguinte código:
 
 ```{.cpp file=fibonacci_doubling}
 pair<int, int> fib (int n) {
@@ -261,21 +261,21 @@ pair<int, int> fib (int n) {
         return {c, d};
 }
 ```
-The above code returns $F_n$ and $F_{n+1}$ as a pair.
+O código acima retorna $F_n$ e $F_{n+1}$ como um pair.
 
-## Periodicity modulo p
+## Periodicidade módulo p
 
-Consider the Fibonacci sequence modulo $p$. We will prove the sequence is periodic.
+Considere a sequência de Fibonacci módulo $p$. Vamos provar que a sequência é periódica.
 
-Let us prove this by contradiction. Consider the first $p^2 + 1$ pairs of Fibonacci numbers taken modulo $p$:
+Provaremos isso por contradição. Considere os primeiros $p^2 + 1$ pares de números de Fibonacci tomados módulo $p$:
 
 $$(F_0,\ F_1),\ (F_1,\ F_2),\ \ldots,\ (F_{p^2},\ F_{p^2 + 1})$$
 
-There can only be $p$ different remainders modulo $p$, and at most $p^2$ different pairs of remainders, so there are at least two identical pairs among them. This is sufficient to prove the sequence is periodic, as a Fibonacci number is only determined by its two predecessors. Hence if two pairs of consecutive numbers repeat, that would also mean the numbers after the pair will repeat in the same fashion.
+Podem haver apenas $p$ diferentes restos módulo $p$, e no máximo $p^2$ diferentes pares de restos, portanto há pelo menos dois pares idênticos entre eles. Isso é suficiente para provar que a sequência é periódica, já que um número de Fibonacci é determinado unicamente por seus dois predecessores. Por isso, se dois pares de números consecutivos se repetem, isso também significaria que os números depois do par se repetirão da mesma maneira.
 
-We now choose two pairs of identical remainders with the smallest indices in the sequence. Let the pairs be $(F_a,\ F_{a + 1})$ and $(F_b,\ F_{b + 1})$. We will prove that $a = 0$. If this was false, there would be two previous pairs $(F_{a-1},\ F_a)$ and $(F_{b-1},\ F_b)$, which, by the property of Fibonacci numbers, would also be equal. However, this contradicts the fact that we had chosen pairs with the smallest indices, completing our proof that there is no pre-period (i.e the numbers are periodic starting from $F_0$).
+Vamos agora escolher dois pares de restos idênticos com os menores índices na sequência. Sejam os pares $(F_a,\ F_{a + 1})$ e $(F_b,\ F_{b + 1})$. Vamos provar que $a = 0$. Se isso fosse falso, haveria dois pares anteriores $(F_{a-1},\ F_a)$ e $(F_{b-1},\ F_b)$, que, pela propriedade dos números de Fibonacci, também seriam iguais. No entanto, isso contradiz o fato de que havíamos escolhido pares com os menores índices, concluindo a nossa prova de que não há pré-período (ou seja, os números são periódicos a partir de $F_0$).
 
-## Practice Problems
+## Problemas Práticos
 
 * [SPOJ - Euclid Algorithm Revisited](http://www.spoj.com/problems/MAIN74/)
 * [SPOJ - Fibonacci Sum](http://www.spoj.com/problems/FIBOSUM/)
