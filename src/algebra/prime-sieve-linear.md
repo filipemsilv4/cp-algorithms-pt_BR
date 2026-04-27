@@ -4,46 +4,46 @@ tags:
 e_maxx_link: prime_sieve_linear
 ---
 
-# Linear Sieve
+# Crivo Linear
 
-Given a number $n$, find all prime numbers in a segment $[2;n]$.
+Dado um número $n$, encontre todos os números primos em um segmento $[2;n]$.
 
-The standard way of solving a task is to use [the sieve of Eratosthenes](sieve-of-eratosthenes.md). This algorithm is very simple, but it has runtime $O(n \log \log n)$.
+A maneira padrão de resolver este problema é usar [o crivo de Eratóstenes](sieve-of-eratosthenes.md). Este algoritmo é muito simples, mas tem tempo de execução $O(n \log \log n)$.
 
-Although there are a lot of known algorithms with sublinear runtime (i.e. $o(n)$), the algorithm described below is interesting by its simplicity: it isn't any more complex than the classic sieve of Eratosthenes.
+Embora existam muitos algoritmos conhecidos com tempo de execução sublinear (ou seja, $o(n)$), o algoritmo descrito abaixo é interessante pela sua simplicidade: não é mais complexo que o crivo clássico de Eratóstenes.
 
-Besides, the algorithm given here calculates **factorizations of all numbers** in the segment $[2; n]$ as a side effect, and that can be helpful in many practical applications.
+Além disso, o algoritmo fornecido aqui calcula **fatorações de todos os números** no segmento $[2; n]$ como um efeito colateral, e isso pode ser útil em muitas aplicações práticas.
 
-The weakness of the given algorithm is in using more memory than the classic sieve of Eratosthenes': it requires an array of $n$ numbers, while for the classic sieve of Eratosthenes it is enough to have $n$ bits of memory (which is 32 times less).
+A fraqueza do algoritmo fornecido está em usar mais memória do que o crivo clássico de Eratóstenes: ele requer um array de $n$ números, enquanto que para o crivo clássico de Eratóstenes é suficiente ter $n$ bits de memória (o que é 32 vezes menos).
 
-Thus, it makes sense to use the described algorithm only until for numbers of order $10^7$ and not greater.
+Assim, faz sentido usar o algoritmo descrito apenas até para números da ordem de $10^7$ e não maiores.
 
-The algorithm is due to Paul Pritchard. It is a variant of Algorithm 3.3 in (Pritchard, 1987: see references in the end of the article).
+O algoritmo é de autoria de Paul Pritchard. É uma variante do Algoritmo 3.3 em (Pritchard, 1987: veja as referências no final do artigo).
 
-## Algorithm
+## Algoritmo
 
-Our goal is to calculate **minimum prime factor** $lp [i]$ for every number $i$ in the segment $[2; n]$.
+Nosso objetivo é calcular o **menor fator primo** $lp [i]$ para cada número $i$ no segmento $[2; n]$.
 
-Besides, we need to store the list of all the found prime numbers - let's call it $pr []$.
+Além disso, precisamos armazenar a lista de todos os números primos encontrados - vamos chamá-la de $pr []$.
 
-We'll initialize the values $lp [i]$ with zeros, which means that we assume all numbers are prime. During the algorithm execution this array will be filled gradually.
+Inicializaremos os valores de $lp [i]$ com zeros, o que significa que assumimos que todos os números são primos. Durante a execução do algoritmo, este array será preenchido gradualmente.
 
-Now we'll go through the numbers from 2 to $n$. We have two cases for the current number $i$:
+Agora vamos percorrer os números de 2 até $n$. Temos dois casos para o número atual $i$:
 
-- $lp[i] = 0$ - that means that $i$ is prime, i.e. we haven't found any smaller factors for it.  
-  Hence, we assign $lp [i] = i$ and add $i$ to the end of the list $pr[]$.
+- $lp[i] = 0$ - isso significa que $i$ é primo, ou seja, não encontramos fatores menores para ele.
+  Portanto, atribuímos $lp [i] = i$ e adicionamos $i$ ao final da lista $pr[]$.
 
-- $lp[i] \neq 0$ - that means that $i$ is composite, and its minimum prime factor is $lp [i]$.
+- $lp[i] \neq 0$ - isso significa que $i$ é composto, e o seu menor fator primo é $lp [i]$.
 
-In both cases we update values of $lp []$ for the numbers that are divisible by $i$. However, our goal is to learn to do so as to set a value $lp []$ at most once for every number. We can do it as follows:
+Em ambos os casos, atualizamos os valores de $lp []$ para os números que são divisíveis por $i$. No entanto, nosso objetivo é aprender a fazer isso de forma a definir um valor $lp []$ no máximo uma vez para cada número. Podemos fazer isso da seguinte maneira:
 
-Let's consider numbers $x_j = i \cdot p_j$, where $p_j$ are all prime numbers less than or equal to $lp [i]$ (this is why we need to store the list of all prime numbers).
+Vamos considerar os números $x_j = i \cdot p_j$, onde $p_j$ são todos os números primos menores ou iguais a $lp [i]$ (é por isso que precisamos armazenar a lista de todos os números primos).
 
-We'll set a new value $lp [x_j] = p_j$ for all numbers of this form.
+Definiremos um novo valor $lp [x_j] = p_j$ para todos os números dessa forma.
 
-The proof of correctness of this algorithm and its runtime can be found after the implementation.
+A prova de corretude deste algoritmo e o seu tempo de execução podem ser encontrados após a implementação.
 
-## Implementation
+## Implementação
 
 ```cpp
 const int N = 10000000;
@@ -64,35 +64,35 @@ for (int i=2; i <= N; ++i) {
 }
 ```
 
-## Correctness Proof
+## Prova de Corretude
 
-We need to prove that the algorithm sets all values $lp []$ correctly, and that every value will be set exactly once. Hence, the algorithm will have linear runtime, since all the remaining actions of the algorithm, obviously, work for $O (n)$.
+Precisamos provar que o algoritmo define todos os valores de $lp []$ corretamente e que cada valor será definido exatamente uma vez. Portanto, o algoritmo terá tempo de execução linear, já que todas as ações restantes do algoritmo, obviamente, funcionam em $O(n)$.
 
-Notice that every number $i$ has exactly one representation in form:
+Note que cada número $i$ tem exatamente uma representação na forma:
 
 $$i = lp [i] \cdot x,$$
 
-where $lp [i]$ is the minimal prime factor of $i$, and the number $x$ doesn't have any prime factors less than $lp [i]$, i.e.
+onde $lp [i]$ é o menor fator primo de $i$, e o número $x$ não tem fatores primos menores que $lp [i]$, ou seja,
 
 $$lp [i] \le lp [x].$$
 
-Now, let's compare this with the actions of our algorithm: in fact, for every $x$ it goes through all prime numbers it could be multiplied by, i.e. all prime numbers up to $lp [x]$ inclusive, in order to get the numbers in the form given above.
+Agora, vamos comparar isso com as ações de nosso algoritmo: de fato, para cada $x$ ele passa por todos os números primos pelos quais ele poderia ser multiplicado, ou seja, todos os números primos até $lp [x]$ inclusive, a fim de obter os números na forma dada acima.
 
-Hence, the algorithm will go through every composite number exactly once, setting the correct values $lp []$ there. Q.E.D.
+Portanto, o algoritmo passará por cada número composto exatamente uma vez, definindo os valores corretos de $lp []$ ali. C.Q.D.
 
-## Runtime and Memory
+## Tempo de Execução e Memória
 
-Although the running time of $O(n)$ is better than $O(n \log \log n)$ of the classic sieve of Eratosthenes, the difference between them is not so big.
-In practice the linear sieve runs about as fast as a typical implementation of the sieve of Eratosthenes.
+Embora o tempo de execução de $O(n)$ seja melhor que $O(n \log \log n)$ do crivo clássico de Eratóstenes, a diferença entre eles não é tão grande.
+Na prática, o crivo linear roda quase tão rápido quanto uma implementação típica do crivo de Eratóstenes.
 
-In comparison to optimized versions of the sieve of Erathosthenes, e.g. the segmented sieve, it is much slower.
+Em comparação com as versões otimizadas do crivo de Eratóstenes, por exemplo, o crivo segmentado, ele é muito mais lento.
 
-Considering the memory requirements of this algorithm - an array $lp []$ of length $n$, and an array of $pr []$ of length  $\frac n {\ln n}$, this algorithm seems to be worse than the classic sieve in every way.
+Considerando os requisitos de memória deste algoritmo - um array $lp []$ de comprimento $n$, e um array $pr []$ de comprimento $\frac n {\ln n}$, este algoritmo parece ser pior do que o crivo clássico de todas as maneiras.
 
-However, its redeeming quality is that this algorithm calculates an array $lp []$, which allows us to find factorization of any number in the segment $[2; n]$ in the time of the size order of this factorization. Moreover, using just one extra array will allow us to avoid divisions when looking for factorization.
+No entanto, a sua qualidade redentora é que este algoritmo calcula um array $lp []$, o que nos permite encontrar a fatoração de qualquer número no segmento $[2; n]$ no tempo da ordem do tamanho dessa fatoração. Além disso, usar apenas um array extra nos permitirá evitar divisões ao procurar a fatoração.
 
-Knowing the factorizations of all numbers is very useful for some tasks, and this algorithm is one of the few which allow to find them in linear time.
+Conhecer as fatorações de todos os números é muito útil para algumas tarefas, e este algoritmo é um dos poucos que permite encontrá-las em tempo linear.
 
-## References
+## Referências
 
 - Paul Pritchard, **Linear Prime-Number Sieves: a Family Tree**, Science of Computer Programming, vol. 9 (1987), pp.17-35.

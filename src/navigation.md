@@ -21,7 +21,7 @@ Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧�
         - [🇺🇸 Fibonacci Numbers](algebra/fibonacci-numbers.md)
     - Prime numbers
         - [🇺🇸 Sieve of Eratosthenes](algebra/sieve-of-eratosthenes.md)
-        - [🇺🇸 Linear Sieve](algebra/prime-sieve-linear.md)
+        - [🇧🇷 Crivo Linear](algebra/prime-sieve-linear.md)
         - [🇺🇸 Primality tests](algebra/primality_tests.md)
         - [🇺🇸 Integer factorization](algebra/factorization.md)
     - Number-theoretic functions
