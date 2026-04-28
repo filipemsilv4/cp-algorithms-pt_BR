@@ -38,7 +38,7 @@ $$F_{2n} = F_n (F_{n+1} + F_{n-1})$$
 
 * Identidade do MDC:
   
-$$GCD(F_m, F_n) = F_{GCD(m, n)}$$
+$$\\gcd(F_m, F_n) = F_{\\gcd(m, n)}$$
 
 * Os números de Fibonacci são os piores casos de entrada possíveis para o Algoritmo de Euclides (veja o Teorema de Lamé no [Algoritmo de Euclides](euclid-algorithm.md))
 
