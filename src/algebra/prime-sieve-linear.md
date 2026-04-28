@@ -16,7 +16,7 @@ Além disso, o algoritmo fornecido aqui calcula **fatorações de todos os núme
 
 A fraqueza do algoritmo fornecido está em usar mais memória do que o crivo clássico de Eratóstenes: ele requer um array de $n$ números, enquanto que para o crivo clássico de Eratóstenes é suficiente ter $n$ bits de memória (o que é 32 vezes menos).
 
-Assim, faz sentido usar o algoritmo descrito apenas até para números da ordem de $10^7$ e não maiores.
+Assim, faz sentido usar o algoritmo descrito apenas para números da ordem de $10^7$ e não maiores.
 
 O algoritmo é de autoria de Paul Pritchard. É uma variante do Algoritmo 3.3 em (Pritchard, 1987: veja as referências no final do artigo).
 
