@@ -271,7 +271,7 @@ Provaremos isso por contradição. Considere os primeiros $p^2 + 1$ pares de nú
 
 $$(F_0,\ F_1),\ (F_1,\ F_2),\ \ldots,\ (F_{p^2},\ F_{p^2 + 1})$$
 
-Podem haver apenas $p$ diferentes restos módulo $p$, e no máximo $p^2$ diferentes pares de restos, portanto há pelo menos dois pares idênticos entre eles. Isso é suficiente para provar que a sequência é periódica, já que um número de Fibonacci é determinado unicamente por seus dois predecessores. Por isso, se dois pares de números consecutivos se repetem, isso também significaria que os números depois do par se repetirão da mesma maneira.
+Pode haver apenas $p$ diferentes restos módulo $p$, e no máximo $p^2$ diferentes pares de restos, portanto há pelo menos dois pares idênticos entre eles. Isso é suficiente para provar que a sequência é periódica, já que um número de Fibonacci é determinado unicamente por seus dois predecessores. Por isso, se dois pares de números consecutivos se repetem, isso também significaria que os números depois do par se repetiriam da mesma maneira.
 
 Vamos agora escolher dois pares de restos idênticos com os menores índices na sequência. Sejam os pares $(F_a,\ F_{a + 1})$ e $(F_b,\ F_{b + 1})$. Vamos provar que $a = 0$. Se isso fosse falso, haveria dois pares anteriores $(F_{a-1},\ F_a)$ e $(F_{b-1},\ F_b)$, que, pela propriedade dos números de Fibonacci, também seriam iguais. No entanto, isso contradiz o fato de que havíamos escolhido pares com os menores índices, concluindo a nossa prova de que não há pré-período (ou seja, os números são periódicos a partir de $F_0$).
 
