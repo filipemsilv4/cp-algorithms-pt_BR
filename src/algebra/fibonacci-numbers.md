@@ -38,7 +38,7 @@ $$F_{2n} = F_n (F_{n+1} + F_{n-1})$$
 
 * Identidade do MDC:
   
-$$\\gcd(F_m, F_n) = F_{\\gcd(m, n)}$$
+$$\gcd(F_m, F_n) = F_{\gcd(m, n)}$$
 
 * Os números de Fibonacci são os piores casos de entrada possíveis para o Algoritmo de Euclides (veja o Teorema de Lamé no [Algoritmo de Euclides](euclid-algorithm.md))
 
@@ -68,7 +68,7 @@ A codificação de um inteiro $n$ pode ser feita com um simples algoritmo guloso
 
 1. Itere pelos números de Fibonacci do maior para o menor até encontrar um que seja menor ou igual a $n$.
 
-2. Suponha que esse número seja $F_i$. Subtraia $F_i$ de $n$ e coloque um $1$ na posição $i-2$ da palavra de código (indexando a partir do 0 do bit mais à esquerda para o mais à direita).
+2. Suponha que esse número seja $F_i$. Subtraia $F_i$ de $n$ e coloque um $1$ na posição $i-2$ da palavra de código (indexando a partir de 0 do bit mais à esquerda para o mais à direita).
 
 3. Repita até que não haja mais resto.
 
@@ -99,7 +99,7 @@ Como essas duas fórmulas exigiriam uma precisão muito alta ao trabalhar com n�
 
 O $n$-ésimo número de Fibonacci pode ser facilmente encontrado em $O(n)$ computando os números um por um até $n$. No entanto, existem formas mais rápidas, como veremos.
 
-Podemos começar a partir de uma abordagem iterativa, para aproveitar o uso da fórmula $F_n = F_{n-1} + F_{n-2}$, assim, simplesmente precalcularemos esses valores em um array. Levando em conta os casos base para $F_0$ e $F_1$.
+Podemos começar a partir de uma abordagem iterativa, para aproveitar o uso da fórmula $F_n = F_{n-1} + F_{n-2}$, assim, simplesmente pré-calcularemos esses valores em um array. Levando em conta os casos base para $F_0$ e $F_1$.
 
 ```{.cpp file=fibonacci_linear}
 int fib(int n) {
