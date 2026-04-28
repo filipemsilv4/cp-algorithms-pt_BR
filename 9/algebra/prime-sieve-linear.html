@@ -8055,7 +8055,7 @@ Describe the issue of this article in detail.
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
 
   Last update:
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 28, 2026 02:07:01 UTC">April 28, 2026</span>&emsp;
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 28, 2026 02:17:39 UTC">April 28, 2026</span>&emsp;
 
 <!-- Tags -->
 
@@ -8082,15 +8082,15 @@ Describe the issue of this article in detail.
 
 
 <h1 id="crivo-linear">Crivo Linear<a class="headerlink" href="#crivo-linear" title="Permanent link">&para;</a></h1>
-<p>Dado um número <span class="arithmatex">$n$</span>, encontre todos os números primos em um segmento <span class="arithmatex">$[2;n]$</span>.</p>
+<p>Dado um número <span class="arithmatex">$n$</span>, encontre todos os números primos em um intervalo <span class="arithmatex">$[2;n]$</span>.</p>
 <p>A maneira padrão de resolver este problema é usar <a href="sieve-of-eratosthenes.html">o crivo de Eratóstenes</a>. Este algoritmo é muito simples, mas tem tempo de execução <span class="arithmatex">$O(n \log \log n)$</span>.</p>
 <p>Embora existam muitos algoritmos conhecidos com tempo de execução sublinear (ou seja, <span class="arithmatex">$o(n)$</span>), o algoritmo descrito abaixo é interessante pela sua simplicidade: não é mais complexo que o crivo clássico de Eratóstenes.</p>
-<p>Além disso, o algoritmo fornecido aqui calcula <strong>fatorações de todos os números</strong> no segmento <span class="arithmatex">$[2; n]$</span> como um efeito colateral, e isso pode ser útil em muitas aplicações práticas.</p>
+<p>Além disso, o algoritmo fornecido aqui calcula <strong>fatorações de todos os números</strong> no intervalo <span class="arithmatex">$[2; n]$</span> como um efeito colateral, e isso pode ser útil em muitas aplicações práticas.</p>
 <p>A fraqueza do algoritmo fornecido está em usar mais memória do que o crivo clássico de Eratóstenes: ele requer um array de <span class="arithmatex">$n$</span> números, enquanto que para o crivo clássico de Eratóstenes é suficiente ter <span class="arithmatex">$n$</span> bits de memória (o que é 32 vezes menos).</p>
 <p>Assim, faz sentido usar o algoritmo descrito apenas para números da ordem de <span class="arithmatex">$10^7$</span> e não maiores.</p>
 <p>O algoritmo é de autoria de Paul Pritchard. É uma variante do Algoritmo 3.3 em (Pritchard, 1987: veja as referências no final do artigo).</p>
 <h2 id="algoritmo">Algoritmo<a class="headerlink" href="#algoritmo" title="Permanent link">&para;</a></h2>
-<p>Nosso objetivo é calcular o <strong>menor fator primo</strong> <span class="arithmatex">$lp [i]$</span> para cada número <span class="arithmatex">$i$</span> no segmento <span class="arithmatex">$[2; n]$</span>.</p>
+<p>Nosso objetivo é calcular o <strong>menor fator primo</strong> <span class="arithmatex">$lp [i]$</span> para cada número <span class="arithmatex">$i$</span> no intervalo <span class="arithmatex">$[2; n]$</span>.</p>
 <p>Além disso, precisamos armazenar a lista de todos os números primos encontrados - vamos chamá-la de <span class="arithmatex">$pr []$</span>.</p>
 <p>Inicializaremos os valores de <span class="arithmatex">$lp [i]$</span> com zeros, o que significa que assumimos que todos os números são primos. Durante a execução do algoritmo, este array será preenchido gradualmente.</p>
 <p>Agora vamos percorrer os números de 2 até <span class="arithmatex">$n$</span>. Temos dois casos para o número atual <span class="arithmatex">$i$</span>:</p>
@@ -8138,7 +8138,7 @@ Describe the issue of this article in detail.
 Na prática, o crivo linear roda quase tão rápido quanto uma implementação típica do crivo de Eratóstenes.</p>
 <p>Em comparação com as versões otimizadas do crivo de Eratóstenes, por exemplo, o crivo segmentado, ele é muito mais lento.</p>
 <p>Considerando os requisitos de memória deste algoritmo - um array <span class="arithmatex">$lp []$</span> de comprimento <span class="arithmatex">$n$</span>, e um array <span class="arithmatex">$pr []$</span> de comprimento <span class="arithmatex">$\frac n {\ln n}$</span>, este algoritmo parece ser pior do que o crivo clássico de todas as maneiras.</p>
-<p>No entanto, a sua qualidade redentora é que este algoritmo calcula um array <span class="arithmatex">$lp []$</span>, o que nos permite encontrar a fatoração de qualquer número no segmento <span class="arithmatex">$[2; n]$</span> no tempo da ordem do tamanho dessa fatoração. Além disso, usar apenas um array extra nos permitirá evitar divisões ao procurar a fatoração.</p>
+<p>No entanto, a sua grande vantagem é que este algoritmo calcula um array <span class="arithmatex">$lp []$</span>, o que nos permite encontrar a fatoração de qualquer número no intervalo <span class="arithmatex">$[2; n]$</span> em tempo proporcional ao tamanho dessa fatoração. Além disso, usar apenas um array extra nos permitirá evitar divisões ao procurar a fatoração.</p>
 <p>Conhecer as fatorações de todos os números é muito útil para algumas tarefas, e este algoritmo é um dos poucos que permite encontrá-las em tempo linear.</p>
 <h2 id="referencias">Referências<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
@@ -8147,7 +8147,7 @@ Na prática, o crivo linear roda quase tão rápido quanto uma implementação t
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/ellen-interpret" title="ellen-interpret" data-bi-name="contributorprofile" target="_blank">ellen-interpret</a> (45.92%)</li><li><a href="https://github.com/google-labs-jules%5Bbot%5D" title="google-labs-jules[bot]" data-bi-name="contributorprofile" target="_blank">google-labs-jules[bot]</a> (34.69%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (10.2%)</li><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (5.1%)</li><li><a href="https://github.com/tcNickolas" title="tcNickolas" data-bi-name="contributorprofile" target="_blank">tcNickolas</a> (2.04%)</li><li><a href="https://github.com/filipemsilv4" title="filipemsilv4" data-bi-name="contributorprofile" target="_blank">filipemsilv4</a> (1.02%)</li><li><a href="https://github.com/paulpritchard" title="paulpritchard" data-bi-name="contributorprofile" target="_blank">paulpritchard</a> (1.02%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/ellen-interpret" title="ellen-interpret" data-bi-name="contributorprofile" target="_blank">ellen-interpret</a> (45.92%)</li><li><a href="https://github.com/google-labs-jules%5Bbot%5D" title="google-labs-jules[bot]" data-bi-name="contributorprofile" target="_blank">google-labs-jules[bot]</a> (30.61%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (10.2%)</li><li><a href="https://github.com/filipemsilv4" title="filipemsilv4" data-bi-name="contributorprofile" target="_blank">filipemsilv4</a> (5.1%)</li><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (5.1%)</li><li><a href="https://github.com/tcNickolas" title="tcNickolas" data-bi-name="contributorprofile" target="_blank">tcNickolas</a> (2.04%)</li><li><a href="https://github.com/paulpritchard" title="paulpritchard" data-bi-name="contributorprofile" target="_blank">paulpritchard</a> (1.02%)</li></ul>
 </ul>
                 
               </article>
