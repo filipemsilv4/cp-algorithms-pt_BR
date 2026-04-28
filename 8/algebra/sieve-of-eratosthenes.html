@@ -8207,6 +8207,10 @@ Describe the issue of this article in detail.
   
   
 
+  
+  
+  
+
 
 
 
@@ -8214,7 +8218,7 @@ Describe the issue of this article in detail.
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
 
   Last update:
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 26, 2026 06:33:24 UTC">April 26, 2026</span>&emsp;
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 28, 2026 02:03:29 UTC">April 28, 2026</span>&emsp;
 
 <!-- Tags -->
 
@@ -8258,7 +8262,7 @@ E continuamos esse procedimento até processarmos todos os números na linha.</p
 <p>A ideia por trás disso é:
 Um número é primo se nenhum dos números primos menores o divide.
 Como iteramos sobre os números primos em ordem, já marcamos todos os números que são divisíveis por pelo menos um dos números primos como divisíveis.
-Portanto, se alcançarmos uma célula e ela não estiver marcada, então ela não é divisível por nenhum número primo menor e, portanto, deve ser primo.</p>
+Portanto, se alcançarmos uma célula e ela não estiver marcada, então o número correspondente não é divisível por nenhum número primo menor e, portanto, deve ser primo.</p>
 <h2 id="implementacao">Implementação<a class="headerlink" href="#implementacao" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 <span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">is_prime</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
@@ -8324,7 +8328,7 @@ E por causa disso, a constante que está oculta em <span class="arithmatex">$O(n
 <code>vector&lt;bool&gt;</code> não é um contêiner regular que armazena uma série de <code>bool</code> (como na maioria das arquiteturas de computadores, um <code>bool</code> ocupa um byte de memória).
 É uma especialização de otimização de memória do <code>vector&lt;T&gt;</code>, que consome apenas <span class="arithmatex">$\frac{N}{8}$</span> bytes de memória.</p>
 <p>As arquiteturas de processadores modernos funcionam de forma muito mais eficiente com bytes do que com bits, pois geralmente não podem acessar os bits diretamente.
-Portanto, por baixo, o <code>vector&lt;bool&gt;</code> armazena os bits em uma memória contínua grande, acessa a memória em blocos de alguns bytes e extrai/define os bits com operações de bits, como mascaramento e deslocamento de bits (bit masking e bit shifting).</p>
+Portanto, por baixo, o <code>vector&lt;bool&gt;</code> armazena os bits em uma memória contínua grande, acessa a memória em blocos de alguns bytes e extrai/define os bits com operações bit a bit, como mascaramento e deslocamento de bits (bit masking e bit shifting).</p>
 <p>Por causa disso, há uma certa sobrecarga quando você lê ou escreve bits com um <code>vector&lt;bool&gt;</code>, e com bastante frequência, usar um <code>vector&lt;char&gt;</code> (que usa 1 byte para cada entrada, portanto, 8x a quantidade de memória) é mais rápido.</p>
 <p>No entanto, para as implementações simples do Crivo de Eratóstenes, usar um <code>vector&lt;bool&gt;</code> é mais rápido.
 Você é limitado pela velocidade com que pode carregar os dados no cache e, portanto, usar menos memória oferece uma grande vantagem.
@@ -8338,11 +8342,11 @@ Outra desvantagem do <code>bitset</code> é que você precisa saber o tamanho no
 Para o peneiramento, basta manter os números primos até a raiz de <span class="arithmatex">$n$</span>, ou seja, <code>prime[1... sqrt(n)]</code>, dividir o intervalo completo em blocos e peneirar cada bloco separadamente.</p>
 <p>Seja <span class="arithmatex">$s$</span> uma constante que determina o tamanho do bloco, então temos <span class="arithmatex">$\lceil {\frac n s} \rceil$</span> blocos no total, e o bloco <span class="arithmatex">$k$</span> (<span class="arithmatex">$k = 0 ... \lfloor {\frac n s} \rfloor$</span>) contém os números em um segmento <span class="arithmatex">$[ks; ks + s - 1]$</span>.
 Podemos trabalhar nos blocos por vez, ou seja, para cada bloco <span class="arithmatex">$k$</span> vamos passar por todos os números primos (de <span class="arithmatex">$1$</span> a <span class="arithmatex">$\sqrt n$</span>) e realizar o peneiramento usando-os.
-Vale ressaltar que temos que modificar um pouco a estratégia ao lidar com os primeiros números: primeiro, todos os números primos de <span class="arithmatex">$[1; \sqrt n]$</span> não devem se remover; e segundo, os números <span class="arithmatex">$0$</span> e <span class="arithmatex">$1$</span> devem ser marcados como números não primos.
+Vale ressaltar que temos que modificar um pouco a estratégia ao lidar com os primeiros números: primeiro, todos os números primos de <span class="arithmatex">$[1; \sqrt n]$</span> não devem remover a si mesmos; e segundo, os números <span class="arithmatex">$0$</span> e <span class="arithmatex">$1$</span> devem ser marcados como números não primos.
 Enquanto trabalhamos no último bloco, não se deve esquecer que o último número necessário <span class="arithmatex">$n$</span> não está necessariamente localizado no final do bloco.</p>
-<p>Como discutido anteriormente, a implementação típica do Crivo de Eratóstenes é limitada pela velocidade de quão rápido você pode carregar dados nos caches da CPU.
+<p>Como discutido anteriormente, a implementação típica do Crivo de Eratóstenes é limitada pela rapidez com que você pode carregar dados nos caches da CPU.
 Ao dividir o intervalo de números primos potenciais <span class="arithmatex">$[1; n]$</span> em blocos menores, nunca precisamos manter vários blocos na memória ao mesmo tempo, e todas as operações são muito mais amigáveis ao cache.
-Como agora não estamos mais limitados pelas velocidades do cache, podemos substituir o <code>vector&lt;bool&gt;</code> por um <code>vector&lt;char&gt;</code> e ganhar algum desempenho adicional, pois os processadores podem lidar com leitura e escrita com bytes diretamente e não precisam depender de operações de bits para extrair bits individuais.
+Como agora não estamos mais limitados pelas velocidades do cache, podemos substituir o <code>vector&lt;bool&gt;</code> por um <code>vector&lt;char&gt;</code> e ganhar algum desempenho adicional, pois os processadores podem lidar com leitura e escrita com bytes diretamente e não precisam depender de operações bit a bit para extrair bits individuais.
 O benchmark (<a href="https://gist.github.com/jakobkogler/e6359ea9ced24fe304f1a8af3c9bee0e">link</a>) mostra que usar um <code>vector&lt;char&gt;</code> é cerca de 3x mais rápido nesta situação do que usar um <code>vector&lt;bool&gt;</code>.
 Um aviso: esses números podem diferir dependendo da arquitetura, compilador e níveis de otimização.</p>
 <p>Aqui temos uma implementação que conta o número de primos menores ou iguais a <span class="arithmatex">$n$</span> usando o peneiramento de blocos.</p>
@@ -8453,7 +8457,7 @@ No entanto, este algoritmo também tem as suas próprias fraquezas.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/google-labs-jules%5Bbot%5D" title="google-labs-jules[bot]" data-bi-name="contributorprofile" target="_blank">google-labs-jules[bot]</a> (34.78%)</li><li><a href="https://github.com/ellen-interpret" title="ellen-interpret" data-bi-name="contributorprofile" target="_blank">ellen-interpret</a> (21.01%)</li><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (17.75%)</li><li><a href="https://github.com/hieplpvip" title="hieplpvip" data-bi-name="contributorprofile" target="_blank">hieplpvip</a> (13.41%)</li><li><a href="https://github.com/Morass" title="Morass" data-bi-name="contributorprofile" target="_blank">Morass</a> (5.43%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (2.17%)</li><li><a href="https://github.com/tcNickolas" title="tcNickolas" data-bi-name="contributorprofile" target="_blank">tcNickolas</a> (2.17%)</li><li><a href="https://github.com/mhayter" title="mhayter" data-bi-name="contributorprofile" target="_blank">mhayter</a> (0.72%)</li><li><a href="https://github.com/TrietMinh799" title="TrietMinh799" data-bi-name="contributorprofile" target="_blank">TrietMinh799</a> (0.72%)</li><li><a href="https://github.com/roll-no-1" title="roll-no-1" data-bi-name="contributorprofile" target="_blank">roll-no-1</a> (0.72%)</li><li><a href="https://github.com/infiniteasp8" title="infiniteasp8" data-bi-name="contributorprofile" target="_blank">infiniteasp8</a> (0.36%)</li><li><a href="https://github.com/jxu" title="jxu" data-bi-name="contributorprofile" target="_blank">jxu</a> (0.36%)</li><li><a href="https://github.com/joaquingx" title="joaquingx" data-bi-name="contributorprofile" target="_blank">joaquingx</a> (0.36%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/google-labs-jules%5Bbot%5D" title="google-labs-jules[bot]" data-bi-name="contributorprofile" target="_blank">google-labs-jules[bot]</a> (32.97%)</li><li><a href="https://github.com/ellen-interpret" title="ellen-interpret" data-bi-name="contributorprofile" target="_blank">ellen-interpret</a> (21.01%)</li><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (17.75%)</li><li><a href="https://github.com/hieplpvip" title="hieplpvip" data-bi-name="contributorprofile" target="_blank">hieplpvip</a> (13.41%)</li><li><a href="https://github.com/Morass" title="Morass" data-bi-name="contributorprofile" target="_blank">Morass</a> (5.43%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (2.17%)</li><li><a href="https://github.com/tcNickolas" title="tcNickolas" data-bi-name="contributorprofile" target="_blank">tcNickolas</a> (2.17%)</li><li><a href="https://github.com/filipemsilv4" title="filipemsilv4" data-bi-name="contributorprofile" target="_blank">filipemsilv4</a> (1.81%)</li><li><a href="https://github.com/mhayter" title="mhayter" data-bi-name="contributorprofile" target="_blank">mhayter</a> (0.72%)</li><li><a href="https://github.com/TrietMinh799" title="TrietMinh799" data-bi-name="contributorprofile" target="_blank">TrietMinh799</a> (0.72%)</li><li><a href="https://github.com/roll-no-1" title="roll-no-1" data-bi-name="contributorprofile" target="_blank">roll-no-1</a> (0.72%)</li><li><a href="https://github.com/infiniteasp8" title="infiniteasp8" data-bi-name="contributorprofile" target="_blank">infiniteasp8</a> (0.36%)</li><li><a href="https://github.com/jxu" title="jxu" data-bi-name="contributorprofile" target="_blank">jxu</a> (0.36%)</li><li><a href="https://github.com/joaquingx" title="joaquingx" data-bi-name="contributorprofile" target="_blank">joaquingx</a> (0.36%)</li></ul>
 </ul>
                 
               </article>
