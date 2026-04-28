@@ -261,7 +261,7 @@ pair<int, int> fib (int n) {
         return {c, d};
 }
 ```
-O código acima retorna $F_n$ e $F_{n+1}$ como um pair.
+O código acima retorna $F_n$ e $F_{n+1}$ como um par (std::pair).
 
 ## Periodicidade módulo p
 
