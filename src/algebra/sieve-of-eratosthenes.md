@@ -26,7 +26,7 @@ Na imagem a seguir, você pode ver uma visualização do algoritmo para calcular
 A ideia por trás disso é:
 Um número é primo se nenhum dos números primos menores o divide.
 Como iteramos sobre os números primos em ordem, já marcamos todos os números que são divisíveis por pelo menos um dos números primos como divisíveis.
-Portanto, se alcançarmos uma célula e ela não estiver marcada, então ela não é divisível por nenhum número primo menor e, portanto, deve ser primo.
+Portanto, se alcançarmos uma célula e ela não estiver marcada, então o número correspondente não é divisível por nenhum número primo menor e, portanto, deve ser primo.
 
 ## Implementação
 
@@ -126,7 +126,7 @@ Devemos notar que essas duas implementações do Crivo de Eratóstenes usam $n$ 
 É uma especialização de otimização de memória do `vector<T>`, que consome apenas $\frac{N}{8}$ bytes de memória.
 
 As arquiteturas de processadores modernos funcionam de forma muito mais eficiente com bytes do que com bits, pois geralmente não podem acessar os bits diretamente.
-Portanto, por baixo, o `vector<bool>` armazena os bits em uma memória contínua grande, acessa a memória em blocos de alguns bytes e extrai/define os bits com operações de bits, como mascaramento e deslocamento de bits (bit masking e bit shifting).
+Portanto, por baixo, o `vector<bool>` armazena os bits em uma memória contínua grande, acessa a memória em blocos de alguns bytes e extrai/define os bits com operações bit a bit, como mascaramento e deslocamento de bits (bit masking e bit shifting).
 
 Por causa disso, há uma certa sobrecarga quando você lê ou escreve bits com um `vector<bool>`, e com bastante frequência, usar um `vector<char>` (que usa 1 byte para cada entrada, portanto, 8x a quantidade de memória) é mais rápido.
 
@@ -146,12 +146,12 @@ Para o peneiramento, basta manter os números primos até a raiz de $n$, ou seja
 
 Seja $s$ uma constante que determina o tamanho do bloco, então temos $\lceil {\frac n s} \rceil$ blocos no total, e o bloco $k$ ($k = 0 ... \lfloor {\frac n s} \rfloor$) contém os números em um segmento $[ks; ks + s - 1]$.
 Podemos trabalhar nos blocos por vez, ou seja, para cada bloco $k$ vamos passar por todos os números primos (de $1$ a $\sqrt n$) e realizar o peneiramento usando-os.
-Vale ressaltar que temos que modificar um pouco a estratégia ao lidar com os primeiros números: primeiro, todos os números primos de $[1; \sqrt n]$ não devem se remover; e segundo, os números $0$ e $1$ devem ser marcados como números não primos.
+Vale ressaltar que temos que modificar um pouco a estratégia ao lidar com os primeiros números: primeiro, todos os números primos de $[1; \sqrt n]$ não devem remover a si mesmos; e segundo, os números $0$ e $1$ devem ser marcados como números não primos.
 Enquanto trabalhamos no último bloco, não se deve esquecer que o último número necessário $n$ não está necessariamente localizado no final do bloco.
 
-Como discutido anteriormente, a implementação típica do Crivo de Eratóstenes é limitada pela velocidade de quão rápido você pode carregar dados nos caches da CPU.
+Como discutido anteriormente, a implementação típica do Crivo de Eratóstenes é limitada pela rapidez com que você pode carregar dados nos caches da CPU.
 Ao dividir o intervalo de números primos potenciais $[1; n]$ em blocos menores, nunca precisamos manter vários blocos na memória ao mesmo tempo, e todas as operações são muito mais amigáveis ao cache.
-Como agora não estamos mais limitados pelas velocidades do cache, podemos substituir o `vector<bool>` por um `vector<char>` e ganhar algum desempenho adicional, pois os processadores podem lidar com leitura e escrita com bytes diretamente e não precisam depender de operações de bits para extrair bits individuais.
+Como agora não estamos mais limitados pelas velocidades do cache, podemos substituir o `vector<bool>` por um `vector<char>` e ganhar algum desempenho adicional, pois os processadores podem lidar com leitura e escrita com bytes diretamente e não precisam depender de operações bit a bit para extrair bits individuais.
 O benchmark ([link](https://gist.github.com/jakobkogler/e6359ea9ced24fe304f1a8af3c9bee0e)) mostra que usar um `vector<char>` é cerca de 3x mais rápido nesta situação do que usar um `vector<bool>`.
 Um aviso: esses números podem diferir dependendo da arquitetura, compilador e níveis de otimização.
 
