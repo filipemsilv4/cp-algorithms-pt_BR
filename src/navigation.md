@@ -20,8 +20,8 @@ Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧�
         - [🇧🇷 Equações Diofantinas Lineares](algebra/linear-diophantine-equation.md)
         - [🇧🇷 Números de Fibonacci](algebra/fibonacci-numbers.md)
     - Prime numbers
+        - [🇧🇷 Crivo Linear](algebra/prime-sieve-linear.md)
         - [🇧🇷 Crivo de Eratóstenes](algebra/sieve-of-eratosthenes.md)
-        - [🇺🇸 Linear Sieve](algebra/prime-sieve-linear.md)
         - [🇺🇸 Primality tests](algebra/primality_tests.md)
         - [🇺🇸 Integer factorization](algebra/factorization.md)
     - Number-theoretic functions
