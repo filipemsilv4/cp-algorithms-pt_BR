@@ -18,10 +18,10 @@ Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧�
         - [🇧🇷 Algoritmo de Euclides para calcular o máximo divisor comum](algebra/euclid-algorithm.md)
         - [🇧🇷 Algoritmo de Euclides Estendido](algebra/extended-euclid-algorithm.md)
         - [🇧🇷 Equações Diofantinas Lineares](algebra/linear-diophantine-equation.md)
-        - [🇺🇸 Fibonacci Numbers](algebra/fibonacci-numbers.md)
+        - [🇧🇷 Números de Fibonacci](algebra/fibonacci-numbers.md)
     - Prime numbers
-        - [🇺🇸 Sieve of Eratosthenes](algebra/sieve-of-eratosthenes.md)
         - [🇧🇷 Crivo Linear](algebra/prime-sieve-linear.md)
+        - [🇧🇷 Crivo de Eratóstenes](algebra/sieve-of-eratosthenes.md)
         - [🇺🇸 Primality tests](algebra/primality_tests.md)
         - [🇺🇸 Integer factorization](algebra/factorization.md)
     - Number-theoretic functions

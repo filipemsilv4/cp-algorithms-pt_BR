@@ -4,31 +4,31 @@ tags:
 e_maxx_link: eratosthenes_sieve
 ---
 
-# Sieve of Eratosthenes
+# Crivo de Eratóstenes
 
-Sieve of Eratosthenes is an algorithm for finding all the prime numbers in a segment $[1;n]$ using $O(n \log \log n)$ operations.
+O Crivo de Eratóstenes é um algoritmo para encontrar todos os números primos em um segmento $[1;n]$ usando $O(n \log \log n)$ operações.
 
-The algorithm is very simple:
-at the beginning we write down all numbers between 2 and $n$.
-We mark all proper multiples of 2 (since 2 is the smallest prime number) as composite.
-A proper multiple of a number $x$, is a number greater than $x$ and divisible by $x$.
-Then we find the next number that hasn't been marked as composite, in this case it is 3.
-Which means 3 is prime, and we mark all proper multiples of 3 as composite.
-The next unmarked number is 5, which is the next prime number, and we mark all proper multiples of it.
-And we continue this procedure until we have processed all numbers in the row.
+O algoritmo é muito simples:
+no começo, escrevemos todos os números entre 2 e $n$.
+Marcamos todos os múltiplos próprios de 2 (já que 2 é o menor número primo) como compostos.
+Um múltiplo próprio de um número $x$ é um número maior que $x$ e divisível por $x$.
+Então, encontramos o próximo número que não foi marcado como composto, neste caso, é o 3.
+O que significa que 3 é primo, e marcamos todos os múltiplos próprios de 3 como compostos.
+O próximo número não marcado é o 5, que é o próximo número primo, e marcamos todos os seus múltiplos próprios.
+E continuamos esse procedimento até processarmos todos os números na linha.
 
-In the following image you can see a visualization of the algorithm for computing all prime numbers in the range $[1; 16]$. It can be seen, that quite often we mark numbers as composite multiple times.
+Na imagem a seguir, você pode ver uma visualização do algoritmo para calcular todos os números primos no intervalo $[1; 16]$. Pode-se observar que, com bastante frequência, marcamos números como compostos várias vezes.
 
 <div style="text-align: center;">
-  <img src="sieve_eratosthenes.png" alt="Sieve of Eratosthenes">
+  <img src="sieve_eratosthenes.png" alt="Crivo de Eratóstenes">
 </div>
 
-The idea behind is this:
-A number is prime, if none of the smaller prime numbers divides it.
-Since we iterate over the prime numbers in order, we already marked all numbers, which are divisible by at least one of the prime numbers, as divisible.
-Hence if we reach a cell and it is not marked, then it isn't divisible by any smaller prime number and therefore has to be prime.
+A ideia por trás disso é:
+Um número é primo se nenhum dos números primos menores o divide.
+Como iteramos sobre os números primos em ordem, já marcamos todos os números que são divisíveis por pelo menos um dos números primos como divisíveis.
+Portanto, se alcançarmos uma célula e ela não estiver marcada, então o número correspondente não é divisível por nenhum número primo menor e, portanto, deve ser primo.
 
-## Implementation
+## Implementação
 
 ```cpp
 int n;
@@ -42,62 +42,62 @@ for (int i = 2; i <= n; i++) {
 }
 ```
 
-This code first marks all numbers except zero and one as potential prime numbers, then it begins the process of sifting composite numbers.
-For this it iterates over all numbers from $2$ to $n$.
-If the current number $i$ is a prime number, it marks all numbers that are multiples of $i$ as composite numbers, starting from $i^2$.
-This is already an optimization over naive way of implementing it, and is allowed as all smaller numbers that are multiples of $i$ necessary also have a prime factor which is less than $i$, so all of them were already sifted earlier.
-Since $i^2$ can easily overflow the type `int`, the additional verification is done using type `long long` before the second nested loop.
+Este código primeiro marca todos os números exceto zero e um como potenciais números primos, depois começa o processo de peneirar os números compostos.
+Para isso, ele itera sobre todos os números de $2$ a $n$.
+Se o número atual $i$ for um número primo, ele marca todos os números que são múltiplos de $i$ como números compostos, começando a partir de $i^2$.
+Isso já é uma otimização sobre a maneira ingênua de implementá-lo, e é permitido, pois todos os números menores que são múltiplos de $i$ necessariamente também têm um fator primo que é menor que $i$, então todos eles já foram peneirados anteriormente.
+Como $i^2$ pode facilmente causar overflow no tipo `int`, a verificação adicional é feita usando o tipo `long long` antes do segundo loop aninhado.
 
-Using such implementation the algorithm consumes $O(n)$ of the memory (obviously) and performs $O(n \log \log n)$ (see next section).
+Usando essa implementação, o algoritmo consome $O(n)$ de memória (obviamente) e realiza $O(n \log \log n)$ operações (veja a próxima seção).
 
-## Asymptotic analysis
+## Análise assintótica
 
-It's simple to prove a running time of $O(n \log n)$ without knowing anything about the distribution of primes - ignoring the `is_prime` check, the inner loop runs (at most) $n/i$ times for $i = 2, 3, 4, \dots$, leading the total number of operations in the inner loop to be a harmonic sum like $n(1/2 + 1/3 + 1/4 + \cdots)$, which is bounded by $O(n \log n)$.
+É simples provar um tempo de execução de $O(n \log n)$ sem saber nada sobre a distribuição de números primos - ignorando a verificação `is_prime`, o loop interno é executado (no máximo) $n/i$ vezes para $i = 2, 3, 4, \dots$, levando o número total de operações no loop interno a ser uma soma harmônica como $n(1/2 + 1/3 + 1/4 + \cdots)$, que é limitada por $O(n \log n)$.
 
-Let's prove that algorithm's running time is $O(n \log \log n)$.
-The algorithm will perform $\frac{n}{p}$ operations for every prime $p \le n$ in the inner loop.
-Hence, we need to evaluate the next expression:
+Vamos provar que o tempo de execução do algoritmo é $O(n \log \log n)$.
+O algoritmo executará $\frac{n}{p}$ operações para cada primo $p \le n$ no loop interno.
+Portanto, precisamos avaliar a seguinte expressão:
 
-$$\sum_{\substack{p \le n, \\\ p \text{ prime}}} \frac n p = n \cdot \sum_{\substack{p \le n, \\\ p \text{ prime}}} \frac 1 p.$$
+$$\sum_{\substack{p \le n, \\\ p \text{ primo}}} \frac n p = n \cdot \sum_{\substack{p \le n, \\\ p \text{ primo}}} \frac 1 p.$$
 
-Let's recall two known facts.
+Vamos relembrar dois fatos conhecidos.
 
-  - The number of prime numbers less than or equal to $n$ is approximately $\frac n {\ln n}$.
-  - The $k$-th prime number approximately equals $k \ln k$ (this follows from the previous fact).
+  - O número de números primos menores ou iguais a $n$ é aproximadamente $\frac n {\ln n}$.
+  - O $k$-ésimo número primo é aproximadamente igual a $k \ln k$ (isso segue do fato anterior).
 
-Thus we can write down the sum in the following way:
+Assim, podemos escrever a soma da seguinte maneira:
 
-$$\sum_{\substack{p \le n, \\\ p \text{ prime}}} \frac 1 p \approx \frac 1 2 + \sum_{k = 2}^{\frac n {\ln n}} \frac 1 {k \ln k}.$$
+$$\sum_{\substack{p \le n, \\\ p \text{ primo}}} \frac 1 p \approx \frac 1 2 + \sum_{k = 2}^{\frac n {\ln n}} \frac 1 {k \ln k}.$$
 
-Here we extracted the first prime number 2 from the sum, because $k = 1$ in approximation $k \ln k$  is $0$ and causes a division by zero.
+Aqui, extraímos o primeiro número primo 2 da soma, porque $k = 1$ na aproximação $k \ln k$ é $0$ e causa uma divisão por zero.
 
-Now, let's evaluate this sum using the integral of a same function over $k$ from $2$ to $\frac n {\ln n}$ (we can make such approximation because, in fact, the sum is related to the integral as its approximation using the rectangle method):
+Agora, vamos avaliar essa soma usando a integral de uma mesma função sobre $k$ de $2$ a $\frac n {\ln n}$ (podemos fazer tal aproximação porque, de fato, a soma está relacionada à integral como sua aproximação usando o método do retângulo):
 
 $$\sum_{k = 2}^{\frac n {\ln n}} \frac 1 {k \ln k} \approx \int_2^{\frac n {\ln n}} \frac 1 {k \ln k} dk.$$
 
-The antiderivative for the integrand is  $\ln \ln k$. Using a substitution and removing terms of lower order, we'll get the result:
+A antiderivada para o integrando é $\ln \ln k$. Usando uma substituição e removendo termos de ordem inferior, obteremos o resultado:
 
 $$\int_2^{\frac n {\ln n}} \frac 1 {k \ln k} dk = \ln \ln \frac n {\ln n} - \ln \ln 2 = \ln(\ln n - \ln \ln n) - \ln \ln 2 \approx \ln \ln n.$$
 
-Now, returning to the original sum, we'll get its approximate evaluation:
+Agora, retornando à soma original, obteremos sua avaliação aproximada:
 
-$$\sum_{\substack{p \le n, \\\ p\ is\ prime}} \frac n p \approx n \ln \ln n + o(n).$$
+$$\sum_{\substack{p \le n, \\\ p\ \text{é primo}}} \frac n p \approx n \ln \ln n + o(n).$$
 
-You can find a more strict proof (that gives more precise evaluation which is accurate within constant multipliers) in the book authored by Hardy & Wright "An Introduction to the Theory of Numbers" (p. 349).
+Você pode encontrar uma prova mais rigorosa (que dá uma avaliação mais precisa dentro de multiplicadores constantes) no livro de Hardy & Wright "An Introduction to the Theory of Numbers" (p. 349).
 
-## Different optimizations of the Sieve of Eratosthenes
+## Diferentes otimizações do Crivo de Eratóstenes
 
-The biggest weakness of the algorithm is, that it "walks" along the memory multiple times, only manipulating single elements.
-This is not very cache friendly.
-And because of that, the constant which is concealed in $O(n \log \log n)$ is comparably big.
+A maior fraqueza do algoritmo é que ele "caminha" pela memória várias vezes, manipulando apenas elementos únicos.
+Isso não é muito amigável ao cache.
+E por causa disso, a constante que está oculta em $O(n \log \log n)$ é comparativamente grande.
 
-Besides, the consumed memory is a bottleneck for big $n$.
+Além disso, a memória consumida é um gargalo para um $n$ grande.
 
-The methods presented below allow us to reduce the quantity of the performed operations, as well as to shorten the consumed memory noticeably.
+Os métodos apresentados abaixo nos permitem reduzir a quantidade de operações executadas, bem como diminuir notavelmente a memória consumida.
 
-### Sieving till root
+### Peneirando até a raiz
 
-Obviously, to find all the prime numbers until $n$, it will be enough just to perform the sifting only by the prime numbers, which do not exceed the root of $n$.
+Obviamente, para encontrar todos os números primos até $n$, bastará realizar o peneiramento apenas pelos números primos que não excedam a raiz de $n$.
 
 ```cpp
 int n;
@@ -111,51 +111,51 @@ for (int i = 2; i * i <= n; i++) {
 }
 ```
 
-Such optimization doesn't affect the complexity (indeed, by repeating the proof presented above we'll get the evaluation $n \ln \ln \sqrt n + o(n)$, which is asymptotically the same according to the properties of logarithms), though the number of operations will reduce noticeably.
+Tal otimização não afeta a complexidade (de fato, ao repetir a prova apresentada acima, obteremos a avaliação $n \ln \ln \sqrt n + o(n)$, que é assintoticamente a mesma de acordo com as propriedades dos logaritmos), embora o número de operações seja reduzido notavelmente.
 
-### Sieving by the odd numbers only
+### Peneirando apenas pelos números ímpares
 
-Since all even numbers (except $2$) are composite, we can stop checking even numbers at all. Instead, we need to operate with odd numbers only.
+Como todos os números pares (exceto $2$) são compostos, podemos parar de verificar os números pares completamente. Em vez disso, precisamos operar apenas com números ímpares.
 
-First, it will allow us to halve the needed memory. Second, it will reduce the number of operations performed by algorithm approximately in half.
+Primeiro, isso nos permitirá reduzir a memória necessária pela metade. Segundo, reduzirá o número de operações executadas pelo algoritmo aproximadamente pela metade.
 
-### Memory consumption and speed of operations
+### Consumo de memória e velocidade das operações
 
-We should notice, that these two implementations of the Sieve of Eratosthenes use $n$ bits of memory by using the data structure `vector<bool>`.
-`vector<bool>` is not a regular container that stores a series of `bool` (as in most computer architectures a `bool` takes one byte of memory).
-It's a memory-optimization specialization of `vector<T>`, that only consumes $\frac{N}{8}$ bytes of memory.
+Devemos notar que essas duas implementações do Crivo de Eratóstenes usam $n$ bits de memória usando a estrutura de dados `vector<bool>`.
+`vector<bool>` não é um contêiner regular que armazena uma série de `bool` (como na maioria das arquiteturas de computadores, um `bool` ocupa um byte de memória).
+É uma especialização de otimização de memória do `vector<T>`, que consome apenas $\frac{N}{8}$ bytes de memória.
 
-Modern processors architectures work much more efficiently with bytes than with bits as they usually cannot access bits directly.
-So underneath the `vector<bool>` stores the bits in a large continuous memory, accesses the memory in blocks of a few bytes, and extracts/sets the bits with bit operations like bit masking and bit shifting.
+As arquiteturas de processadores modernos funcionam de forma muito mais eficiente com bytes do que com bits, pois geralmente não podem acessar os bits diretamente.
+Portanto, por baixo, o `vector<bool>` armazena os bits em uma memória contínua grande, acessa a memória em blocos de alguns bytes e extrai/define os bits com operações bit a bit, como mascaramento e deslocamento de bits (bit masking e bit shifting).
 
-Because of that there is a certain overhead when you read or write bits with a `vector<bool>`, and quite often using a `vector<char>` (which uses 1 byte for each entry, so 8x the amount of memory) is faster.
+Por causa disso, há uma certa sobrecarga quando você lê ou escreve bits com um `vector<bool>`, e com bastante frequência, usar um `vector<char>` (que usa 1 byte para cada entrada, portanto, 8x a quantidade de memória) é mais rápido.
 
-However, for the simple implementations of the Sieve of Eratosthenes using a `vector<bool>` is faster.
-You are limited by how fast you can load the data into the cache, and therefore using less memory gives a big advantage.
-A benchmark ([link](https://gist.github.com/jakobkogler/e6359ea9ced24fe304f1a8af3c9bee0e)) shows, that using a `vector<bool>` is between 1.4x and 1.7x faster than using a `vector<char>`.
+No entanto, para as implementações simples do Crivo de Eratóstenes, usar um `vector<bool>` é mais rápido.
+Você é limitado pela velocidade com que pode carregar os dados no cache e, portanto, usar menos memória oferece uma grande vantagem.
+Um benchmark ([link](https://gist.github.com/jakobkogler/e6359ea9ced24fe304f1a8af3c9bee0e)) mostra que usar um `vector<bool>` é entre 1,4x e 1,7x mais rápido do que usar um `vector<char>`.
 
-The same considerations also apply to `bitset`.
-It's also an efficient way of storing bits, similar to `vector<bool>`, so it takes only $\frac{N}{8}$ bytes of memory, but is a bit slower in accessing the elements.
-In the benchmark above `bitset` performs a bit worse than `vector<bool>`.
-Another drawback from `bitset` is that you need to know the size at compile time.
+As mesmas considerações também se aplicam ao `bitset`.
+É também uma maneira eficiente de armazenar bits, semelhante ao `vector<bool>`, por isso leva apenas $\frac{N}{8}$ bytes de memória, mas é um pouco mais lento no acesso aos elementos.
+No benchmark acima, o `bitset` tem um desempenho um pouco pior que o `vector<bool>`.
+Outra desvantagem do `bitset` é que você precisa saber o tamanho no tempo de compilação.
 
-### Segmented Sieve
+### Crivo Segmentado
 
-It follows from the optimization "sieving till root" that there is no need to keep the whole array `is_prime[1...n]` at all times.
-For sieving it is enough to just keep the prime numbers until the root of $n$, i.e. `prime[1... sqrt(n)]`, split the complete range into blocks, and sieve each block separately.
+Segue-se da otimização "peneirando até a raiz" que não há necessidade de manter todo o array `is_prime[1...n]` em todos os momentos.
+Para o peneiramento, basta manter os números primos até a raiz de $n$, ou seja, `prime[1... sqrt(n)]`, dividir o intervalo completo em blocos e peneirar cada bloco separadamente.
 
-Let $s$ be a constant which determines the size of the block, then we have $\lceil {\frac n s} \rceil$ blocks altogether, and the block $k$ ($k = 0 ... \lfloor {\frac n s} \rfloor$) contains the numbers in a segment $[ks; ks + s - 1]$.
-We can work on blocks by turns, i.e. for every block $k$ we will go through all the prime numbers (from $1$ to $\sqrt n$) and perform sieving using them.
-It is worth noting, that we have to modify the strategy a little bit when handling the first numbers: first, all the prime numbers from $[1; \sqrt n]$  shouldn't remove themselves; and second, the numbers $0$ and $1$ should be marked as non-prime numbers.
-While working on the last block it should not be forgotten that the last needed number $n$ is not necessarily located at the end of the block.
+Seja $s$ uma constante que determina o tamanho do bloco, então temos $\lceil {\frac n s} \rceil$ blocos no total, e o bloco $k$ ($k = 0 ... \lfloor {\frac n s} \rfloor$) contém os números em um segmento $[ks; ks + s - 1]$.
+Podemos trabalhar nos blocos por vez, ou seja, para cada bloco $k$ vamos passar por todos os números primos (de $1$ a $\sqrt n$) e realizar o peneiramento usando-os.
+Vale ressaltar que temos que modificar um pouco a estratégia ao lidar com os primeiros números: primeiro, todos os números primos de $[1; \sqrt n]$ não devem remover a si mesmos; e segundo, os números $0$ e $1$ devem ser marcados como números não primos.
+Enquanto trabalhamos no último bloco, não se deve esquecer que o último número necessário $n$ não está necessariamente localizado no final do bloco.
 
-As discussed previously, the typical implementation of the Sieve of Eratosthenes is limited by the speed how fast you can load data into the CPU caches.
-By splitting the range of potential prime numbers $[1; n]$ into smaller blocks, we never have to keep multiple blocks in memory at the same time, and all operations are much more cache-friendlier.
-As we are now no longer limited by the cache speeds, we can replace the `vector<bool>` with a `vector<char>`, and gain some additional performance as the processors can handle read and writes with bytes directly and don't need to rely on bit operations for extracting individual bits.
-The benchmark ([link](https://gist.github.com/jakobkogler/e6359ea9ced24fe304f1a8af3c9bee0e)) shows, that using a `vector<char>` is about 3x faster in this situation than using a `vector<bool>`.
-A word of caution: those numbers might differ depending on architecture, compiler, and optimization levels.
+Como discutido anteriormente, a implementação típica do Crivo de Eratóstenes é limitada pela rapidez com que você pode carregar dados nos caches da CPU.
+Ao dividir o intervalo de números primos potenciais $[1; n]$ em blocos menores, nunca precisamos manter vários blocos na memória ao mesmo tempo, e todas as operações são muito mais amigáveis ao cache.
+Como agora não estamos mais limitados pelas velocidades do cache, podemos substituir o `vector<bool>` por um `vector<char>` e ganhar algum desempenho adicional, pois os processadores podem lidar com leitura e escrita com bytes diretamente e não precisam depender de operações bit a bit para extrair bits individuais.
+O benchmark ([link](https://gist.github.com/jakobkogler/e6359ea9ced24fe304f1a8af3c9bee0e)) mostra que usar um `vector<char>` é cerca de 3x mais rápido nesta situação do que usar um `vector<bool>`.
+Um aviso: esses números podem diferir dependendo da arquitetura, compilador e níveis de otimização.
 
-Here we have an implementation that counts the number of primes smaller than or equal to $n$ using block sieving.
+Aqui temos uma implementação que conta o número de primos menores ou iguais a $n$ usando o peneiramento de blocos.
 
 ```cpp
 int count_primes(int n) {
@@ -194,21 +194,21 @@ int count_primes(int n) {
 }
 ```
 
-The running time of block sieving is the same as for regular sieve of Eratosthenes (unless the size of the blocks is very small), but the needed memory will shorten to $O(\sqrt{n} + S)$ and we have better caching results.
-On the other hand, there will be a division for each pair of a block and prime number from $[1; \sqrt{n}]$, and that will be far worse for smaller block sizes.
-Hence, it is necessary to keep balance when selecting the constant $S$.
-We achieved the best results for block sizes between $10^4$ and $10^5$.
+O tempo de execução do peneiramento de blocos é o mesmo que o do Crivo de Eratóstenes regular (a menos que o tamanho dos blocos seja muito pequeno), mas a memória necessária diminuirá para $O(\sqrt{n} + S)$ e teremos melhores resultados de cache.
+Por outro lado, haverá uma divisão para cada par de um bloco e número primo de $[1; \sqrt{n}]$, e isso será muito pior para tamanhos de bloco menores.
+Portanto, é necessário manter o equilíbrio ao selecionar a constante $S$.
+Alcançamos os melhores resultados para tamanhos de bloco entre $10^4$ e $10^5$.
 
-## Find primes in range
+## Encontrar primos em um intervalo
 
-Sometimes we need to find all prime numbers in a range $[L,R]$ of small size (e.g. $R - L + 1 \approx 1e7$), where $R$ can be very large (e.g. $1e12$).
+Às vezes, precisamos encontrar todos os números primos em um intervalo $[L,R]$ de tamanho pequeno (por exemplo, $R - L + 1 \approx 1e7$), onde $R$ pode ser muito grande (por exemplo, $1e12$).
 
-To solve such a problem, we can use the idea of the Segmented sieve.
-We pre-generate all prime numbers up to $\sqrt R$, and use those primes to mark all composite numbers in the segment $[L, R]$.
+Para resolver tal problema, podemos usar a ideia do Crivo Segmentado.
+Nós pré-geramos todos os números primos até $\sqrt R$ e usamos esses primos para marcar todos os números compostos no segmento $[L, R]$.
 
 ```cpp
 vector<char> segmentedSieve(long long L, long long R) {
-    // generate all primes up to sqrt(R)
+    // gerar todos os primos até sqrt(R)
     long long lim = sqrt(R);
     vector<char> mark(lim + 1, false);
     vector<long long> primes;
@@ -229,9 +229,9 @@ vector<char> segmentedSieve(long long L, long long R) {
     return isPrime;
 }
 ```
-Time complexity of this approach is $O((R - L + 1) \log \log (R) + \sqrt R \log \log \sqrt R)$.
+A complexidade de tempo desta abordagem é $O((R - L + 1) \log \log (R) + \sqrt R \log \log \sqrt R)$.
 
-It's also possible that we don't pre-generate all prime numbers:
+Também é possível não pré-gerar todos os números primos:
 
 ```cpp
 vector<char> segmentedSieveNoPreGen(long long L, long long R) {
@@ -246,15 +246,15 @@ vector<char> segmentedSieveNoPreGen(long long L, long long R) {
 }
 ```
 
-Obviously, the complexity is worse, which is $O((R - L + 1) \log (R) + \sqrt R)$. However, it still runs very fast in practice.
+Obviamente, a complexidade é pior, que é $O((R - L + 1) \log (R) + \sqrt R)$. No entanto, ainda funciona muito rápido na prática.
 
-## Linear time modification
+## Modificação de tempo linear
 
-We can modify the algorithm in a such a way, that it only has linear time complexity.
-This approach is described in the article [Linear Sieve](prime-sieve-linear.md).
-However, this algorithm also has its own weaknesses.
+Podemos modificar o algoritmo de forma que ele tenha apenas complexidade de tempo linear.
+Essa abordagem é descrita no artigo [Crivo Linear](prime-sieve-linear.md).
+No entanto, este algoritmo também tem as suas próprias fraquezas.
 
-## Practice Problems
+## Problemas Práticos
 
 * [Leetcode - Four Divisors](https://leetcode.com/problems/four-divisors/)
 * [Leetcode - Count Primes](https://leetcode.com/problems/count-primes/)
