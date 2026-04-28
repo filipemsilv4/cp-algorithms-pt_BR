@@ -13,10 +13,10 @@
         <link rel="canonical" href="https://paulofilipe.com/cp-algorithms-pt_BR/algebra/prime-sieve-linear.html">
       
       
-        <link rel="prev" href="sieve-of-eratosthenes.html">
+        <link rel="prev" href="fibonacci-numbers.html">
       
       
-        <link rel="next" href="primality_tests.html">
+        <link rel="next" href="sieve-of-eratosthenes.html">
       
       
         
@@ -30,7 +30,7 @@
     
     
       
-        <title>🇺🇸 Linear Sieve - Algoritmos para Programação Competitiva</title>
+        <title>🇧🇷 Crivo Linear - Algoritmos para Programação Competitiva</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#linear-sieve" class="md-skip">
+        <a href="#crivo-linear" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
           <span class="md-ellipsis">
             <a href="#" onclick="scrollToTop()">
               
-                🇺🇸 Linear Sieve
+                🇧🇷 Crivo Linear
               
             </a>
           </span>
@@ -809,34 +809,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="sieve-of-eratosthenes.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🇧🇷 Crivo de Eratóstenes
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -856,7 +828,7 @@
   <span class="md-ellipsis">
     
   
-    🇺🇸 Linear Sieve
+    🇧🇷 Crivo Linear
   
 
     
@@ -874,7 +846,7 @@
   <span class="md-ellipsis">
     
   
-    🇺🇸 Linear Sieve
+    🇧🇷 Crivo Linear
   
 
     
@@ -900,10 +872,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#algorithm" class="md-nav__link">
+  <a href="#algoritmo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Algorithm
+        Algoritmo
       
     </span>
   </a>
@@ -911,10 +883,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#implementacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Implementação
       
     </span>
   </a>
@@ -922,10 +894,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#correctness-proof" class="md-nav__link">
+  <a href="#prova-de-corretude" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Correctness Proof
+        Prova de Corretude
       
     </span>
   </a>
@@ -933,10 +905,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#runtime-and-memory" class="md-nav__link">
+  <a href="#tempo-de-execucao-e-memoria" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Runtime and Memory
+        Tempo de Execução e Memória
       
     </span>
   </a>
@@ -944,10 +916,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       
-        References
+        Referências
       
     </span>
   </a>
@@ -958,6 +930,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sieve-of-eratosthenes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🇧🇷 Crivo de Eratóstenes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -7910,9 +7910,9 @@
                   <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
-  const issueTitle = "Problem on article " + "\ud83c\uddfa\ud83c\uddf8 Linear Sieve";
+  const issueTitle = "Problem on article " + "\ud83c\udde7\ud83c\uddf7 Crivo Linear";
 	const issueBody = `
- **Article:** [`+ "\ud83c\uddfa\ud83c\uddf8 Linear Sieve" + `](${window.location.href})
+ **Article:** [`+ "\ud83c\udde7\ud83c\uddf7 Crivo Linear" + `](${window.location.href})
 
 **Problem:**
 <!--
@@ -7939,6 +7939,12 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
+    
+  
 
   
   
@@ -8039,7 +8045,7 @@ Describe the issue of this article in detail.
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
 
   Last update:
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 25, 2023 06:29:42 UTC">November 25, 2023</span>&emsp;
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 28, 2026 02:19:33 UTC">April 28, 2026</span>&emsp;
 
 <!-- Tags -->
 
@@ -8065,33 +8071,33 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="linear-sieve">Linear Sieve<a class="headerlink" href="#linear-sieve" title="Permanent link">&para;</a></h1>
-<p>Given a number <span class="arithmatex">$n$</span>, find all prime numbers in a segment <span class="arithmatex">$[2;n]$</span>.</p>
-<p>The standard way of solving a task is to use <a href="sieve-of-eratosthenes.html">the sieve of Eratosthenes</a>. This algorithm is very simple, but it has runtime <span class="arithmatex">$O(n \log \log n)$</span>.</p>
-<p>Although there are a lot of known algorithms with sublinear runtime (i.e. <span class="arithmatex">$o(n)$</span>), the algorithm described below is interesting by its simplicity: it isn't any more complex than the classic sieve of Eratosthenes.</p>
-<p>Besides, the algorithm given here calculates <strong>factorizations of all numbers</strong> in the segment <span class="arithmatex">$[2; n]$</span> as a side effect, and that can be helpful in many practical applications.</p>
-<p>The weakness of the given algorithm is in using more memory than the classic sieve of Eratosthenes': it requires an array of <span class="arithmatex">$n$</span> numbers, while for the classic sieve of Eratosthenes it is enough to have <span class="arithmatex">$n$</span> bits of memory (which is 32 times less).</p>
-<p>Thus, it makes sense to use the described algorithm only until for numbers of order <span class="arithmatex">$10^7$</span> and not greater.</p>
-<p>The algorithm is due to Paul Pritchard. It is a variant of Algorithm 3.3 in (Pritchard, 1987: see references in the end of the article).</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
-<p>Our goal is to calculate <strong>minimum prime factor</strong> <span class="arithmatex">$lp [i]$</span> for every number <span class="arithmatex">$i$</span> in the segment <span class="arithmatex">$[2; n]$</span>.</p>
-<p>Besides, we need to store the list of all the found prime numbers - let's call it <span class="arithmatex">$pr []$</span>.</p>
-<p>We'll initialize the values <span class="arithmatex">$lp [i]$</span> with zeros, which means that we assume all numbers are prime. During the algorithm execution this array will be filled gradually.</p>
-<p>Now we'll go through the numbers from 2 to <span class="arithmatex">$n$</span>. We have two cases for the current number <span class="arithmatex">$i$</span>:</p>
+<h1 id="crivo-linear">Crivo Linear<a class="headerlink" href="#crivo-linear" title="Permanent link">&para;</a></h1>
+<p>Dado um número <span class="arithmatex">$n$</span>, encontre todos os números primos em um intervalo <span class="arithmatex">$[2;n]$</span>.</p>
+<p>A maneira padrão de resolver este problema é usar <a href="sieve-of-eratosthenes.html">o crivo de Eratóstenes</a>. Este algoritmo é muito simples, mas tem tempo de execução <span class="arithmatex">$O(n \log \log n)$</span>.</p>
+<p>Embora existam muitos algoritmos conhecidos com tempo de execução sublinear (ou seja, <span class="arithmatex">$o(n)$</span>), o algoritmo descrito abaixo é interessante pela sua simplicidade: não é mais complexo que o crivo clássico de Eratóstenes.</p>
+<p>Além disso, o algoritmo fornecido aqui calcula <strong>fatorações de todos os números</strong> no intervalo <span class="arithmatex">$[2; n]$</span> como um efeito colateral, e isso pode ser útil em muitas aplicações práticas.</p>
+<p>A fraqueza do algoritmo fornecido está em usar mais memória do que o crivo clássico de Eratóstenes: ele requer um array de <span class="arithmatex">$n$</span> números, enquanto que para o crivo clássico de Eratóstenes é suficiente ter <span class="arithmatex">$n$</span> bits de memória (o que é 32 vezes menos).</p>
+<p>Assim, faz sentido usar o algoritmo descrito apenas para números da ordem de <span class="arithmatex">$10^7$</span> e não maiores.</p>
+<p>O algoritmo é de autoria de Paul Pritchard. É uma variante do Algoritmo 3.3 em (Pritchard, 1987: veja as referências no final do artigo).</p>
+<h2 id="algoritmo">Algoritmo<a class="headerlink" href="#algoritmo" title="Permanent link">&para;</a></h2>
+<p>Nosso objetivo é calcular o <strong>menor fator primo</strong> <span class="arithmatex">$lp [i]$</span> para cada número <span class="arithmatex">$i$</span> no intervalo <span class="arithmatex">$[2; n]$</span>.</p>
+<p>Além disso, precisamos armazenar a lista de todos os números primos encontrados - vamos chamá-la de <span class="arithmatex">$pr []$</span>.</p>
+<p>Inicializaremos os valores de <span class="arithmatex">$lp [i]$</span> com zeros, o que significa que assumimos que todos os números são primos. Durante a execução do algoritmo, este array será preenchido gradualmente.</p>
+<p>Agora vamos percorrer os números de 2 até <span class="arithmatex">$n$</span>. Temos dois casos para o número atual <span class="arithmatex">$i$</span>:</p>
 <ul>
 <li>
-<p><span class="arithmatex">$lp[i] = 0$</span> - that means that <span class="arithmatex">$i$</span> is prime, i.e. we haven't found any smaller factors for it.<br />
-  Hence, we assign <span class="arithmatex">$lp [i] = i$</span> and add <span class="arithmatex">$i$</span> to the end of the list <span class="arithmatex">$pr[]$</span>.</p>
+<p><span class="arithmatex">$lp[i] = 0$</span> - isso significa que <span class="arithmatex">$i$</span> é primo, ou seja, não encontramos fatores menores para ele.
+  Portanto, atribuímos <span class="arithmatex">$lp [i] = i$</span> e adicionamos <span class="arithmatex">$i$</span> ao final da lista <span class="arithmatex">$pr[]$</span>.</p>
 </li>
 <li>
-<p><span class="arithmatex">$lp[i] \neq 0$</span> - that means that <span class="arithmatex">$i$</span> is composite, and its minimum prime factor is <span class="arithmatex">$lp [i]$</span>.</p>
+<p><span class="arithmatex">$lp[i] \neq 0$</span> - isso significa que <span class="arithmatex">$i$</span> é composto, e o seu menor fator primo é <span class="arithmatex">$lp [i]$</span>.</p>
 </li>
 </ul>
-<p>In both cases we update values of <span class="arithmatex">$lp []$</span> for the numbers that are divisible by <span class="arithmatex">$i$</span>. However, our goal is to learn to do so as to set a value <span class="arithmatex">$lp []$</span> at most once for every number. We can do it as follows:</p>
-<p>Let's consider numbers <span class="arithmatex">$x_j = i \cdot p_j$</span>, where <span class="arithmatex">$p_j$</span> are all prime numbers less than or equal to <span class="arithmatex">$lp [i]$</span> (this is why we need to store the list of all prime numbers).</p>
-<p>We'll set a new value <span class="arithmatex">$lp [x_j] = p_j$</span> for all numbers of this form.</p>
-<p>The proof of correctness of this algorithm and its runtime can be found after the implementation.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<p>Em ambos os casos, atualizamos os valores de <span class="arithmatex">$lp []$</span> para os números que são divisíveis por <span class="arithmatex">$i$</span>. No entanto, nosso objetivo é aprender a fazer isso de forma a definir um valor <span class="arithmatex">$lp []$</span> no máximo uma vez para cada número. Podemos fazer isso da seguinte maneira:</p>
+<p>Vamos considerar os números <span class="arithmatex">$x_j = i \cdot p_j$</span>, onde <span class="arithmatex">$p_j$</span> são todos os números primos menores ou iguais a <span class="arithmatex">$lp [i]$</span> (é por isso que precisamos armazenar a lista de todos os números primos).</p>
+<p>Definiremos um novo valor <span class="arithmatex">$lp [x_j] = p_j$</span> para todos os números dessa forma.</p>
+<p>A prova de corretude deste algoritmo e o seu tempo de execução podem ser encontrados após a implementação.</p>
+<h2 id="implementacao">Implementação<a class="headerlink" href="#implementacao" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10000000</span><span class="p">;</span>
 <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lp</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
 <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pr</span><span class="p">;</span>
@@ -8109,29 +8115,29 @@ Describe the issue of this article in detail.
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="correctness-proof">Correctness Proof<a class="headerlink" href="#correctness-proof" title="Permanent link">&para;</a></h2>
-<p>We need to prove that the algorithm sets all values <span class="arithmatex">$lp []$</span> correctly, and that every value will be set exactly once. Hence, the algorithm will have linear runtime, since all the remaining actions of the algorithm, obviously, work for <span class="arithmatex">$O (n)$</span>.</p>
-<p>Notice that every number <span class="arithmatex">$i$</span> has exactly one representation in form:</p>
+<h2 id="prova-de-corretude">Prova de Corretude<a class="headerlink" href="#prova-de-corretude" title="Permanent link">&para;</a></h2>
+<p>Precisamos provar que o algoritmo define todos os valores de <span class="arithmatex">$lp []$</span> corretamente e que cada valor será definido exatamente uma vez. Portanto, o algoritmo terá tempo de execução linear, já que todas as ações restantes do algoritmo, obviamente, funcionam em <span class="arithmatex">$O(n)$</span>.</p>
+<p>Note que cada número <span class="arithmatex">$i$</span> tem exatamente uma representação na forma:</p>
 <div class="arithmatex">$$i = lp [i] \cdot x,$$</div>
-<p>where <span class="arithmatex">$lp [i]$</span> is the minimal prime factor of <span class="arithmatex">$i$</span>, and the number <span class="arithmatex">$x$</span> doesn't have any prime factors less than <span class="arithmatex">$lp [i]$</span>, i.e.</p>
+<p>onde <span class="arithmatex">$lp [i]$</span> é o menor fator primo de <span class="arithmatex">$i$</span>, e o número <span class="arithmatex">$x$</span> não tem fatores primos menores que <span class="arithmatex">$lp [i]$</span>, ou seja,</p>
 <div class="arithmatex">$$lp [i] \le lp [x].$$</div>
-<p>Now, let's compare this with the actions of our algorithm: in fact, for every <span class="arithmatex">$x$</span> it goes through all prime numbers it could be multiplied by, i.e. all prime numbers up to <span class="arithmatex">$lp [x]$</span> inclusive, in order to get the numbers in the form given above.</p>
-<p>Hence, the algorithm will go through every composite number exactly once, setting the correct values <span class="arithmatex">$lp []$</span> there. Q.E.D.</p>
-<h2 id="runtime-and-memory">Runtime and Memory<a class="headerlink" href="#runtime-and-memory" title="Permanent link">&para;</a></h2>
-<p>Although the running time of <span class="arithmatex">$O(n)$</span> is better than <span class="arithmatex">$O(n \log \log n)$</span> of the classic sieve of Eratosthenes, the difference between them is not so big.
-In practice the linear sieve runs about as fast as a typical implementation of the sieve of Eratosthenes.</p>
-<p>In comparison to optimized versions of the sieve of Erathosthenes, e.g. the segmented sieve, it is much slower.</p>
-<p>Considering the memory requirements of this algorithm - an array <span class="arithmatex">$lp []$</span> of length <span class="arithmatex">$n$</span>, and an array of <span class="arithmatex">$pr []$</span> of length  <span class="arithmatex">$\frac n {\ln n}$</span>, this algorithm seems to be worse than the classic sieve in every way.</p>
-<p>However, its redeeming quality is that this algorithm calculates an array <span class="arithmatex">$lp []$</span>, which allows us to find factorization of any number in the segment <span class="arithmatex">$[2; n]$</span> in the time of the size order of this factorization. Moreover, using just one extra array will allow us to avoid divisions when looking for factorization.</p>
-<p>Knowing the factorizations of all numbers is very useful for some tasks, and this algorithm is one of the few which allow to find them in linear time.</p>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p>Agora, vamos comparar isso com as ações de nosso algoritmo: de fato, para cada <span class="arithmatex">$x$</span> ele passa por todos os números primos pelos quais ele poderia ser multiplicado, ou seja, todos os números primos até <span class="arithmatex">$lp [x]$</span> inclusive, a fim de obter os números na forma dada acima.</p>
+<p>Portanto, o algoritmo passará por cada número composto exatamente uma vez, definindo os valores corretos de <span class="arithmatex">$lp []$</span> ali. C.Q.D.</p>
+<h2 id="tempo-de-execucao-e-memoria">Tempo de Execução e Memória<a class="headerlink" href="#tempo-de-execucao-e-memoria" title="Permanent link">&para;</a></h2>
+<p>Embora o tempo de execução de <span class="arithmatex">$O(n)$</span> seja melhor que <span class="arithmatex">$O(n \log \log n)$</span> do crivo clássico de Eratóstenes, a diferença entre eles não é tão grande.
+Na prática, o crivo linear roda quase tão rápido quanto uma implementação típica do crivo de Eratóstenes.</p>
+<p>Em comparação com as versões otimizadas do crivo de Eratóstenes, por exemplo, o crivo segmentado, ele é muito mais lento.</p>
+<p>Considerando os requisitos de memória deste algoritmo - um array <span class="arithmatex">$lp []$</span> de comprimento <span class="arithmatex">$n$</span>, e um array <span class="arithmatex">$pr []$</span> de comprimento <span class="arithmatex">$\frac n {\ln n}$</span>, este algoritmo parece ser pior do que o crivo clássico de todas as maneiras.</p>
+<p>No entanto, a sua grande vantagem é que este algoritmo calcula um array <span class="arithmatex">$lp []$</span>, o que nos permite encontrar a fatoração de qualquer número no intervalo <span class="arithmatex">$[2; n]$</span> em tempo proporcional ao tamanho dessa fatoração. Além disso, usar apenas um array extra nos permitirá evitar divisões ao procurar a fatoração.</p>
+<p>Conhecer as fatorações de todos os números é muito útil para algumas tarefas, e este algoritmo é um dos poucos que permite encontrá-las em tempo linear.</p>
+<h2 id="referencias">Referências<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Paul Pritchard, <strong>Linear Prime-Number Sieves: a Family Tree</strong>, Science of Computer Programming, vol. 9 (1987), pp.17-35.</li>
 </ul>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/ellen-interpret" title="ellen-interpret" data-bi-name="contributorprofile" target="_blank">ellen-interpret</a> (47.96%)</li><li><a href="https://github.com/tcNickolas" title="tcNickolas" data-bi-name="contributorprofile" target="_blank">tcNickolas</a> (28.57%)</li><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (10.2%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (10.2%)</li><li><a href="https://github.com/paulpritchard" title="paulpritchard" data-bi-name="contributorprofile" target="_blank">paulpritchard</a> (2.04%)</li><li><a href="https://github.com/boxlesscat" title="boxlesscat" data-bi-name="contributorprofile" target="_blank">boxlesscat</a> (1.02%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/ellen-interpret" title="ellen-interpret" data-bi-name="contributorprofile" target="_blank">ellen-interpret</a> (45.92%)</li><li><a href="https://github.com/filipemsilv4" title="filipemsilv4" data-bi-name="contributorprofile" target="_blank">filipemsilv4</a> (35.71%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (10.2%)</li><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (5.1%)</li><li><a href="https://github.com/tcNickolas" title="tcNickolas" data-bi-name="contributorprofile" target="_blank">tcNickolas</a> (2.04%)</li><li><a href="https://github.com/paulpritchard" title="paulpritchard" data-bi-name="contributorprofile" target="_blank">paulpritchard</a> (1.02%)</li></ul>
 </ul>
                 
               </article>
