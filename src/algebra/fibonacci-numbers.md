@@ -22,7 +22,7 @@ Os números de Fibonacci possuem muitas propriedades interessantes. Aqui estão 
   
 $$F_{n-1} F_{n+1} - F_n^2 = (-1)^n$$
 
->Isso pode ser provado por indução. Uma prova de uma linha de Knuth vem de tomar o determinante da forma de matriz 2x2 abaixo.
+>Isso pode ser provado por indução. Uma prova de uma linha de Knuth vem do cálculo do determinante da forma de matriz 2x2 abaixo.
 
 * A regra da "adição":
   
