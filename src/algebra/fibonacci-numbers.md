@@ -36,7 +36,7 @@ $$F_{2n} = F_n (F_{n+1} + F_{n-1})$$
 
 * O inverso também é verdadeiro: se $F_m$ é múltiplo de $F_n$, então $m$ é múltiplo de $n$.
 
-* Identidade do MDC (GCD, ou em português, MDC):
+* Identidade do MDC:
   
 $$GCD(F_m, F_n) = F_{GCD(m, n)}$$
 
