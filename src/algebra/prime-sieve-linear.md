@@ -6,13 +6,13 @@ e_maxx_link: prime_sieve_linear
 
 # Crivo Linear
 
-Dado um número $n$, encontre todos os números primos em um segmento $[2;n]$.
+Dado um número $n$, encontre todos os números primos em um intervalo $[2;n]$.
 
 A maneira padrão de resolver este problema é usar [o crivo de Eratóstenes](sieve-of-eratosthenes.md). Este algoritmo é muito simples, mas tem tempo de execução $O(n \log \log n)$.
 
 Embora existam muitos algoritmos conhecidos com tempo de execução sublinear (ou seja, $o(n)$), o algoritmo descrito abaixo é interessante pela sua simplicidade: não é mais complexo que o crivo clássico de Eratóstenes.
 
-Além disso, o algoritmo fornecido aqui calcula **fatorações de todos os números** no segmento $[2; n]$ como um efeito colateral, e isso pode ser útil em muitas aplicações práticas.
+Além disso, o algoritmo fornecido aqui calcula **fatorações de todos os números** no intervalo $[2; n]$ como um efeito colateral, e isso pode ser útil em muitas aplicações práticas.
 
 A fraqueza do algoritmo fornecido está em usar mais memória do que o crivo clássico de Eratóstenes: ele requer um array de $n$ números, enquanto que para o crivo clássico de Eratóstenes é suficiente ter $n$ bits de memória (o que é 32 vezes menos).
 
@@ -22,7 +22,7 @@ O algoritmo é de autoria de Paul Pritchard. É uma variante do Algoritmo 3.3 em
 
 ## Algoritmo
 
-Nosso objetivo é calcular o **menor fator primo** $lp [i]$ para cada número $i$ no segmento $[2; n]$.
+Nosso objetivo é calcular o **menor fator primo** $lp [i]$ para cada número $i$ no intervalo $[2; n]$.
 
 Além disso, precisamos armazenar a lista de todos os números primos encontrados - vamos chamá-la de $pr []$.
 
@@ -89,7 +89,7 @@ Em comparação com as versões otimizadas do crivo de Eratóstenes, por exemplo
 
 Considerando os requisitos de memória deste algoritmo - um array $lp []$ de comprimento $n$, e um array $pr []$ de comprimento $\frac n {\ln n}$, este algoritmo parece ser pior do que o crivo clássico de todas as maneiras.
 
-No entanto, a sua qualidade redentora é que este algoritmo calcula um array $lp []$, o que nos permite encontrar a fatoração de qualquer número no segmento $[2; n]$ no tempo da ordem do tamanho dessa fatoração. Além disso, usar apenas um array extra nos permitirá evitar divisões ao procurar a fatoração.
+No entanto, a sua grande vantagem é que este algoritmo calcula um array $lp []$, o que nos permite encontrar a fatoração de qualquer número no intervalo $[2; n]$ em tempo proporcional ao tamanho dessa fatoração. Além disso, usar apenas um array extra nos permitirá evitar divisões ao procurar a fatoração.
 
 Conhecer as fatorações de todos os números é muito útil para algumas tarefas, e este algoritmo é um dos poucos que permite encontrá-las em tempo linear.
 
