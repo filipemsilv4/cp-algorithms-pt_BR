@@ -23,7 +23,7 @@ Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧�
         - [🇧🇷 Crivo Linear](algebra/prime-sieve-linear.md)
         - [🇧🇷 Crivo de Eratóstenes](algebra/sieve-of-eratosthenes.md)
         - [🇺🇸 Primality tests](algebra/primality_tests.md)
-        - [🇺🇸 Integer factorization](algebra/factorization.md)
+        - [🇧🇷 Fatoração de Inteiros](algebra/factorization.md)
     - Number-theoretic functions
         - [🇺🇸 Euler's totient function](algebra/phi-function.md)
         - [🇺🇸 Number of divisors / sum of divisors](algebra/divisors.md)
