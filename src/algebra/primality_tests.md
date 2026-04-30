@@ -55,7 +55,7 @@ Se descobrirmos que o número é realmente composto, chamamos a base $a$ de *men
 Ao executar o teste para todas as bases possíveis $a$, podemos realmente provar que um número é primo.
 No entanto, isso não é feito na prática, já que exige muito mais esforço do que apenas fazer a *divisão por tentativa*.
 Em vez disso, o teste será repetido várias vezes com escolhas aleatórias para $a$.
-Se não encontrarmos nenhuma testemunha para a composição, é muito provável que o número seja de fato primo.
+Se não encontrarmos nenhuma testemunha de que o número é composto, é muito provável que o número seja de fato primo.
 
 ```cpp
 bool probablyPrimeFermat(int n, int iter=5) {
