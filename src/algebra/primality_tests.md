@@ -16,7 +16,7 @@ Naturalmente $\frac{n}{d}$ também é um divisor de $n$.
 Podemos usar esta informação para verificar a primalidade.
 
 Tentamos encontrar um divisor não trivial, verificando se algum dos números entre $2$ e $\sqrt{n}$ é um divisor de $n$.
-Se for um divisor, então $n$ definitivamente não é primo; caso contrário, ele é.
+Se for um divisor, então $n$ definitivamente não é primo; caso contrário, é primo.
 
 ```cpp
 bool isPrime(int x) {
