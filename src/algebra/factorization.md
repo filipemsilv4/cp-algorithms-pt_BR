@@ -69,7 +69,7 @@ Se o número não for divisível por 3, também podemos ignorar todos os outros 
 Portanto, precisamos apenas verificar os números $5, 7, 11, 13, 17, 19, 23, \dots$.
 Podemos observar um padrão desses números restantes.
 Precisamos verificar todos os números com $d \bmod 6 = 1$ e $d \bmod 6 = 5$.
-Isso nos deixa com apenas $33.3\%$ por cento dos números para verificar.
+Isso nos deixa com apenas 33,3% dos números para verificar.
 Podemos implementar isso fatorando primeiro os primos 2 e 3, após o qual começamos com 5 e contamos apenas os restos $1$ e $5$ módulo $6$.
 
 Aqui está uma implementação para os números primos 2, 3 e 5.
