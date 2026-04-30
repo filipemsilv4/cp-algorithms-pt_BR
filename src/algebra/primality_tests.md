@@ -12,7 +12,7 @@ Este artigo descreve vários algoritmos para determinar se um número é primo o
 Por definição, um número primo não tem divisores além de $1$ e dele mesmo.
 Um número composto tem pelo menos um divisor adicional, vamos chamá-lo de $d$.
 Naturalmente, $\frac{n}{d}$ também é um divisor de $n$.
-É fácil ver que ou $d \le \sqrt{n}$ ou $\frac{n}{d} \le \sqrt{n}$, portanto, um dos divisores $d$ e $\frac{n}{d}$ é $\le \sqrt{n}$.
+É fácil ver que $d \le \sqrt{n}$ ou $\frac{n}{d} \le \sqrt{n}$, portanto, um dos divisores $d$ e $\frac{n}{d}$ é $\le \sqrt{n}$.
 Podemos usar essa informação para verificar a primalidade.
 
 Tentamos encontrar um divisor não trivial, verificando se algum dos números entre $2$ e $\sqrt{n}$ é um divisor de $n$.
