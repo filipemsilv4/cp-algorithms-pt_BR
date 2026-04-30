@@ -180,7 +180,7 @@ Por exemplo, $88\%$ de todos os números têm um fator primo menor que $100$.
 ### Versão determinística
 
 Miller mostrou que é possível tornar o algoritmo determinístico verificando apenas todas as bases $\le O((\ln n)^2)$.
-Bach mais tarde forneceu um limite concreto, é necessário apenas testar todas as bases $a \le 2 \ln(n)^2$.
+Bach mais tarde forneceu um limite concreto. É necessário apenas testar todas as bases $a \le 2 \ln(n)^2$.
 
 Ainda é um número muito grande de bases.
 Portanto, as pessoas investiram muito poder de computação para encontrar limites inferiores.
