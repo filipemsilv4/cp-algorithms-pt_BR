@@ -153,7 +153,7 @@ bool check_composite(u64 n, u64 a, u64 d, int s) {
     return true;
 };
 
-bool MillerRabin(u64 n, int iter=5) { // retorna verdadeiro se n é provavelmente primo, senão retorna falso.
+bool MillerRabin(u64 n, int iter=5) { // retorna verdadeiro se n for provavelmente primo, senão retorna falso.
     if (n < 4)
         return n == 2 || n == 3;
 
