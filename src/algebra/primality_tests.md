@@ -101,7 +101,7 @@ a^{n-1} \equiv 1 \bmod n &\Longleftrightarrow a^{2^s d} - 1 \equiv 0 \bmod n \\\
 \end{array}$$
 
 Se $n$ é primo, então $n$ tem que dividir um desses fatores.
-E no teste de primalidade de Miller-Rabin verificamos exatamente essa afirmação, que é uma versão mais rigorosa da afirmação do teste de Fermat.
+No teste de primalidade de Miller-Rabin, verificamos exatamente essa afirmação, que é uma versão mais rigorosa da afirmação do teste de Fermat.
 Para uma base $2 \le a \le n-2$, verificamos se
 
 $$a^d \equiv 1 \bmod n$$
