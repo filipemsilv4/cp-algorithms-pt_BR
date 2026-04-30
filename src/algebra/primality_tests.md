@@ -45,7 +45,7 @@ Em geral, este teorema não se aplica a números compostos.
 Isso pode ser usado para criar um teste de primalidade.
 Escolhemos um inteiro $2 \le a \le p - 2$ e verificamos se a equação é válida ou não.
 Se não for, ou seja, $a^{p-1} \not\equiv 1 \bmod p$, sabemos que $p$ não pode ser um número primo.
-Neste caso, chamamos a base $a$ de *testemunha de Fermat* (Fermat witness) para a composição de $p$.
+Neste caso, chamamos a base $a$ de *testemunha de Fermat* (Fermat witness) para o caráter composto de $p$.
 
 No entanto, também é possível que a equação seja válida para um número composto.
 Portanto, se a equação for válida, não temos uma prova de primalidade.
