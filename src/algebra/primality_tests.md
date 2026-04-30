@@ -185,7 +185,7 @@ Bach mais tarde forneceu um limite concreto. É necessário apenas testar todas 
 Ainda é um número muito grande de bases.
 Portanto, as pessoas investiram muito poder de computação para encontrar limites inferiores.
 Acontece que, para testar um inteiro de 32 bits, só é necessário verificar as primeiras 4 bases primas: 2, 3, 5 e 7.
-O menor número composto que falha neste teste é $3.215.031.751 = 151 \cdot 751 \cdot 28351$.
+O menor número composto que falha neste teste é $3215031751 = 151 \cdot 751 \cdot 28351$.
 E para testar inteiros de 64 bits é suficiente verificar as primeiras 12 bases primas: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31 e 37.
 
 Isso resulta na seguinte implementação determinística:
