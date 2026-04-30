@@ -112,7 +112,7 @@ $$a^{2^r d} \equiv -1 \bmod n$$
 
 é válido para algum $0 \le r \le s - 1$.
 
-Se encontrarmos uma base $a$ que não satisfaz nenhuma das igualdades acima, então encontramos uma *testemunha* da composição de $n$.
+Se encontrarmos uma base $a$ que não satisfaz nenhuma das igualdades acima, então encontramos uma *testemunha* de que $n$ é composto.
 Neste caso, provamos que $n$ não é um número primo.
 
 Semelhante ao teste de Fermat, também é possível que o conjunto de equações seja satisfeito para um número composto.
