@@ -3,20 +3,20 @@ tags:
     - Original
 ---
 
-# Primality tests
+# Testes de primalidade
 
-This article describes multiple algorithms to determine if a number is prime or not.
+Este artigo descreve vários algoritmos para determinar se um número é primo ou não.
 
-## Trial division
+## Divisão por tentativa
 
-By definition a prime number doesn't have any divisors other than $1$ and itself.
-A composite number has at least one additional divisor, let's call it $d$.
-Naturally $\frac{n}{d}$ is also a divisor of $n$.
-It's easy to see, that either $d \le \sqrt{n}$ or $\frac{n}{d} \le \sqrt{n}$, therefore one of the divisors $d$ and $\frac{n}{d}$ is $\le \sqrt{n}$.
-We can use this information to check for primality.
+Por definição, um número primo não tem divisores além de $1$ e dele mesmo.
+Um número composto tem pelo menos um divisor adicional, vamos chamá-lo de $d$.
+Naturalmente, $\frac{n}{d}$ também é um divisor de $n$.
+É fácil ver que $d \le \sqrt{n}$ ou $\frac{n}{d} \le \sqrt{n}$, portanto, um dos divisores $d$ e $\frac{n}{d}$ é $\le \sqrt{n}$.
+Podemos usar essa informação para verificar a primalidade.
 
-We try to find a non-trivial divisor, by checking if any of the numbers between $2$ and $\sqrt{n}$ is a divisor of $n$.
-If it is a divisor, then $n$ is definitely not prime, otherwise it is.
+Tentamos encontrar um divisor não trivial, verificando se algum dos números entre $2$ e $\sqrt{n}$ é um divisor de $n$.
+Se for um divisor, então $n$ definitivamente não é primo, caso contrário, ele é.
 
 ```cpp
 bool isPrime(int x) {
@@ -28,34 +28,34 @@ bool isPrime(int x) {
 }
 ```
 
-This is the simplest form of a prime check.
-You can optimize this function quite a bit, for instance by only checking all odd numbers in the loop, since the only even prime number is 2.
-Multiple such optimizations are described in the article about [integer factorization](factorization.md).
+Esta é a forma mais simples de verificar primalidade.
+Você pode otimizar bastante essa função, por exemplo, verificando apenas todos os números ímpares no loop, já que o único número primo par é 2.
+Várias dessas otimizações são descritas no artigo sobre [fatoração de inteiros](factorization.md).
 
-## Fermat primality test
+## Teste de primalidade de Fermat
 
-This is a probabilistic test.
+Este é um teste probabilístico.
 
-Fermat's little theorem (see also [Euler's totient function](phi-function.md)) states, that for a prime number $p$ and a coprime integer $a$ the following equation holds:
+O pequeno teorema de Fermat (veja também [Função totiente de Euler](phi-function.md)) afirma que, para um número primo $p$ e um inteiro coprimo $a$, a seguinte equação é válida:
 
 $$a^{p-1} \equiv 1 \bmod p$$
 
-In general this theorem doesn't hold for composite numbers.
+Em geral, este teorema não se aplica a números compostos.
 
-This can be used to create a primality test.
-We pick an integer $2 \le a \le p - 2$, and check if the equation holds or not.
-If it doesn't hold, e.g. $a^{p-1} \not\equiv 1 \bmod p$, we know that $p$ cannot be a prime number.
-In this case we call the base $a$ a *Fermat witness* for the compositeness of $p$.
+Isso pode ser usado para criar um teste de primalidade.
+Escolhemos um inteiro $2 \le a \le p - 2$ e verificamos se a equação é válida ou não.
+Se não for, ou seja, $a^{p-1} \not\equiv 1 \bmod p$, sabemos que $p$ não pode ser um número primo.
+Neste caso, chamamos a base $a$ de *testemunha de Fermat* (Fermat witness) para o caráter composto de $p$.
 
-However it is also possible, that the equation holds for a composite number.
-So if the equation holds, we don't have a proof for primality.
-We only can say that $p$ is *probably prime*.
-If it turns out that the number is actually composite, we call the base $a$ a *Fermat liar*.
+No entanto, também é possível que a equação seja válida para um número composto.
+Portanto, se a equação for válida, não temos uma prova de primalidade.
+Podemos apenas dizer que $p$ é *provavelmente primo*.
+Se descobrirmos que o número é realmente composto, chamamos a base $a$ de *mentirosa de Fermat* (Fermat liar).
 
-By running the test for all possible bases $a$, we can actually prove that a number is prime.
-However this is not done in practice, since this is a lot more effort that just doing *trial division*.
-Instead the test will be repeated multiple times with random choices for $a$.
-If we find no witness for the compositeness, it is very likely that the number is in fact prime.
+Ao executar o teste para todas as bases possíveis $a$, podemos realmente provar que um número é primo.
+No entanto, isso não é feito na prática, já que exige muito mais esforço do que apenas fazer a *divisão por tentativa*.
+Em vez disso, o teste será repetido várias vezes com escolhas aleatórias para $a$.
+Se não encontrarmos nenhuma testemunha de que o número é composto, é muito provável que o número seja de fato primo.
 
 ```cpp
 bool probablyPrimeFermat(int n, int iter=5) {
@@ -71,26 +71,26 @@ bool probablyPrimeFermat(int n, int iter=5) {
 }
 ```
 
-We use [Binary Exponentiation](binary-exp.md) to efficiently compute the power $a^{p-1}$.
+Usamos a [Exponenciação Binária](binary-exp.md) para calcular eficientemente a potência $a^{p-1}$.
 
-There is one bad news though:
-there exist some composite numbers where $a^{n-1} \equiv 1 \bmod n$ holds for all $a$ coprime to $n$, for instance for the number $561 = 3 \cdot 11 \cdot 17$.
-Such numbers are called *Carmichael numbers*.
-The Fermat primality test can identify these numbers only, if we have immense luck and choose a base $a$ with $\gcd(a, n) \ne 1$.
+Mas há uma má notícia:
+existem alguns números compostos em que $a^{n-1} \equiv 1 \bmod n$ é válido para todos os $a$ coprimos a $n$, por exemplo, para o número $561 = 3 \cdot 11 \cdot 17$.
+Tais números são chamados de *números de Carmichael*.
+O teste de primalidade de Fermat só pode identificar esses números se tivermos muita sorte e escolhermos uma base $a$ com $\gcd(a, n) \ne 1$.
 
-The Fermat test is still being used in practice, as it is very fast and Carmichael numbers are very rare.
-E.g. there only exist 646 such numbers below $10^9$.
+O teste de Fermat ainda é usado na prática, pois é muito rápido e os números de Carmichael são muito raros.
+Por exemplo, existem apenas 646 desses números abaixo de $10^9$.
 
-## Miller-Rabin primality test
+## Teste de primalidade de Miller-Rabin
 
-The Miller-Rabin test extends the ideas from the Fermat test.
+O teste de Miller-Rabin estende as ideias do teste de Fermat.
 
-For an odd number $n$, $n-1$ is even and we can factor out all powers of 2.
-We can write:
+Para um número ímpar $n$, $n-1$ é par e podemos fatorar todas as potências de 2.
+Podemos escrever:
 
-$$n - 1 = 2^s \cdot d,~\text{with}~d~\text{odd}.$$
+$$n - 1 = 2^s \cdot d,~\text{com}~d~\text{ímpar}.$$
 
-This allows us to factorize the equation of Fermat's little theorem:
+Isso nos permite fatorar a equação do pequeno teorema de Fermat:
 
 $$\begin{array}{rl}
 a^{n-1} \equiv 1 \bmod n &\Longleftrightarrow a^{2^s d} - 1 \equiv 0 \bmod n \\\\
@@ -100,30 +100,30 @@ a^{n-1} \equiv 1 \bmod n &\Longleftrightarrow a^{2^s d} - 1 \equiv 0 \bmod n \\\
 &\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) \cdots (a^{d} + 1) (a^{d} - 1) \equiv 0 \bmod n \\\\
 \end{array}$$
 
-If $n$ is prime, then $n$ has to divide one of these factors.
-And in the Miller-Rabin primality test we check exactly that statement, which is a more stricter version of the statement of the Fermat test.
-For a base $2 \le a \le n-2$ we check if either
+Se $n$ é primo, então $n$ tem que dividir um desses fatores.
+No teste de primalidade de Miller-Rabin, verificamos exatamente essa afirmação, que é uma versão mais rigorosa da afirmação do teste de Fermat.
+Para uma base $2 \le a \le n-2$, verificamos se
 
 $$a^d \equiv 1 \bmod n$$
 
-holds or
+ou se
 
 $$a^{2^r d} \equiv -1 \bmod n$$
 
-holds for some $0 \le r \le s - 1$.
+é válido para algum $0 \le r \le s - 1$.
 
-If we found a base $a$ which doesn't satisfy any of the above equalities, then we found a *witness* for the compositeness of $n$.
-In this case we have proven that $n$ is not a prime number.
+Se encontrarmos uma base $a$ que não satisfaz nenhuma das igualdades acima, então encontramos uma *testemunha* de que $n$ é composto.
+Neste caso, provamos que $n$ não é um número primo.
 
-Similar to the Fermat test, it is also possible that the set of equations is satisfied for a composite number.
-In that case the base $a$ is called a *strong liar*.
-If a base $a$ satisfies the equations (one of them), $n$ is only *strong probable prime*.
-However, there are no numbers like the Carmichael numbers, where all non-trivial bases lie.
-In fact it is possible to show, that at most $\frac{1}{4}$ of the bases can be strong liars.
-If $n$ is composite, we have a probability of $\ge 75\%$ that a random base will tell us that it is composite.
-By doing multiple iterations, choosing different random bases, we can tell with very high probability if the number is truly prime or if it is composite.
+Semelhante ao teste de Fermat, também é possível que o conjunto de equações seja satisfeito para um número composto.
+Nesse caso, a base $a$ é chamada de *mentirosa forte* (strong liar).
+Se uma base $a$ satisfizer as equações (uma delas), $n$ é apenas um *primo provável forte*.
+No entanto, não existem números como os números de Carmichael, onde todas as bases não triviais mentem.
+Na verdade, é possível mostrar que no máximo $\frac{1}{4}$ das bases podem ser mentirosas fortes.
+Se $n$ for composto, temos uma probabilidade de $\ge 75\%$ de que uma base aleatória nos dirá que ele é composto.
+Fazendo várias iterações, escolhendo diferentes bases aleatórias, podemos dizer com uma probabilidade muito alta se o número é realmente primo ou se é composto.
 
-Here is an implementation for 64 bit integer.
+Aqui está uma implementação para inteiros de 64 bits.
 
 ```cpp
 using u64 = uint64_t;
@@ -153,7 +153,7 @@ bool check_composite(u64 n, u64 a, u64 d, int s) {
     return true;
 };
 
-bool MillerRabin(u64 n, int iter=5) { // returns true if n is probably prime, else returns false.
+bool MillerRabin(u64 n, int iter=5) { // retorna verdadeiro se n for provavelmente primo, senão retorna falso.
     if (n < 4)
         return n == 2 || n == 3;
 
@@ -173,25 +173,25 @@ bool MillerRabin(u64 n, int iter=5) { // returns true if n is probably prime, el
 }
 ```
 
-Before the Miller-Rabin test you can test additionally if one of the first few prime numbers is a divisor.
-This can speed up the test by a lot, since most composite numbers have very small prime divisors.
-E.g. $88\%$ of all numbers have a prime factor smaller than $100$.
+Antes do teste de Miller-Rabin, você pode testar adicionalmente se um dos primeiros números primos é um divisor.
+Isso pode acelerar muito o teste, já que a maioria dos números compostos tem divisores primos muito pequenos.
+Por exemplo, $88\%$ de todos os números têm um fator primo menor que $100$.
 
-### Deterministic version
+### Versão determinística
 
-Miller showed that it is possible to make the algorithm deterministic by only checking all bases $\le O((\ln n)^2)$.
-Bach later gave a concrete bound, it is only necessary to test all bases $a \le 2 \ln(n)^2$.
+Miller mostrou que é possível tornar o algoritmo determinístico verificando apenas todas as bases $\le O((\ln n)^2)$.
+Bach mais tarde forneceu um limite concreto. É necessário apenas testar todas as bases $a \le 2 \ln(n)^2$.
 
-This is still a pretty large number of bases.
-So people have invested quite a lot of computation power into finding lower bounds.
-It turns out, for testing a 32 bit integer it is only necessary to check the first 4 prime bases: 2, 3, 5 and 7.
-The smallest composite number that fails this test is $3,215,031,751 = 151 \cdot 751 \cdot 28351$.
-And for testing 64 bit integer it is enough to check the first 12 prime bases: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, and 37.
+Ainda é um número muito grande de bases.
+Portanto, as pessoas investiram muito poder de computação para encontrar limites inferiores.
+Acontece que, para testar um inteiro de 32 bits, só é necessário verificar as primeiras 4 bases primas: 2, 3, 5 e 7.
+O menor número composto que falha neste teste é $3215031751 = 151 \cdot 751 \cdot 28351$.
+E para testar inteiros de 64 bits é suficiente verificar as primeiras 12 bases primas: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31 e 37.
 
-This results in the following deterministic implementation:
+Isso resulta na seguinte implementação determinística:
 
 ```cpp
-bool MillerRabin(u64 n) { // returns true if n is prime, else returns false.
+bool MillerRabin(u64 n) { // retorna verdadeiro se n for primo, senão retorna falso.
     if (n < 2)
         return false;
 
@@ -212,10 +212,10 @@ bool MillerRabin(u64 n) { // returns true if n is prime, else returns false.
 }
 ```
 
-It's also possible to do the check with only 7 bases: 2, 325, 9375, 28178, 450775, 9780504 and 1795265022.
-However, since these numbers (except 2) are not prime, you need to check additionally if the number you are checking is equal to any prime divisor of those bases: 2, 3, 5, 13, 19, 73, 193, 407521, 299210837.
+Também é possível fazer a verificação com apenas 7 bases: 2, 325, 9375, 28178, 450775, 9780504 e 1795265022.
+No entanto, como esses números (exceto 2) não são primos, você precisa verificar adicionalmente se o número que você está testando é igual a qualquer divisor primo dessas bases: 2, 3, 5, 13, 19, 73, 193, 407521, 299210837.
 
-## Practice Problems
+## Problemas Práticos
 
 - [SPOJ - Prime or Not](https://www.spoj.com/problems/PON/)
 - [Project euler - Investigating a Prime Pattern](https://projecteuler.net/problem=146)
