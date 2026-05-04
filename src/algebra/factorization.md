@@ -3,25 +3,25 @@ tags:
   - Original
 ---
 
-# Integer factorization
+# Fatoração de Inteiros
 
-In this article we list several algorithms for the factorization of integers, each of which can be either fast or varying levels of slow depending on their input.
+Neste artigo, listamos vários algoritmos para a fatoração de inteiros, cada um podendo ser rápido ou lento em diferentes níveis, dependendo de sua entrada.
 
-Notice, if the number that you want to factorize is actually a prime number, most of the algorithms will run very slowly. This is especially true for Fermat's, Pollard's p-1 and Pollard's rho factorization algorithms.
-Therefore, it makes the most sense to perform a probabilistic (or a fast deterministic) [primality test](primality_tests.md) before trying to factorize the number.
+Note que, se o número que você deseja fatorar for na verdade um número primo, a maioria dos algoritmos executará muito lentamente. Isso é especialmente verdadeiro para os algoritmos de fatoração de Fermat, p-1 de Pollard e rho de Pollard.
+Portanto, faz mais sentido realizar um [teste de primalidade](primality_tests.md) probabilístico (ou um determinístico rápido) antes de tentar fatorar o número.
 
-## Trial division
+## Divisão por tentativas
 
-This is the most basic algorithm to find a prime factorization.
+Este é o algoritmo mais básico para encontrar uma fatoração em primos.
 
-We divide by each possible divisor $d$.
-It can be observed that it is impossible for all prime factors of a composite number $n$ to be bigger than $\sqrt{n}$.
-Therefore, we only need to test the divisors $2 \le d \le \sqrt{n}$, which gives us the prime factorization in $O(\sqrt{n})$.
-(This is [pseudo-polynomial time](https://en.wikipedia.org/wiki/Pseudo-polynomial_time), i.e. polynomial in the value of the input but exponential in the number of bits of the input.)
+Nós dividimos por cada divisor possível $d$.
+Pode-se observar que é impossível que todos os fatores primos de um número composto $n$ sejam maiores que $\sqrt{n}$.
+Portanto, precisamos apenas testar os divisores $2 \le d \le \sqrt{n}$, o que nos dá a fatoração em primos em $O(\sqrt{n})$.
+(Isto é [tempo pseudo-polinomial](https://en.wikipedia.org/wiki/Pseudo-polynomial_time), ou seja, polinomial no valor da entrada, mas exponencial no número de bits da entrada.)
 
-The smallest divisor must be a prime number.
-We remove the factored number, and continue the process.
-If we cannot find any divisor in the range $[2; \sqrt{n}]$, then the number itself has to be prime.
+O menor divisor deve ser um número primo.
+Nós removemos o número fatorado e continuamos o processo.
+Se não conseguirmos encontrar nenhum divisor no intervalo $[2; \sqrt{n}]$, então o próprio número tem que ser primo.
 
 ```{.cpp file=factorization_trial_division1}
 vector<long long> trial_division1(long long n) {
@@ -38,12 +38,12 @@ vector<long long> trial_division1(long long n) {
 }
 ```
 
-### Wheel factorization
+### Roda de fatoração (Wheel factorization)
 
-This is an optimization of the trial division.
-Once we know that the number is not divisible by 2, we don't need to check other even numbers.
-This leaves us with only $50\%$ of the numbers to check.
-After factoring out 2, and getting an odd number, we can simply start with 3 and only count other odd numbers.
+Esta é uma otimização da divisão por tentativas.
+Uma vez que sabemos que o número não é divisível por 2, não precisamos verificar outros números pares.
+Isso nos deixa com apenas $50\%$ dos números para verificar.
+Depois de fatorar o 2 e obter um número ímpar, podemos simplesmente começar com 3 e contar apenas outros números ímpares.
 
 ```{.cpp file=factorization_trial_division2}
 vector<long long> trial_division2(long long n) {
@@ -64,16 +64,16 @@ vector<long long> trial_division2(long long n) {
 }
 ```
 
-This method can be extended further.
-If the number is not divisible by 3, we can also ignore all other multiples of 3 in the future computations.
-So we only need to check the numbers $5, 7, 11, 13, 17, 19, 23, \dots$.
-We can observe a pattern of these remaining numbers.
-We need to check all numbers with $d \bmod 6 = 1$ and $d \bmod 6 = 5$.
-So this leaves us with only $33.3\%$ percent of the numbers to check.
-We can implement this by factoring out the primes 2 and 3 first, after which we start with 5 and only count remainders $1$ and $5$ modulo $6$.
+Este método pode ser estendido ainda mais.
+Se o número não for divisível por 3, também podemos ignorar todos os outros múltiplos de 3 nos cálculos futuros.
+Portanto, precisamos apenas verificar os números $5, 7, 11, 13, 17, 19, 23, \dots$.
+Podemos observar um padrão desses números restantes.
+Precisamos verificar todos os números com $d \bmod 6 = 1$ e $d \bmod 6 = 5$.
+Isso nos deixa com apenas 33,3% dos números para verificar.
+Podemos implementar isso fatorando primeiro os primos 2 e 3, após o qual começamos com 5 e contamos apenas os restos $1$ e $5$ módulo $6$.
 
-Here is an implementation for the prime number 2, 3 and 5.
-It is convenient to store the skipping strides in an array.
+Aqui está uma implementação para os números primos 2, 3 e 5.
+É conveniente armazenar os saltos em um array.
 
 ```{.cpp file=factorization_trial_division3}
 vector<long long> trial_division3(long long n) {
@@ -100,12 +100,12 @@ vector<long long> trial_division3(long long n) {
 }
 ```
 
-If we continue exending this method to include even more primes, better percentages can be reached, but the skip lists will become larger. 
+Se continuarmos estendendo este método para incluir ainda mais primos, porcentagens melhores podem ser alcançadas, mas as listas de saltos se tornarão maiores.
 
-### Precomputed primes
+### Primos pré-computados
 
-Extending the wheel factorization method indefinitely, we will only be left with prime numbers to check. 
-A good way of checking this is to precompute all prime numbers with the [Sieve of Eratosthenes](sieve-of-eratosthenes.md) until $\sqrt{n}$, and test them individually.
+Estendendo o método da roda de fatoração indefinidamente, restaremos apenas com números primos para verificar.
+Uma boa maneira de verificar isso é pré-computar todos os números primos com o [Crivo de Eratóstenes](sieve-of-eratosthenes.md) até $\sqrt{n}$, e testá-los individualmente.
 
 ```{.cpp file=factorization_trial_division4}
 vector<long long> primes;
@@ -126,14 +126,14 @@ vector<long long> trial_division4(long long n) {
 }
 ```
 
-## Fermat's factorization method
+## Método de fatoração de Fermat
 
-We can write an odd composite number $n = p \cdot q$ as the difference of two squares $n = a^2 - b^2$:
+Podemos escrever um número composto ímpar $n = p \cdot q$ como a diferença de dois quadrados $n = a^2 - b^2$:
 
 $$n = \left(\frac{p + q}{2}\right)^2 - \left(\frac{p - q}{2}\right)^2$$
 
-Fermat's factorization method tries to exploit this fact by guessing the first square $a^2$, and checking if the remaining part, $b^2 = a^2 - n$, is also a square number.
-If it is, then we have found the factors $a - b$ and $a + b$ of $n$.
+O método de fatoração de Fermat tenta explorar esse fato adivinhando o primeiro quadrado $a^2$, e verificando se a parte restante, $b^2 = a^2 - n$, também é um número quadrado perfeito.
+Se for, então encontramos os fatores $a - b$ e $a + b$ de $n$.
 
 ```cpp
 int fermat(int n) {
@@ -149,50 +149,50 @@ int fermat(int n) {
 }
 ```
 
-This factorization method can be very fast if the difference between the two factors $p$ and $q$ is small.
-The algorithm runs in $O(|p - q|)$ time.
-In practice though, this method is rarely used. Once factors become further apart, it is extremely slow. 
+Este método de fatoração pode ser muito rápido se a diferença entre os dois fatores $p$ e $q$ for pequena.
+O algoritmo roda em tempo $O(|p - q|)$.
+Na prática, porém, este método raramente é usado. Uma vez que os fatores se distanciam, ele se torna extremamente lento.
 
-However, there are still a large number of optimization options regarding this approach.
-By looking at the squares $a^2$ modulo a fixed small number, it can be observed that certain values $a$ don't have to be viewed, since they cannot produce a square number $a^2 - n$.
+No entanto, ainda há um grande número de opções de otimização em relação a essa abordagem.
+Olhando para os quadrados $a^2$ módulo um número fixo pequeno, pode-se observar que certos valores de $a$ não precisam ser avaliados, já que não podem produzir um quadrado perfeito $a^2 - n$.
 
 
-## Pollard's $p - 1$ method { data-toc-label="Pollard's <script type='math/tex'>p - 1</script> method" }
+## Método $p - 1$ de Pollard { data-toc-label="Método <script type='math/tex'>p - 1</script> de Pollard" }
 
-It is very likely that a number $n$ has at least one prime factor $p$ such that $p - 1$ is $\mathrm{B}$**-powersmooth** for small $\mathrm{B}$. An integer $m$ is said to be $\mathrm{B}$-powersmooth if every prime power dividing $m$ is at most $\mathrm{B}$. Formally, let $\mathrm{B} \geqslant 1$ and let $m$ be any positive integer. Suppose the prime factorization of $m$ is $m = \prod {q_i}^{e_i}$, where each $q_i$ is a prime and $e_i \geqslant 1$. Then $m$ is $\mathrm{B}$-powersmooth if, for all $i$, ${q_i}^{e_i} \leqslant \mathrm{B}$. 
-E.g. the prime factorization of $4817191$ is $1303 \cdot 3697$.
-And the values, $1303 - 1$ and $3697 - 1$, are $31$-powersmooth and $16$-powersmooth respectively, because $1303 - 1 = 2 \cdot 3 \cdot 7 \cdot 31$ and $3697 - 1 = 2^4 \cdot 3 \cdot 7 \cdot 11$.
-In 1974 John Pollard invented a method to extract factors $p$, s.t. $p-1$ is $\mathrm{B}$-powersmooth, from a composite number.
+É muito provável que um número $n$ tenha pelo menos um fator primo $p$ tal que $p - 1$ seja $\mathrm{B}$**-powersmooth** para um $\mathrm{B}$ pequeno. Um inteiro $m$ é dito ser $\mathrm{B}$-powersmooth se toda potência de primo que divide $m$ for no máximo $\mathrm{B}$. Formalmente, seja $\mathrm{B} \geqslant 1$ e seja $m$ um inteiro positivo qualquer. Suponha que a fatoração em primos de $m$ seja $m = \prod {q_i}^{e_i}$, onde cada $q_i$ é um primo e $e_i \geqslant 1$. Então $m$ é $\mathrm{B}$-powersmooth se, para todo $i$, ${q_i}^{e_i} \leqslant \mathrm{B}$.
+Ex.: a fatoração em primos de $4817191$ é $1303 \cdot 3697$.
+E os valores, $1303 - 1$ e $3697 - 1$, são $31$-powersmooth e $16$-powersmooth respectivamente, porque $1303 - 1 = 2 \cdot 3 \cdot 7 \cdot 31$ e $3697 - 1 = 2^4 \cdot 3 \cdot 7 \cdot 11$.
+Em 1974, John Pollard inventou um método para extrair fatores $p$, tal que $p-1$ é $\mathrm{B}$-powersmooth, de um número composto.
 
-The idea comes from [Fermat's little theorem](phi-function.md#application).
-Let a factorization of $n$ be $n = p \cdot q$.
-It says that if $a$ is coprime to $p$, the following statement holds:
+A ideia vem do [Pequeno Teorema de Fermat](phi-function.md#application).
+Seja uma fatoração de $n$ dada por $n = p \cdot q$.
+O teorema diz que se $a$ é coprimo de $p$, a seguinte afirmação é verdadeira:
 
 $$a^{p - 1} \equiv 1 \pmod{p}$$
 
-This also means that
+Isso também significa que
 
 $${\left(a^{(p - 1)}\right)}^k \equiv a^{k \cdot (p - 1)} \equiv 1 \pmod{p}.$$
 
-So for any $M$ with $p - 1 ~|~ M$ we know that $a^M \equiv 1$.
-This means that $a^M - 1 = p \cdot r$, and because of that also $p ~|~ \gcd(a^M - 1, n)$.
+Portanto, para qualquer $M$ onde $p - 1 ~|~ M$, sabemos que $a^M \equiv 1$.
+Isso significa que $a^M - 1 = p \cdot r$, e por causa disso também temos $p ~|~ \gcd(a^M - 1, n)$.
 
-Therefore, if $p - 1$ for a factor $p$ of $n$ divides $M$, we can extract a factor using [Euclid's algorithm](euclid-algorithm.md).
+Assim, se $p - 1$ para um fator $p$ de $n$ dividir $M$, podemos extrair um fator usando o [Algoritmo de Euclides](euclid-algorithm.md).
 
-It is clear, that the smallest $M$ that is a multiple of every $\mathrm{B}$-powersmooth number is $\text{lcm}(1,~2~,3~,4~,~\dots,~B)$.
-Or alternatively:
+Fica claro que o menor $M$ que é múltiplo de todo número $\mathrm{B}$-powersmooth é $\text{lcm}(1,~2~,3~,4~,~\dots,~B)$.
+Ou alternativamente:
 
-$$M = \prod_{\text{prime } q \le B} q^{\lfloor \log_q B \rfloor}$$
+$$M = \prod_{\text{primo } q \le B} q^{\lfloor \log_q B \rfloor}$$
 
-Notice, if $p-1$ divides $M$ for all prime factors $p$ of $n$, then $\gcd(a^M - 1, n)$ will just be $n$.
-In this case we don't receive a factor.
-Therefore, we will try to perform the $\gcd$ multiple times, while we compute $M$.
+Note que, se $p-1$ dividir $M$ para todos os fatores primos $p$ de $n$, então $\gcd(a^M - 1, n)$ será apenas $n$.
+Neste caso, não obtemos um fator.
+Portanto, tentaremos realizar o $\gcd$ várias vezes, enquanto calculamos $M$.
 
-Some composite numbers don't have factors $p$ s.t. $p-1$ is $\mathrm{B}$-powersmooth for small $\mathrm{B}$.
-For example, for the composite number $100~000~000~000~000~493 = 763~013 \cdot 131~059~365~961$, values $p-1$ are $190~753$-powersmooth and $1~092~161~383$-powersmooth correspondingly.
-We will have to choose $B \geq 190~753$ to factorize the number.
+Alguns números compostos não têm fatores $p$ tais que $p-1$ é $\mathrm{B}$-powersmooth para um pequeno $\mathrm{B}$.
+Por exemplo, para o número composto $100~000~000~000~000~493 = 763~013 \cdot 131~059~365~961$, os valores de $p-1$ são $190~753$-powersmooth e $1~092~161~383$-powersmooth, respectivamente.
+Teremos que escolher $B \geq 190~753$ para fatorar o número.
 
-In the following implementation we start with $\mathrm{B} = 10$ and increase $\mathrm{B}$ after each each iteration.
+Na implementação a seguir, começamos com $\mathrm{B} = 10$ e aumentamos $\mathrm{B}$ após cada iteração.
 
 ```{.cpp file=factorization_p_minus_1}
 long long pollards_p_minus_1(long long n) {
@@ -204,7 +204,7 @@ long long pollards_p_minus_1(long long n) {
         if (g > 1)
             return g;
 
-        // compute a^M
+        // calcula a^M
         for (int p : primes) {
             if (p >= B)
                 continue;
@@ -224,57 +224,57 @@ long long pollards_p_minus_1(long long n) {
 
 ```
 
-Observe that this is a probabilistic algorithm.
-A consequence of this is that there is a possibility of the algorithm being unable to find a factor at all. 
+Observe que este é um algoritmo probabilístico.
+Uma consequência disso é que há uma possibilidade de o algoritmo ser incapaz de encontrar qualquer fator.
 
-The complexity is $O(B \log B \log^2 n)$ per iteration.
+A complexidade é $O(B \log B \log^2 n)$ por iteração.
 
-## Pollard's rho algorithm
+## Algoritmo rho de Pollard
 
-Pollard's Rho Algorithm is yet another factorization algorithm from John Pollard.
+O Algoritmo Rho de Pollard é mais um algoritmo de fatoração de John Pollard.
 
-Let the prime factorization of a number be $n = p q$.
-The algorithm looks at a pseudo-random sequence $\{x_i\} = \{x_0,~f(x_0),~f(f(x_0)),~\dots\}$ where $f$ is a polynomial function, usually $f(x) = (x^2 + c) \bmod n$ is chosen with $c = 1$.
+Seja a fatoração em primos de um número $n = p q$.
+O algoritmo analisa uma sequência pseudoaleatória $\{x_i\} = \{x_0,~f(x_0),~f(f(x_0)),~\dots\}$ onde $f$ é uma função polinomial, geralmente escolhe-se $f(x) = (x^2 + c) \bmod n$ com $c = 1$.
 
-In this instance, we are not interested in the sequence $\{x_i\}$. 
-We are more interested in the sequence $\{x_i \bmod p\}$.
-Since $f$ is a polynomial function, and all the values are in the range $[0;~p)$, this sequence will eventually converge into a loop.
-The **birthday paradox** actually suggests that the expected number of elements is $O(\sqrt{p})$ until the repetition starts.
-If $p$ is smaller than $\sqrt{n}$, the repetition will likely start in $O(\sqrt[4]{n})$.
+Neste caso, não estamos interessados na sequência $\{x_i\}$.
+Estamos mais interessados na sequência $\{x_i \bmod p\}$.
+Como $f$ é uma função polinomial e todos os valores estão no intervalo $[0;~p)$, essa sequência eventualmente convergirá para um loop (ciclo).
+O **paradoxo do aniversário** sugere na verdade que o número esperado de elementos é $O(\sqrt{p})$ até que a repetição comece.
+Se $p$ for menor que $\sqrt{n}$, a repetição provavelmente começará em $O(\sqrt[4]{n})$.
 
-Here is a visualization of such a sequence $\{x_i \bmod p\}$ with $n = 2206637$, $p = 317$, $x_0 = 2$ and $f(x) = x^2 + 1$.
-From the form of the sequence you can see very clearly why the algorithm is called Pollard's $\rho$ algorithm.
+Aqui está uma visualização de tal sequência $\{x_i \bmod p\}$ com $n = 2206637$, $p = 317$, $x_0 = 2$ e $f(x) = x^2 + 1$.
+Pela forma da sequência, você pode ver muito claramente por que o algoritmo é chamado de algoritmo $\rho$ (rho) de Pollard.
 
 <div style="text-align: center;">
-  <img src="pollard_rho.png" alt="Pollard's rho visualization">
+  <img src="pollard_rho.png" alt="Visualização rho de Pollard">
 </div>
 
-Yet, there is still an open question.
-How can we exploit the properties of the sequence $\{x_i \bmod p\}$ to our advantage without even knowing the number $p$ itself?
+Ainda assim, existe uma questão em aberto.
+Como podemos explorar as propriedades da sequência $\{x_i \bmod p\}$ a nosso favor sem nem mesmo saber o número $p$ em si?
 
-It's actually quite easy.
-There is a cycle in the sequence $\{x_i \bmod p\}_{i \le j}$ if and only if there are two indices $s, t \le j$ such that $x_s \equiv x_t \bmod p$.
-This equation can be rewritten as $x_s - x_t \equiv 0 \bmod p$ which is the same as $p ~|~ \gcd(x_s - x_t, n)$.
+É na verdade bastante fácil.
+Existe um ciclo na sequência $\{x_i \bmod p\}_{i \le j}$ se e somente se houver dois índices $s, t \le j$ tais que $x_s \equiv x_t \bmod p$.
+Esta equação pode ser reescrita como $x_s - x_t \equiv 0 \bmod p$ o que é o mesmo que $p ~|~ \gcd(x_s - x_t, n)$.
 
-Therefore, if we find two indices $s$ and $t$ with $g = \gcd(x_s - x_t, n) > 1$, we have found a cycle and also a factor $g$ of $n$.
-It is possible that $g = n$.
-In this case we haven't found a proper factor, so we must repeat the algorithm with a different parameter (different starting value $x_0$, different constant $c$ in the polynomial function $f$).
+Portanto, se encontrarmos dois índices $s$ e $t$ com $g = \gcd(x_s - x_t, n) > 1$, encontramos um ciclo e também um fator $g$ de $n$.
+É possível que $g = n$.
+Nesse caso, não encontramos um fator adequado, então devemos repetir o algoritmo com parâmetros diferentes (um valor inicial $x_0$ diferente, ou uma constante $c$ diferente na função polinomial $f$).
 
-To find the cycle, we can use any common cycle detection algorithm.
+Para encontrar o ciclo, podemos usar qualquer algoritmo comum de detecção de ciclo.
 
-### Floyd's cycle-finding algorithm
+### Algoritmo de Floyd para detecção de ciclo
 
-This algorithm finds a cycle by using two pointers moving over the sequence at differing speeds.
-During each iteration, the first pointer will advance one element over, while the second pointer advances to every other element. 
-Using this idea it is easy to observe that if there is a cycle, at some point the second pointer will come around to meet the first one during the loops. 
-If the cycle length is $\lambda$ and the $\mu$ is the first index at which the cycle starts, then the algorithm will run in $O(\lambda + \mu)$ time.
+Este algoritmo encontra um ciclo usando dois ponteiros movendo-se pela sequência a velocidades diferentes.
+Durante cada iteração, o primeiro ponteiro avança um elemento, enquanto o segundo ponteiro avança para cada segundo elemento (dois a dois).
+Usando essa ideia, é fácil observar que se houver um ciclo, em algum momento o segundo ponteiro dará a volta e encontrará o primeiro durante os loops.
+Se o comprimento do ciclo for $\lambda$ e $\mu$ for o primeiro índice em que o ciclo começa, então o algoritmo rodará em tempo $O(\lambda + \mu)$.
 
-This algorithm is also known as the [Tortoise and Hare algorithm](../others/tortoise_and_hare.md), based on the tale in which a tortoise (the slow pointer) and a hare (the faster pointer) have a race.
+Este algoritmo também é conhecido como o [Algoritmo da Tartaruga e da Lebre](../others/tortoise_and_hare.md), baseado na fábula em que uma tartaruga (o ponteiro lento) e uma lebre (o ponteiro mais rápido) disputam uma corrida.
 
-It is actually possible to determine the parameter $\lambda$ and $\mu$ using this algorithm (also in $O(\lambda + \mu)$ time and $O(1)$ space).
-When a cycle is detected, the algorithm will return 'True'. 
-If the sequence doesn't have a cycle, then the function will loop endlessly.
-However, using Pollard's Rho Algorithm, this can be prevented. 
+É na verdade possível determinar os parâmetros $\lambda$ e $\mu$ usando este algoritmo (também em tempo $O(\lambda + \mu)$ e espaço $O(1)$).
+Quando um ciclo é detectado, o algoritmo retornará 'True' (Verdadeiro).
+Se a sequência não tiver um ciclo, a função entrará em um loop infinito.
+No entanto, usando o Algoritmo Rho de Pollard, isso pode ser prevenido.
 
 ```text
 function floyd(f, x0):
@@ -286,10 +286,10 @@ function floyd(f, x0):
     return true
 ```
 
-### Implementation
+### Implementação
 
-First, here is an implementation using the **Floyd's cycle-finding algorithm**.
-The algorithm generally runs in $O(\sqrt[4]{n} \log(n))$ time.
+Primeiro, aqui está uma implementação usando o **algoritmo de Floyd para detecção de ciclo**.
+O algoritmo geralmente roda em tempo $O(\sqrt[4]{n} \log(n))$.
 
 ```{.cpp file=pollard_rho}
 long long mult(long long a, long long b, long long mod) {
@@ -314,7 +314,7 @@ long long rho(long long n, long long x0=2, long long c=1) {
 }
 ```
 
-The following table shows the values of $x$ and $y$ during the algorithm for $n = 2206637$, $x_0 = 2$ and $c = 1$.
+A tabela a seguir mostra os valores de $x$ e $y$ durante o algoritmo para $n = 2206637$, $x_0 = 2$ e $c = 1$.
 
 $$
 \newcommand\T{\Rule{0pt}{1em}{.3em}}
@@ -333,8 +333,8 @@ i & x_i \bmod n & x_{2i} \bmod n & x_i \bmod 317 & x_{2i} \bmod 317 & \gcd(x_i -
 \hline
 \end{array}$$
 
-The implementation uses a function `mult`, that multiplies two integers $\le 10^{18}$ without overflow by using a GCC's type `__int128` for 128-bit integer.
-If GCC is not available, you can using a similar idea as [binary exponentiation](binary-exp.md).
+A implementação usa uma função `mult`, que multiplica dois inteiros $\le 10^{18}$ sem overflow usando o tipo `__int128` do GCC para inteiros de 128 bits.
+Se o GCC não estiver disponível, você pode usar uma ideia semelhante à da [exponenciação binária](binary-exp.md).
 
 ```{.cpp file=pollard_rho_mult2}
 long long mult(long long a, long long b, long long mod) {
@@ -349,18 +349,18 @@ long long mult(long long a, long long b, long long mod) {
 }
 ```
 
-Alternatively you can also implement the [Montgomery multiplication](montgomery_multiplication.md).
+Alternativamente, você também pode implementar a [multiplicação de Montgomery](montgomery_multiplication.md).
 
-As stated previously, if $n$ is composite and the algorithm returns $n$ as factor, you have to repeat the procedure with different parameters $x_0$ and $c$.
-E.g. the choice $x_0 = c = 1$ will not factor $25 = 5 \cdot 5$.
-The algorithm will return $25$.
-However, the choice $x_0 = 1$, $c = 2$ will factor it.
+Conforme dito anteriormente, se $n$ é composto e o algoritmo retorna $n$ como fator, você tem que repetir o procedimento com parâmetros diferentes $x_0$ e $c$.
+Ex.: a escolha $x_0 = c = 1$ não fatorará $25 = 5 \cdot 5$.
+O algoritmo retornará $25$.
+No entanto, a escolha $x_0 = 1$, $c = 2$ o fatorará.
 
-### Brent's algorithm
+### Algoritmo de Brent
 
-Brent implements a similar method to Floyd, using two pointers.
-The difference being that instead of advancing the pointers by one and two places respectively, they are advanced by powers of two. 
-As soon as $2^i$ is greater than $\lambda$ and $\mu$, we will find the cycle.
+Brent implementa um método semelhante ao de Floyd, usando dois ponteiros.
+A diferença é que, em vez de avançar os ponteiros em uma e duas posições respectivamente, eles são avançados por potências de dois.
+Assim que $2^i$ for maior que $\lambda$ e $\mu$, encontraremos o ciclo.
 
 ```text
 function floyd(f, x0):
@@ -377,12 +377,12 @@ function floyd(f, x0):
     return true
 ```
 
-Brent's algorithm also runs in linear time, but is generally faster than Floyd's, since it uses less evaluations of the function $f$.
+O algoritmo de Brent também roda em tempo linear, mas geralmente é mais rápido que o de Floyd, pois usa menos avaliações da função $f$.
 
-### Implementation
+### Implementação
 
-The straightforward implementation of Brent's algorithm can be sped up by omitting the terms $x_l - x_k$ if $k < \frac{3 \cdot l}{2}$.
-In addition, instead of performing the $\gcd$ computation at every step, we multiply the terms and only actually check $\gcd$ every few steps and backtrack if overshot.
+A implementação direta do algoritmo de Brent pode ser acelerada omitindo os termos $x_l - x_k$ se $k < \frac{3 \cdot l}{2}$.
+Além disso, em vez de realizar o cálculo do $\gcd$ a cada passo, nós multiplicamos os termos e só checamos o $\gcd$ de fato a cada poucos passos, retrocedendo caso passe do limite (overshot).
 
 ```{.cpp file=pollard_rho_brent}
 long long brent(long long n, long long x0=2, long long c=1) {
@@ -419,9 +419,9 @@ long long brent(long long n, long long x0=2, long long c=1) {
 }
 ```
 
-The combination of a trial division for small prime numbers together with Brent's version of Pollard's rho algorithm makes a very powerful factorization algorithm.
+A combinação de uma divisão por tentativas para primos pequenos junto com a versão de Brent do algoritmo rho de Pollard forma um algoritmo de fatoração muito poderoso.
 
-## Practice Problems
+## Problemas Práticos
 
 - [SPOJ - FACT0](https://www.spoj.com/problems/FACT0/)
 - [SPOJ - FACT1](https://www.spoj.com/problems/FACT1/)
