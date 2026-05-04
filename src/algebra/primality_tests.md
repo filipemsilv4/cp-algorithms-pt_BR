@@ -119,7 +119,7 @@ Semelhante ao teste de Fermat, também é possível que o conjunto de equações
 Nesse caso, a base $a$ é chamada de *mentirosa forte* (strong liar).
 Se uma base $a$ satisfizer as equações (uma delas), $n$ é apenas um *primo provável forte*.
 No entanto, não existem números como os números de Carmichael, onde todas as bases não triviais mentem.
-Na verdade, é possível mostrar que no máximo $\frac{1}{4}$ das bases pode ser mentirosa forte.
+Na verdade, é possível mostrar que no máximo $\frac{1}{4}$ das bases podem ser mentirosas fortes.
 Se $n$ for composto, temos uma probabilidade de $\ge 75\%$ de que uma base aleatória nos dirá que ele é composto.
 Fazendo várias iterações, escolhendo diferentes bases aleatórias, podemos dizer com uma probabilidade muito alta se o número é realmente primo ou se é composto.
 
