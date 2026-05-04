@@ -30,7 +30,7 @@
     
     
       
-        <title>🇺🇸 Number of divisors / sum of divisors - Algoritmos para Programação Competitiva</title>
+        <title>🇧🇷 Número de divisores / soma dos divisores - Algoritmos para Programação Competitiva</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#number-of-divisors-sum-of-divisors" class="md-skip">
+        <a href="#numero-de-divisores-soma-dos-divisores" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
           <span class="md-ellipsis">
             <a href="#" onclick="scrollToTop()">
               
-                🇺🇸 Number of divisors / sum of divisors
+                🇧🇷 Número de divisores / soma dos divisores
               
             </a>
           </span>
@@ -1023,7 +1023,7 @@
   <span class="md-ellipsis">
     
   
-    🇺🇸 Number of divisors / sum of divisors
+    🇧🇷 Número de divisores / soma dos divisores
   
 
     
@@ -1041,7 +1041,7 @@
   <span class="md-ellipsis">
     
   
-    🇺🇸 Number of divisors / sum of divisors
+    🇧🇷 Número de divisores / soma dos divisores
   
 
     
@@ -1067,10 +1067,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#number-of-divisors" class="md-nav__link">
+  <a href="#numero-de-divisores" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Number of divisors
+        Número de divisores
       
     </span>
   </a>
@@ -1078,10 +1078,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sum-of-divisors" class="md-nav__link">
+  <a href="#soma-dos-divisores" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sum of divisors
+        Soma dos divisores
       
     </span>
   </a>
@@ -1089,10 +1089,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multiplicative-functions" class="md-nav__link">
+  <a href="#funcoes-multiplicativas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multiplicative functions
+        Funções multiplicativas
       
     </span>
   </a>
@@ -1100,10 +1100,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#problemas-praticos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Problemas Práticos
       
     </span>
   </a>
@@ -7899,9 +7899,9 @@
                   <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
-  const issueTitle = "Problem on article " + "\ud83c\uddfa\ud83c\uddf8 Number of divisors / sum of divisors";
+  const issueTitle = "Problem on article " + "\ud83c\udde7\ud83c\uddf7 N\u00famero de divisores / soma dos divisores";
 	const issueBody = `
- **Article:** [`+ "\ud83c\uddfa\ud83c\uddf8 Number of divisors / sum of divisors" + `](${window.location.href})
+ **Article:** [`+ "\ud83c\udde7\ud83c\uddf7 N\u00famero de divisores / soma dos divisores" + `](${window.location.href})
 
 **Problem:**
 <!--
@@ -7928,6 +7928,12 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
+    
+  
 
   
   
@@ -7996,7 +8002,7 @@ Describe the issue of this article in detail.
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
 
   Last update:
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="August 24, 2023 14:17:22 UTC">August 24, 2023</span>&emsp;
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 4, 2026 21:05:16 UTC">May 4, 2026</span>&emsp;
 
 <!-- Tags -->
 
@@ -8010,24 +8016,24 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="number-of-divisors-sum-of-divisors">Number of divisors / sum of divisors<a class="headerlink" href="#number-of-divisors-sum-of-divisors" title="Permanent link">&para;</a></h1>
-<p>In this article we discuss how to compute the number of divisors <span class="arithmatex">$d(n)$</span> and the sum of divisors <span class="arithmatex">$\sigma(n)$</span> of a given number <span class="arithmatex">$n$</span>.</p>
-<h2 id="number-of-divisors">Number of divisors<a class="headerlink" href="#number-of-divisors" title="Permanent link">&para;</a></h2>
-<p>It should be obvious that the prime factorization of a divisor <span class="arithmatex">$d$</span> has to be a subset of the prime factorization of <span class="arithmatex">$n$</span>, e.g. <span class="arithmatex">$6 = 2 \cdot 3$</span> is a divisor of <span class="arithmatex">$60 = 2^2 \cdot 3 \cdot 5$</span>.
-So we only need to find all different subsets of the prime factorization of <span class="arithmatex">$n$</span>.</p>
-<p>Usually the number of subsets is <span class="arithmatex">$2^x$</span> for a set with <span class="arithmatex">$x$</span> elements.
-However this is no longer true, if there are repeated elements in the set. In our case some prime factors may appear multiple times in the prime factorization of <span class="arithmatex">$n$</span>.</p>
-<p>If a prime factor <span class="arithmatex">$p$</span> appears <span class="arithmatex">$e$</span> times in the prime factorization of <span class="arithmatex">$n$</span>, then we can use the factor <span class="arithmatex">$p$</span> up to <span class="arithmatex">$e$</span> times in the subset.
-Which means we have <span class="arithmatex">$e+1$</span> choices.</p>
-<p>Therefore if the prime factorization of <span class="arithmatex">$n$</span> is <span class="arithmatex">$p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$</span>, where <span class="arithmatex">$p_i$</span> are distinct prime numbers, then the number of divisors is:</p>
+<h1 id="numero-de-divisores-soma-dos-divisores">Número de divisores / soma dos divisores<a class="headerlink" href="#numero-de-divisores-soma-dos-divisores" title="Permanent link">&para;</a></h1>
+<p>Neste artigo, discutimos como calcular o número de divisores <span class="arithmatex">$d(n)$</span> e a soma dos divisores <span class="arithmatex">$\sigma(n)$</span> de um dado número <span class="arithmatex">$n$</span>.</p>
+<h2 id="numero-de-divisores">Número de divisores<a class="headerlink" href="#numero-de-divisores" title="Permanent link">&para;</a></h2>
+<p>Deve ser óbvio que a fatoração em primos de um divisor <span class="arithmatex">$d$</span> precisa ser um subconjunto da fatoração em primos de <span class="arithmatex">$n$</span>, por exemplo, <span class="arithmatex">$6 = 2 \cdot 3$</span> é um divisor de <span class="arithmatex">$60 = 2^2 \cdot 3 \cdot 5$</span>.
+Portanto, só precisamos encontrar todos os diferentes subconjuntos da fatoração em primos de <span class="arithmatex">$n$</span>.</p>
+<p>Geralmente, o número de subconjuntos é <span class="arithmatex">$2^x$</span> para um conjunto com <span class="arithmatex">$x$</span> elementos.
+No entanto, isso deixa de ser verdade se houver elementos repetidos no conjunto. Em nosso caso, alguns fatores primos podem aparecer várias vezes na fatoração em primos de <span class="arithmatex">$n$</span>.</p>
+<p>Se um fator primo <span class="arithmatex">$p$</span> aparece <span class="arithmatex">$e$</span> vezes na fatoração em primos de <span class="arithmatex">$n$</span>, então podemos usar o fator <span class="arithmatex">$p$</span> até <span class="arithmatex">$e$</span> vezes no subconjunto.
+O que significa que temos <span class="arithmatex">$e+1$</span> escolhas.</p>
+<p>Portanto, se a fatoração em primos de <span class="arithmatex">$n$</span> for <span class="arithmatex">$p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$</span>, onde os <span class="arithmatex">$p_i$</span> são números primos distintos, então o número de divisores é:</p>
 <div class="arithmatex">$$d(n) = (e_1 + 1) \cdot (e_2 + 1) \cdots (e_k + 1)$$</div>
-<p>A way of thinking about it is the following:</p>
+<p>Uma forma de pensar sobre isso é a seguinte:</p>
 <ul>
 <li>
-<p>If there is only one distinct prime divisor <span class="arithmatex">$n = p_1^{e_1}$</span>, then there are obviously <span class="arithmatex">$e_1 + 1$</span> divisors (<span class="arithmatex">$1, p_1, p_1^2, \dots, p_1^{e_1}$</span>).</p>
+<p>Se houver apenas um divisor primo distinto <span class="arithmatex">$n = p_1^{e_1}$</span>, então há obviamente <span class="arithmatex">$e_1 + 1$</span> divisores (<span class="arithmatex">$1, p_1, p_1^2, \dots, p_1^{e_1}$</span>).</p>
 </li>
 <li>
-<p>If there are two distinct prime divisors <span class="arithmatex">$n = p_1^{e_1} \cdot p_2^{e_2}$</span>, then you can arrange all divisors in form of a tabular.</p>
+<p>Se houver dois divisores primos distintos <span class="arithmatex">$n = p_1^{e_1} \cdot p_2^{e_2}$</span>, então você pode organizar todos os divisores em forma de tabela.</p>
 </li>
 </ul>
 <div class="arithmatex">$$\begin{array}{c|ccccc}
@@ -8038,9 +8044,9 @@ p_1^2 &amp; p_1^2 &amp; p_1^2 \cdot p_2 &amp; p_1^2 \cdot p_2^2 &amp; \dots &amp
 \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\\\
 p_1^{e_1} &amp; p_1^{e_1} &amp; p_1^{e_1} \cdot p_2 &amp; p_1^{e_1} \cdot p_2^2 &amp; \dots &amp; p_1^{e_1} \cdot p_2^{e_2} \\\\
 \end{array}$$</div>
-<p>So the number of divisors is trivially <span class="arithmatex">$(e_1 + 1) \cdot (e_2 + 1)$</span>.</p>
+<p>Portanto, o número de divisores é trivialmente <span class="arithmatex">$(e_1 + 1) \cdot (e_2 + 1)$</span>.</p>
 <ul>
-<li>A similar argument can be made if there are more then two distinct prime factors.</li>
+<li>Um argumento semelhante pode ser feito se houver mais de dois fatores primos distintos.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">numberOfDivisors</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -8060,21 +8066,21 @@ p_1^{e_1} &amp; p_1^{e_1} &amp; p_1^{e_1} \cdot p_2 &amp; p_1^{e_1} \cdot p_2^2 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="sum-of-divisors">Sum of divisors<a class="headerlink" href="#sum-of-divisors" title="Permanent link">&para;</a></h2>
-<p>We can use the same argument of the previous section.</p>
+<h2 id="soma-dos-divisores">Soma dos divisores<a class="headerlink" href="#soma-dos-divisores" title="Permanent link">&para;</a></h2>
+<p>Podemos usar o mesmo argumento da seção anterior.</p>
 <ul>
-<li>If there is only one distinct prime divisor <span class="arithmatex">$n = p_1^{e_1}$</span>, then the sum is:</li>
+<li>Se houver apenas um divisor primo distinto <span class="arithmatex">$n = p_1^{e_1}$</span>, então a soma é:</li>
 </ul>
 <div class="arithmatex">$$1 + p_1 + p_1^2 + \dots + p_1^{e_1} = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1}$$</div>
 <ul>
-<li>If there are two distinct prime divisors <span class="arithmatex">$n = p_1^{e_1} \cdot p_2^{e_2}$</span>, then we can make the same table as before.
-  The only difference is that now we now want to compute the sum instead of counting the elements.
-  It is easy to see, that the sum of each combination can be expressed as:</li>
+<li>Se houver dois divisores primos distintos <span class="arithmatex">$n = p_1^{e_1} \cdot p_2^{e_2}$</span>, então podemos fazer a mesma tabela de antes.
+  A única diferença é que agora queremos calcular a soma em vez de contar os elementos.
+  É fácil ver que a soma de cada combinação pode ser expressa como:</li>
 </ul>
 <div class="arithmatex">$$\left(1 + p_1 + p_1^2 + \dots + p_1^{e_1}\right) \cdot \left(1 + p_2 + p_2^2 + \dots + p_2^{e_2}\right)$$</div>
 <div class="arithmatex">$$ = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1} \cdot \frac{p_2^{e_2 + 1} - 1}{p_2 - 1}$$</div>
 <ul>
-<li>In general, for <span class="arithmatex">$n = p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$</span> we receive the formula:</li>
+<li>Em geral, para <span class="arithmatex">$n = p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$</span> recebemos a fórmula:</li>
 </ul>
 <div class="arithmatex">$$\sigma(n) = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1} \cdot \frac{p_2^{e_2 + 1} - 1}{p_2 - 1} \cdots \frac{p_k^{e_k + 1} - 1}{p_k - 1}$$</div>
 <div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">SumOfDivisors</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -8102,14 +8108,14 @@ p_1^{e_1} &amp; p_1^{e_1} &amp; p_1^{e_1} \cdot p_2 &amp; p_1^{e_1} \cdot p_2^2 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="multiplicative-functions">Multiplicative functions<a class="headerlink" href="#multiplicative-functions" title="Permanent link">&para;</a></h2>
-<p>A multiplicative function is a function <span class="arithmatex">$f(x)$</span> which satisfies</p>
+<h2 id="funcoes-multiplicativas">Funções multiplicativas<a class="headerlink" href="#funcoes-multiplicativas" title="Permanent link">&para;</a></h2>
+<p>Uma função multiplicativa é uma função <span class="arithmatex">$f(x)$</span> que satisfaz</p>
 <div class="arithmatex">$$f(a \cdot b) = f(a) \cdot f(b)$$</div>
-<p>if <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span> are coprime.</p>
-<p>Both <span class="arithmatex">$d(n)$</span> and <span class="arithmatex">$\sigma(n)$</span> are multiplicative functions.</p>
-<p>Multiplicative functions have a huge variety of interesting properties, which can be very useful in number theory problems.
-For instance the Dirichlet convolution of two multiplicative functions is also multiplicative.</p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<p>se <span class="arithmatex">$a$</span> e <span class="arithmatex">$b$</span> são coprimos.</p>
+<p>Tanto <span class="arithmatex">$d(n)$</span> quanto <span class="arithmatex">$\sigma(n)$</span> são funções multiplicativas.</p>
+<p>Funções multiplicativas têm uma enorme variedade de propriedades interessantes, que podem ser muito úteis em problemas de teoria dos números.
+Por exemplo, a convolução de Dirichlet de duas funções multiplicativas também é multiplicativa.</p>
+<h2 id="problemas-praticos">Problemas Práticos<a class="headerlink" href="#problemas-praticos" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.spoj.com/problems/COMDIV/">SPOJ - COMDIV</a></li>
 <li><a href="https://www.spoj.com/problems/DIVSUM/">SPOJ - DIVSUM</a></li>
@@ -8118,7 +8124,7 @@ For instance the Dirichlet convolution of two multiplicative functions is also m
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (55.81%)</li><li><a href="https://github.com/md-shamim-ahmad" title="md-shamim-ahmad" data-bi-name="contributorprofile" target="_blank">md-shamim-ahmad</a> (37.99%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (5.43%)</li><li><a href="https://github.com/Siddharths8212376" title="Siddharths8212376" data-bi-name="contributorprofile" target="_blank">Siddharths8212376</a> (0.78%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/md-shamim-ahmad" title="md-shamim-ahmad" data-bi-name="contributorprofile" target="_blank">md-shamim-ahmad</a> (37.99%)</li><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (34.11%)</li><li><a href="https://github.com/filipemsilv4" title="filipemsilv4" data-bi-name="contributorprofile" target="_blank">filipemsilv4</a> (22.48%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (5.43%)</li></ul>
 </ul>
                 
               </article>
