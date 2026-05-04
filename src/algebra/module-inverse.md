@@ -9,7 +9,7 @@ e_maxx_link: reverse_element
 ## Definição
 
 Um [inverso multiplicativo modular](http://en.wikipedia.org/wiki/Modular_multiplicative_inverse) de um inteiro $a$ é um inteiro $x$ tal que $a \cdot x$ é congruente a $1$ módulo $m$.
-Para escrever de forma formal: queremos encontrar um inteiro $x$ tal que
+Para escrever formalmente: queremos encontrar um inteiro $x$ tal que
 
 $$a \cdot x \equiv 1 \mod m.$$
 
