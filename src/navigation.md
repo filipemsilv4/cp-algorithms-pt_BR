@@ -22,11 +22,11 @@ Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧�
     - Prime numbers
         - [🇧🇷 Crivo Linear](algebra/prime-sieve-linear.md)
         - [🇧🇷 Crivo de Eratóstenes](algebra/sieve-of-eratosthenes.md)
-        - [🇺🇸 Primality tests](algebra/primality_tests.md)
+        - [🇧🇷 Testes de primalidade](algebra/primality_tests.md)
         - [🇧🇷 Fatoração de Inteiros](algebra/factorization.md)
     - Number-theoretic functions
         - [🇺🇸 Euler's totient function](algebra/phi-function.md)
-        - [🇺🇸 Number of divisors / sum of divisors](algebra/divisors.md)
+        - [🇧🇷 Número de divisores / soma dos divisores](algebra/divisors.md)
     - Modular arithmetic
         - [🇺🇸 Modular Inverse](algebra/module-inverse.md)
         - [🇺🇸 Linear Congruence Equation](algebra/linear_congruence_equation.md)

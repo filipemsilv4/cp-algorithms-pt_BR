@@ -3,30 +3,30 @@ tags:
   - Original
 ---
 
-# Number of divisors / sum of divisors
+# Número de divisores / soma dos divisores
 
-In this article we discuss how to compute the number of divisors $d(n)$ and the sum of divisors $\sigma(n)$ of a given number $n$.
+Neste artigo, discutimos como calcular o número de divisores $d(n)$ e a soma dos divisores $\sigma(n)$ de um dado número $n$.
 
-## Number of divisors
+## Número de divisores
 
-It should be obvious that the prime factorization of a divisor $d$ has to be a subset of the prime factorization of $n$, e.g. $6 = 2 \cdot 3$ is a divisor of $60 = 2^2 \cdot 3 \cdot 5$.
-So we only need to find all different subsets of the prime factorization of $n$.
+Deve ser óbvio que a fatoração em primos de um divisor $d$ precisa ser um subconjunto da fatoração em primos de $n$, por exemplo, $6 = 2 \cdot 3$ é um divisor de $60 = 2^2 \cdot 3 \cdot 5$.
+Portanto, só precisamos encontrar todos os diferentes subconjuntos da fatoração em primos de $n$.
 
-Usually the number of subsets is $2^x$ for a set with $x$ elements.
-However this is no longer true, if there are repeated elements in the set. In our case some prime factors may appear multiple times in the prime factorization of $n$.
+Geralmente, o número de subconjuntos é $2^x$ para um conjunto com $x$ elementos.
+No entanto, isso deixa de ser verdade se houver elementos repetidos no conjunto. Em nosso caso, alguns fatores primos podem aparecer várias vezes na fatoração em primos de $n$.
 
-If a prime factor $p$ appears $e$ times in the prime factorization of $n$, then we can use the factor $p$ up to $e$ times in the subset.
-Which means we have $e+1$ choices.
+Se um fator primo $p$ aparece $e$ vezes na fatoração em primos de $n$, então podemos usar o fator $p$ até $e$ vezes no subconjunto.
+O que significa que temos $e+1$ escolhas.
 
-Therefore if the prime factorization of $n$ is $p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$, where $p_i$ are distinct prime numbers, then the number of divisors is:
+Portanto, se a fatoração em primos de $n$ for $p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$, onde os $p_i$ são números primos distintos, então o número de divisores é:
 
 $$d(n) = (e_1 + 1) \cdot (e_2 + 1) \cdots (e_k + 1)$$
 
-A way of thinking about it is the following:
+Uma forma de pensar sobre isso é a seguinte:
 
-* If there is only one distinct prime divisor $n = p_1^{e_1}$, then there are obviously $e_1 + 1$ divisors ($1, p_1, p_1^2, \dots, p_1^{e_1}$).
+* Se houver apenas um divisor primo distinto $n = p_1^{e_1}$, então há obviamente $e_1 + 1$ divisores ($1, p_1, p_1^2, \dots, p_1^{e_1}$).
 
-* If there are two distinct prime divisors $n = p_1^{e_1} \cdot p_2^{e_2}$, then you can arrange all divisors in form of a tabular.
+* Se houver dois divisores primos distintos $n = p_1^{e_1} \cdot p_2^{e_2}$, então você pode organizar todos os divisores em forma de tabela.
 
 $$\begin{array}{c|ccccc}
 & 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\\\\hline
@@ -37,9 +37,9 @@ p_1^2 & p_1^2 & p_1^2 \cdot p_2 & p_1^2 \cdot p_2^2 & \dots & p_1^2 \cdot p_2^{e
 p_1^{e_1} & p_1^{e_1} & p_1^{e_1} \cdot p_2 & p_1^{e_1} \cdot p_2^2 & \dots & p_1^{e_1} \cdot p_2^{e_2} \\\\
 \end{array}$$
 
-So the number of divisors is trivially $(e_1 + 1) \cdot (e_2 + 1)$.
+Portanto, o número de divisores é trivialmente $(e_1 + 1) \cdot (e_2 + 1)$.
 
-* A similar argument can be made if there are more then two distinct prime factors.
+* Um argumento semelhante pode ser feito se houver mais de dois fatores primos distintos.
 
 
 ```cpp
@@ -62,23 +62,23 @@ long long numberOfDivisors(long long num) {
 }
 ```
 
-## Sum of divisors
+## Soma dos divisores
 
-We can use the same argument of the previous section.
+Podemos usar o mesmo argumento da seção anterior.
 
-* If there is only one distinct prime divisor $n = p_1^{e_1}$, then the sum is:
+* Se houver apenas um divisor primo distinto $n = p_1^{e_1}$, então a soma é:
 
 $$1 + p_1 + p_1^2 + \dots + p_1^{e_1} = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1}$$
 
-* If there are two distinct prime divisors $n = p_1^{e_1} \cdot p_2^{e_2}$, then we can make the same table as before.
-  The only difference is that now we now want to compute the sum instead of counting the elements.
-  It is easy to see, that the sum of each combination can be expressed as:
+* Se houver dois divisores primos distintos $n = p_1^{e_1} \cdot p_2^{e_2}$, então podemos fazer a mesma tabela de antes.
+  A única diferença é que agora queremos calcular a soma em vez de contar os elementos.
+  É fácil ver que a soma de cada combinação pode ser expressa como:
 
 $$\left(1 + p_1 + p_1^2 + \dots + p_1^{e_1}\right) \cdot \left(1 + p_2 + p_2^2 + \dots + p_2^{e_2}\right)$$
 
 $$ = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1} \cdot \frac{p_2^{e_2 + 1} - 1}{p_2 - 1}$$
 
-* In general, for $n = p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$ we receive the formula:
+* Em geral, para $n = p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$ recebemos a fórmula:
 
 $$\sigma(n) = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1} \cdot \frac{p_2^{e_2 + 1} - 1}{p_2 - 1} \cdots \frac{p_k^{e_k + 1} - 1}{p_k - 1}$$
 
@@ -109,20 +109,20 @@ long long SumOfDivisors(long long num) {
 }
 ```
 
-## Multiplicative functions
+## Funções multiplicativas
 
-A multiplicative function is a function $f(x)$ which satisfies
+Uma função multiplicativa é uma função $f(x)$ que satisfaz
 
 $$f(a \cdot b) = f(a) \cdot f(b)$$
 
-if $a$ and $b$ are coprime.
+se $a$ e $b$ são coprimos.
 
-Both $d(n)$ and $\sigma(n)$ are multiplicative functions.
+Tanto $d(n)$ quanto $\sigma(n)$ são funções multiplicativas.
 
-Multiplicative functions have a huge variety of interesting properties, which can be very useful in number theory problems.
-For instance the Dirichlet convolution of two multiplicative functions is also multiplicative.
+Funções multiplicativas têm uma enorme variedade de propriedades interessantes, que podem ser muito úteis em problemas de teoria dos números.
+Por exemplo, a convolução de Dirichlet de duas funções multiplicativas também é multiplicativa.
 
-## Practice Problems
+## Problemas Práticos
 
   - [SPOJ - COMDIV](https://www.spoj.com/problems/COMDIV/)
   - [SPOJ - DIVSUM](https://www.spoj.com/problems/DIVSUM/)
