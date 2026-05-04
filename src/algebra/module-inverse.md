@@ -108,7 +108,7 @@ int inv(int a) {
 ```
 
 A complexidade de tempo exata dessa recursão não é conhecida. Estima-se que seja algo entre $O(\frac{\log m}{\log\log m})$ e $O(m^{\frac{1}{3} - \frac{2}{177} + \epsilon})$.
-Veja [Sobre a extensão de expansões de Pierce](https://arxiv.org/abs/2211.08374).
+Veja [Sobre o comprimento das expansões de Pierce](https://arxiv.org/abs/2211.08374).
 Na prática, essa implementação é rápida; por exemplo, para o módulo $10^9 + 7$, ela sempre terminará em menos de 50 iterações.
 
 <div id="mod-inv-all-num"></div>
