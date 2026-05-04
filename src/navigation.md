@@ -28,7 +28,7 @@ Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧�
         - [🇺🇸 Euler's totient function](algebra/phi-function.md)
         - [🇧🇷 Número de divisores / soma dos divisores](algebra/divisors.md)
     - Modular arithmetic
-        - [🇺🇸 Modular Inverse](algebra/module-inverse.md)
+        - [🇧🇷 Inverso Multiplicativo Modular](algebra/module-inverse.md)
         - [🇺🇸 Linear Congruence Equation](algebra/linear_congruence_equation.md)
         - [🇺🇸 Chinese Remainder Theorem](algebra/chinese-remainder-theorem.md)
         - [🇺🇸 Garner's Algorithm](algebra/garners-algorithm.md)
