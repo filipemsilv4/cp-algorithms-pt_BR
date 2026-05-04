@@ -50,7 +50,7 @@ Neste caso, chamamos a base $a$ de *testemunha de Fermat* (Fermat witness) para 
 No entanto, também é possível que a equação seja válida para um número composto.
 Portanto, se a equação for válida, não temos uma prova de primalidade.
 Podemos apenas dizer que $p$ é *provavelmente primo*.
-Se descobrirmos que o número é realmente composto, chamamos a base $a$ de *mentiroso de Fermat* (Fermat liar).
+Se descobrirmos que o número é realmente composto, chamamos a base $a$ de *mentirosa de Fermat* (Fermat liar).
 
 Ao executar o teste para todas as bases possíveis $a$, podemos realmente provar que um número é primo.
 No entanto, isso não é feito na prática, já que exige muito mais esforço do que apenas fazer a *divisão por tentativa*.
