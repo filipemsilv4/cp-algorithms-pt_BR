@@ -29,7 +29,7 @@ Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧�
         - [🇧🇷 Número de divisores / soma dos divisores](algebra/divisors.md)
     - Modular arithmetic
         - [🇧🇷 Inverso Multiplicativo Modular](algebra/module-inverse.md)
-        - [🇺🇸 Linear Congruence Equation](algebra/linear_congruence_equation.md)
+        - [🇧🇷 Equações de Congruência Linear](algebra/linear_congruence_equation.md)
         - [🇺🇸 Chinese Remainder Theorem](algebra/chinese-remainder-theorem.md)
         - [🇺🇸 Garner's Algorithm](algebra/garners-algorithm.md)
         - [🇺🇸 Factorial modulo p](algebra/factorial-modulo.md)
