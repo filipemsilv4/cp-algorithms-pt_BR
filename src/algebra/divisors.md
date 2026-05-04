@@ -13,7 +13,7 @@ Deve ser óbvio que a fatoração em primos de um divisor $d$ precisa ser um sub
 Portanto, só precisamos encontrar todos os diferentes subconjuntos da fatoração em primos de $n$.
 
 Geralmente, o número de subconjuntos é $2^x$ para um conjunto com $x$ elementos.
-No entanto, isso não é mais verdade se houver elementos repetidos no conjunto. Em nosso caso, alguns fatores primos podem aparecer várias vezes na fatoração em primos de $n$.
+No entanto, isso deixa de ser verdade se houver elementos repetidos no conjunto. Em nosso caso, alguns fatores primos podem aparecer várias vezes na fatoração em primos de $n$.
 
 Se um fator primo $p$ aparece $e$ vezes na fatoração em primos de $n$, então podemos usar o fator $p$ até $e$ vezes no subconjunto.
 O que significa que temos $e+1$ escolhas.
