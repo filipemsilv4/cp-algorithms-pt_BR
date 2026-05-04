@@ -30,7 +30,7 @@ Artigos com a bandeira 🇺🇸 estão em inglês. Artigos com a bandeira 🇧�
     - Modular arithmetic
         - [🇺🇸 Modular Inverse](algebra/module-inverse.md)
         - [🇺🇸 Linear Congruence Equation](algebra/linear_congruence_equation.md)
-        - [🇺🇸 Chinese Remainder Theorem](algebra/chinese-remainder-theorem.md)
+        - [🇧🇷 Teorema Chinês do Resto](algebra/chinese-remainder-theorem.md)
         - [🇺🇸 Garner's Algorithm](algebra/garners-algorithm.md)
         - [🇺🇸 Factorial modulo p](algebra/factorial-modulo.md)
         - [🇺🇸 Discrete Log](algebra/discrete-log.md)

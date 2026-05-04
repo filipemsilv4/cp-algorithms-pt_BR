@@ -4,13 +4,13 @@ tags:
 e_maxx_link: chinese_theorem
 ---
 
-# Chinese Remainder Theorem
+# Teorema Chinês do Resto
 
-The Chinese Remainder Theorem (which will be referred to as CRT in the rest of this article) was discovered by Chinese mathematician Sun Zi.
+O Teorema Chinês do Resto (que será referido como CRT, ou em português, Teorema Chinês do Resto, no resto deste artigo) foi descoberto pelo matemático chinês Sun Zi.
 
-## Formulation
+## Formulação
 
-Let $m = m_1 \cdot m_2 \cdots m_k$, where $m_i$ are pairwise coprime. In addition to $m_i$, we are also given a system of congruences
+Seja $m = m_1 \cdot m_2 \cdots m_k$, onde $m_i$ são coprimos dois a dois. Além de $m_i$, também nos é dado um sistema de congruências
 
 $$\left\{\begin{array}{rcl}
     a & \equiv & a_1 \pmod{m_1} \\
@@ -19,9 +19,9 @@ $$\left\{\begin{array}{rcl}
     a & \equiv & a_k \pmod{m_k}
 \end{array}\right.$$
 
-where $a_i$ are some given constants. The original form of CRT then states that the given system of congruences always has *one and exactly one* solution modulo $m$.
+onde $a_i$ são algumas constantes dadas. A forma original do CRT então afirma que o sistema de congruências dado sempre tem *uma e exatamente uma* solução módulo $m$.
 
-E.g. the system of congruences
+Por exemplo, o sistema de congruências
 
 $$\left\{\begin{array}{rcl}
     a & \equiv & 2 \pmod{3} \\
@@ -29,17 +29,16 @@ $$\left\{\begin{array}{rcl}
     a & \equiv & 2 \pmod{7}
 \end{array}\right.$$
 
-has the solution $23$ modulo $105$, because $23 \bmod{3} = 2$, $23 \bmod{5} = 3$, and $23 \bmod{7} = 2$.
-We can write down every solution as $23 + 105\cdot k$ for $k \in \mathbb{Z}$.
+tem a solução $23$ módulo $105$, porque $23 \bmod{3} = 2$, $23 \bmod{5} = 3$, e $23 \bmod{7} = 2$.
+Podemos escrever cada solução como $23 + 105\cdot k$ para $k \in \mathbb{Z}$.
 
+### Corolário
 
-### Corollary
-
-A consequence of the CRT is that the equation
+Uma consequência do CRT é que a equação
 
 $$x \equiv a \pmod{m}$$
 
-is equivalent to the system of equations
+é equivalente ao sistema de equações
 
 $$\left\{\begin{array}{rcl}
     x & \equiv & a_1 \pmod{m_1} \\
@@ -47,11 +46,11 @@ $$\left\{\begin{array}{rcl}
     x & \equiv & a_k \pmod{m_k}
 \end{array}\right.$$
 
-(As above, assume that $m = m_1 m_2 \cdots m_k$ and $m_i$ are pairwise coprime).
+(Como acima, assuma que $m = m_1 m_2 \cdots m_k$ e $m_i$ são coprimos dois a dois).
 
-## Solution for Two Moduli
+## Solução para Dois Módulos
 
-Consider a system of two equations for coprime $m_1, m_2$:
+Considere um sistema de duas equações para $m_1, m_2$ coprimos:
 
 $$
 \left\{\begin{align}
@@ -60,18 +59,18 @@ $$
 \end{align}\right.
 $$
 
-We want to find a solution for $a \pmod{m_1 m_2}$. Using the [Extended Euclidean Algorithm](extended-euclid-algorithm.md) we can find Bézout coefficients $n_1, n_2$ such that
+Queremos encontrar uma solução para $a \pmod{m_1 m_2}$. Usando o [Algoritmo de Euclides Estendido](extended-euclid-algorithm.md) podemos encontrar os coeficientes de Bézout $n_1, n_2$ tais que
 
 $$n_1 m_1 + n_2 m_2 = 1.$$
 
-In fact $n_1$ and $n_2$ are just the [modular inverses](module-inverse.md) of $m_1$ and $m_2$ modulo $m_2$ and $m_1$.
-We have $n_1 m_1 \equiv 1 \pmod{m_2}$ so $n_1 \equiv m_1^{-1} \pmod{m_2}$, and vice versa $n_2 \equiv m_2^{-1} \pmod{m_1}$. 
+De fato, $n_1$ e $n_2$ são apenas os [inversos modulares](module-inverse.md) de $m_1$ e $m_2$ módulo $m_2$ e $m_1$.
+Temos $n_1 m_1 \equiv 1 \pmod{m_2}$ então $n_1 \equiv m_1^{-1} \pmod{m_2}$, e vice-versa $n_2 \equiv m_2^{-1} \pmod{m_1}$.
 
-With those two coefficients we can define a solution:
+Com esses dois coeficientes podemos definir uma solução:
 
 $$a = a_1 n_2 m_2 + a_2 n_1 m_1 \bmod{m_1 m_2}$$
 
-It's easy to verify that this is indeed a solution by computing $a \bmod{m_1}$ and $a \bmod{m_2}$.
+É fácil verificar que esta é de fato uma solução calculando $a \bmod{m_1}$ e $a \bmod{m_2}$.
 
 $$
 \begin{array}{rcll}
@@ -82,32 +81,32 @@ a & \equiv & a_1 n_2 m_2 + a_2 n_1 m_1 & \pmod{m_1}\\
 \end{array}
 $$
 
-Notice, that the Chinese Remainder Theorem also guarantees, that only 1 solution exists modulo $m_1 m_2$.
-This is also easy to prove.
+Note que o Teorema Chinês do Resto também garante que existe apenas 1 solução módulo $m_1 m_2$.
+Isso também é fácil de provar.
 
-Lets assume that you have two different solutions $x$ and $y$.
-Because $x \equiv a_i \pmod{m_i}$ and $y \equiv a_i \pmod{m_i}$, it follows that $x − y \equiv 0 \pmod{m_i}$ and therefore $x − y \equiv 0 \pmod{m_1 m_2}$ or equivalently $x \equiv y \pmod{m_1 m_2}$.
-So $x$ and $y$ are actually the same solution.
+Vamos assumir que você tem duas soluções diferentes $x$ e $y$.
+Como $x \equiv a_i \pmod{m_i}$ e $y \equiv a_i \pmod{m_i}$, segue-se que $x − y \equiv 0 \pmod{m_i}$ e portanto $x − y \equiv 0 \pmod{m_1 m_2}$ ou equivalentemente $x \equiv y \pmod{m_1 m_2}$.
+Então $x$ e $y$ são na verdade a mesma solução.
 
-## Solution for General Case
+## Solução para o Caso Geral
 
-### Inductive Solution
+### Solução Indutiva
 
-As $m_1 m_2$ is coprime to $m_3$, we can inductively repeatedly apply the solution for two moduli for any number of moduli.
-First you compute $b_2 := a \pmod{m_1 m_2}$ using the first two congruences,
-then you can compute $b_3 := a \pmod{m_1 m_2 m_3}$ using the congruences $a \equiv b_2 \pmod{m_1 m_2}$ and $a \equiv a_3 \pmod {m_3}$, etc.
+Como $m_1 m_2$ é coprimo a $m_3$, podemos aplicar repetidamente por indução a solução para dois módulos para qualquer número de módulos.
+Primeiro você calcula $b_2 := a \pmod{m_1 m_2}$ usando as primeiras duas congruências,
+depois você pode calcular $b_3 := a \pmod{m_1 m_2 m_3}$ usando as congruências $a \equiv b_2 \pmod{m_1 m_2}$ e $a \equiv a_3 \pmod {m_3}$, etc.
 
-### Direct Construction
+### Construção Direta
 
-A direct construction similar to Lagrange interpolation is possible.
+Uma construção direta semelhante à interpolação de Lagrange é possível.
 
-Let $M_i := \prod_{i \neq j} m_j$, the product of all moduli but $m_i$, and $N_i$ the modular inverses $N_i := M_i^{-1} \bmod{m_i}$.
-Then a solution to the system of congruences is:
+Seja $M_i := \prod_{i \neq j} m_j$, o produto de todos os módulos exceto $m_i$, e $N_i$ os inversos modulares $N_i := M_i^{-1} \bmod{m_i}$.
+Então uma solução para o sistema de congruências é:
 
 $$a \equiv \sum_{i=1}^k a_i M_i N_i \pmod{m_1 m_2 \cdots m_k}$$
 
-We can check this is indeed a solution, by computing $a \bmod{m_i}$ for all $i$.
-Because $M_j$ is a multiple of $m_i$ for $i \neq j$ we have
+Podemos checar que esta é de fato uma solução, calculando $a \bmod{m_i}$ para todo $i$.
+Como $M_j$ é um múltiplo de $m_i$ para $i \neq j$ nós temos
 
 $$\begin{array}{rcll}
 a & \equiv & \sum_{j=1}^k a_j M_j N_j & \pmod{m_i} \\
@@ -116,7 +115,7 @@ a & \equiv & \sum_{j=1}^k a_j M_j N_j & \pmod{m_i} \\
   & \equiv & a_i                      & \pmod{m_i}
 \end{array}$$
 
-### Implementation
+### Implementação
 
 ```{.cpp file=chinese_remainder_theorem}
 struct Congruence {
@@ -140,27 +139,27 @@ long long chinese_remainder_theorem(vector<Congruence> const& congruences) {
 }
 ```
 
-## Solution for not coprime moduli
+## Solução para módulos não coprimos
 
-As mentioned, the algorithm above only works for coprime moduli $m_1, m_2, \dots m_k$.
+Como mencionado, o algoritmo acima funciona apenas para módulos coprimos $m_1, m_2, \dots m_k$.
 
-In the not coprime case, a system of congruences has exactly one solution modulo $\text{lcm}(m_1, m_2, \dots, m_k)$, or has no solution at all.
+No caso não coprimo, um sistema de congruências tem exatamente uma solução módulo $\text{lcm}(m_1, m_2, \dots, m_k)$, ou não tem solução alguma.
 
-E.g. in the following system, the first congruence implies that the solution is odd, and the second congruence implies that the solution is even.
-It's not possible that a number is both odd and even, therefore there is clearly no solution.
+Por exemplo, no sistema a seguir, a primeira congruência implica que a solução é ímpar, e a segunda congruência implica que a solução é par.
+Não é possível que um número seja par e ímpar simultaneamente, portanto claramente não há solução.
 
 $$\left\{\begin{align}
     a & \equiv 1 \pmod{4} \\
     a & \equiv 2 \pmod{6}
 \end{align}\right.$$
 
-It is pretty simple to determine if a system has a solution.
-And if it has one, we can use the original algorithm to solve a slightly modified system of congruences.
+É bastante simples determinar se um sistema tem uma solução.
+E se tiver uma, podemos usar o algoritmo original para resolver um sistema de congruências ligeiramente modificado.
 
-A single congruence $a \equiv a_i \pmod{m_i}$ is equivalent to the system of congruences $a \equiv a_i \pmod{p_j^{n_j}}$ where $p_1^{n_1} p_2^{n_2}\cdots p_k^{n_k}$ is the prime factorization of $m_i$.
+Uma única congruência $a \equiv a_i \pmod{m_i}$ é equivalente ao sistema de congruências $a \equiv a_i \pmod{p_j^{n_j}}$ onde $p_1^{n_1} p_2^{n_2}\cdots p_k^{n_k}$ é a fatoração em primos de $m_i$.
 
-With this fact, we can modify the system of congruences into a system, that only has prime powers as moduli.
-E.g. the above system of congruences is equivalent to:
+Com este fato, podemos modificar o sistema de congruências para um sistema que tem apenas potências de primos como módulos.
+Por exemplo, o sistema de congruências acima é equivalente a:
 
 $$\left\{\begin{array}{ll}
     a \equiv 1          & \pmod{4} \\
@@ -168,26 +167,26 @@ $$\left\{\begin{array}{ll}
     a \equiv 2          & \pmod{3}
 \end{array}\right.$$
 
-Because originally some moduli had common factors, we will get some congruences moduli based on the same prime, however possibly with different prime powers.
+Como originalmente alguns módulos tinham fatores comuns, obteremos alguns módulos de congruências baseados no mesmo primo, no entanto possivelmente com potências de primos diferentes.
 
-You can observe, that the congruence with the highest prime power modulus will be the strongest congruence of all congruences based on the same prime number.
-Either it will give a contradiction with some other congruence, or it will imply already all other congruences.
+Você pode observar que a congruência com o maior módulo de potência de primo será a congruência mais forte de todas as congruências baseadas no mesmo número primo.
+Ou ela dará uma contradição com alguma outra congruência, ou ela já implicará em todas as outras congruências.
 
-In our case, the first congruence $a \equiv 1 \pmod{4}$ implies $a \equiv 1 \pmod{2}$, and therefore contradicts the second congruence $a \equiv 0 \pmod{2}$.
-Therefore this system of congruences has no solution.
+No nosso caso, a primeira congruência $a \equiv 1 \pmod{4}$ implica em $a \equiv 1 \pmod{2}$, e portanto contradiz a segunda congruência $a \equiv 0 \pmod{2}$.
+Portanto este sistema de congruências não tem solução.
 
-If there are no contradictions, then the system of equation has a solution.
-We can ignore all congruences except the ones with the highest prime power moduli.
-These moduli are now coprime, and therefore we can solve this one with the algorithm discussed in the sections above.
+Se não houver contradições, então o sistema de equações tem uma solução.
+Podemos ignorar todas as congruências exceto as com os maiores módulos de potências de primos.
+Esses módulos agora são coprimos, e portanto podemos resolver este com o algoritmo discutido nas seções acima.
 
-E.g. the following system has a solution modulo $\text{lcm}(10, 12) = 60$.
+Por exemplo, o sistema a seguir tem uma solução módulo $\text{lcm}(10, 12) = 60$.
 
 $$\left\{\begin{align}
     a & \equiv 3 \pmod{10} \\
     a & \equiv 5 \pmod{12}
 \end{align}\right.$$
 
-The system of congruence is equivalent to the system of congruences:
+O sistema de congruência é equivalente ao sistema de congruências:
 
 $$\left\{\begin{align}
     a & \equiv 3 \equiv 1 \pmod{2} \\
@@ -196,8 +195,8 @@ $$\left\{\begin{align}
     a & \equiv 5 \equiv 2 \pmod{3}
 \end{align}\right.$$
 
-The only congruence with same prime modulo are $a \equiv 1 \pmod{4}$ and $a \equiv 1 \pmod{2}$.
-The first one already implies the second one, so we can ignore the second one, and solve the following system with coprime moduli instead:
+As únicas congruências com o mesmo primo módulo são $a \equiv 1 \pmod{4}$ e $a \equiv 1 \pmod{2}$.
+A primeira já implica a segunda, então podemos ignorar a segunda, e em vez disso resolver o seguinte sistema com módulos coprimos:
 
 $$\left\{\begin{align}
     a & \equiv 3 \equiv 3 \pmod{5} \\
@@ -205,25 +204,25 @@ $$\left\{\begin{align}
     a & \equiv 5 \equiv 2 \pmod{3}
 \end{align}\right.$$
 
-It has the solution $53 \pmod{60}$, and indeed $53 \bmod{10} = 3$ and $53 \bmod{12} = 5$.
+Tem a solução $53 \pmod{60}$, e de fato $53 \bmod{10} = 3$ e $53 \bmod{12} = 5$.
 
-## Garner's Algorithm
+## Algoritmo de Garner
 
-Another consequence of the CRT is that we can represent big numbers using an array of small integers.
+Outra consequência do CRT é que podemos representar números grandes usando um array de inteiros pequenos.
 
-Instead of doing a lot of computations with very large numbers numbers, which might be expensive (think of doing divisions with 1000-digit numbers), you can pick a couple of coprime moduli and represent the large number as a system of congruences, and perform all operations on the system of equations.
-Any number $a$ less than $m_1 m_2 \cdots m_k$ can be represented as an array $a_1, \ldots, a_k$, where $a \equiv a_i \pmod{m_i}$.
+Em vez de fazer muitas computações com números muito grandes, que podem ser caras (pense em fazer divisões com números de 1000 dígitos), você pode escolher um par de módulos coprimos e representar o número grande como um sistema de congruências, e realizar todas as operações no sistema de equações.
+Qualquer número $a$ menor que $m_1 m_2 \cdots m_k$ pode ser representado como um array $a_1, \ldots, a_k$, onde $a \equiv a_i \pmod{m_i}$.
 
-By using the above algorithm, you can again reconstruct the large number whenever you need it.
+Usando o algoritmo acima, você pode reconstruir o número grande novamente sempre que precisar dele.
 
-Alternatively you can represent the number in the **mixed radix** representation:
+Alternativamente você pode representar o número na representação de **radix misto** (base mista):
 
-$$a = x_1 + x_2 m_1 + x_3 m_1 m_2 + \ldots + x_k m_1 \cdots m_{k-1} \text{ with }x_i \in [0, m_i)$$
+$$a = x_1 + x_2 m_1 + x_3 m_1 m_2 + \ldots + x_k m_1 \cdots m_{k-1} \text{ com }x_i \in [0, m_i)$$
 
-Garner's algorithm, which is discussed in the dedicated article [Garner's algorithm](garners-algorithm.md), computes the coefficients $x_i$.
-And with those coefficients you can restore the full number.
+O algoritmo de Garner, que é discutido no artigo dedicado [Algoritmo de Garner](garners-algorithm.md), calcula os coeficientes $x_i$.
+E com esses coeficientes você pode restaurar o número completo.
 
-## Practice Problems:
+## Problemas Práticos:
 
 * [Google Code Jam - Golf Gophers](https://github.com/google/coding-competitions-archive/blob/main/codejam/2019/round_1a/golf_gophers/statement.pdf)
 * [Hackerrank - Number of sequences](https://www.hackerrank.com/contests/w22/challenges/number-of-sequences)
