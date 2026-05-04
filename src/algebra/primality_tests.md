@@ -116,7 +116,7 @@ Se encontrarmos uma base $a$ que não satisfaz nenhuma das igualdades acima, ent
 Neste caso, provamos que $n$ não é um número primo.
 
 Semelhante ao teste de Fermat, também é possível que o conjunto de equações seja satisfeito para um número composto.
-Nesse caso, a base $a$ é chamada de *mentiroso forte* (strong liar).
+Nesse caso, a base $a$ é chamada de *mentirosa forte* (strong liar).
 Se uma base $a$ satisfizer as equações (uma delas), $n$ é apenas um *primo provável forte*.
 No entanto, não existem números como os números de Carmichael, onde todas as bases não triviais mentem.
 Na verdade, é possível mostrar que no máximo $\frac{1}{4}$ das bases pode ser mentirosa forte.
