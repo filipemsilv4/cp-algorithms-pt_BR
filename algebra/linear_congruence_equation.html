@@ -30,7 +30,7 @@
     
     
       
-        <title>🇺🇸 Linear Congruence Equation - Algoritmos para Programação Competitiva</title>
+        <title>🇧🇷 Equações de Congruência Linear - Algoritmos para Programação Competitiva</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#linear-congruence-equation" class="md-skip">
+        <a href="#equacoes-de-congruencia-linear" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
           <span class="md-ellipsis">
             <a href="#" onclick="scrollToTop()">
               
-                🇺🇸 Linear Congruence Equation
+                🇧🇷 Equações de Congruência Linear
               
             </a>
           </span>
@@ -1134,7 +1134,7 @@
   <span class="md-ellipsis">
     
   
-    🇺🇸 Linear Congruence Equation
+    🇧🇷 Equações de Congruência Linear
   
 
     
@@ -1152,7 +1152,7 @@
   <span class="md-ellipsis">
     
   
-    🇺🇸 Linear Congruence Equation
+    🇧🇷 Equações de Congruência Linear
   
 
     
@@ -1178,10 +1178,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#solution-by-finding-the-inverse-element" class="md-nav__link">
+  <a href="#solucao-encontrando-o-elemento-inverso" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution by finding the inverse element
+        Solução encontrando o elemento inverso
       
     </span>
   </a>
@@ -1189,10 +1189,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution-with-the-extended-euclidean-algorithm" class="md-nav__link">
+  <a href="#solucao-com-o-algoritmo-de-euclides-estendido" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution with the Extended Euclidean Algorithm
+        Solução com o Algoritmo de Euclides Estendido
       
     </span>
   </a>
@@ -7877,9 +7877,9 @@
                   <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
-  const issueTitle = "Problem on article " + "\ud83c\uddfa\ud83c\uddf8 Linear Congruence Equation";
+  const issueTitle = "Problem on article " + "\ud83c\udde7\ud83c\uddf7 Equa\u00e7\u00f5es de Congru\u00eancia Linear";
 	const issueBody = `
- **Article:** [`+ "\ud83c\uddfa\ud83c\uddf8 Linear Congruence Equation" + `](${window.location.href})
+ **Article:** [`+ "\ud83c\udde7\ud83c\uddf7 Equa\u00e7\u00f5es de Congru\u00eancia Linear" + `](${window.location.href})
 
 **Problem:**
 <!--
@@ -7912,6 +7912,12 @@ Describe the issue of this article in detail.
   
     
   
+
+  
+  
+  
+    
+  
     
   
 
@@ -7944,10 +7950,6 @@ Describe the issue of this article in detail.
   
 
 
-
-  
-  
-  
 
   
   
@@ -7972,7 +7974,7 @@ Describe the issue of this article in detail.
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
 
   Last update:
-  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="April 14, 2023 13:45:57 UTC">April 14, 2023</span>&emsp;
+  <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 4, 2026 21:11:34 UTC">May 4, 2026</span>&emsp;
 
 <!-- Tags -->
 
@@ -7998,38 +8000,38 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="linear-congruence-equation">Linear Congruence Equation<a class="headerlink" href="#linear-congruence-equation" title="Permanent link">&para;</a></h1>
-<p>This equation is of the form:</p>
+<h1 id="equacoes-de-congruencia-linear">Equações de Congruência Linear<a class="headerlink" href="#equacoes-de-congruencia-linear" title="Permanent link">&para;</a></h1>
+<p>Esta equação é da forma:</p>
 <div class="arithmatex">$$a \cdot x \equiv b \pmod n,$$</div>
-<p>where <span class="arithmatex">$a$</span>, <span class="arithmatex">$b$</span> and <span class="arithmatex">$n$</span> are given integers and <span class="arithmatex">$x$</span> is an unknown integer.</p>
-<p>It is required to find the value <span class="arithmatex">$x$</span> from the interval <span class="arithmatex">$[0, n-1]$</span> (clearly, on the entire number line there can be infinitely many solutions that will differ from each other in <span class="arithmatex">$n \cdot k$</span> , where <span class="arithmatex">$k$</span> is any integer). If the solution is not unique, then we will consider how to get all the solutions.</p>
-<h2 id="solution-by-finding-the-inverse-element">Solution by finding the inverse element<a class="headerlink" href="#solution-by-finding-the-inverse-element" title="Permanent link">&para;</a></h2>
-<p>Let us first consider a simpler case where <span class="arithmatex">$a$</span> and <span class="arithmatex">$n$</span> are <strong>coprime</strong> (<span class="arithmatex">$\gcd(a, n) = 1$</span>).
-Then one can find the <a href="module-inverse.html">inverse</a> of <span class="arithmatex">$a$</span>, and multiplying both sides of the equation with the inverse, and we can get a <strong>unique</strong> solution.</p>
+<p>onde <span class="arithmatex">$a$</span>, <span class="arithmatex">$b$</span> e <span class="arithmatex">$n$</span> são inteiros dados e <span class="arithmatex">$x$</span> é um inteiro desconhecido.</p>
+<p>É necessário encontrar o valor <span class="arithmatex">$x$</span> do intervalo <span class="arithmatex">$[0, n-1]$</span> (claramente, em toda a reta numérica pode haver infinitas soluções que diferirão umas das outras em <span class="arithmatex">$n \cdot k$</span> , onde <span class="arithmatex">$k$</span> é qualquer inteiro). Se a solução não for única, consideraremos como obter todas as soluções.</p>
+<h2 id="solucao-encontrando-o-elemento-inverso">Solução encontrando o elemento inverso<a class="headerlink" href="#solucao-encontrando-o-elemento-inverso" title="Permanent link">&para;</a></h2>
+<p>Vamos primeiro considerar um caso mais simples onde <span class="arithmatex">$a$</span> e <span class="arithmatex">$n$</span> são <strong>coprimos</strong> (<span class="arithmatex">$\gcd(a, n) = 1$</span>).
+Então podemos encontrar o <a href="module-inverse.html">inverso</a> de <span class="arithmatex">$a$</span>, e multiplicando ambos os lados da equação pelo inverso, podemos obter uma solução <strong>única</strong>.</p>
 <div class="arithmatex">$$x \equiv b \cdot a ^ {- 1} \pmod n$$</div>
-<p>Now consider the case where <span class="arithmatex">$a$</span> and <span class="arithmatex">$n$</span> are <strong>not coprime</strong> (<span class="arithmatex">$\gcd(a, n) \ne 1$</span>).
-Then the solution will not always exist (for example <span class="arithmatex">$2 \cdot x \equiv 1 \pmod 4$</span> has no solution).</p>
-<p>Let <span class="arithmatex">$g = \gcd(a, n)$</span>, i.e. the <a href="euclid-algorithm.html">greatest common divisor</a> of <span class="arithmatex">$a$</span> and <span class="arithmatex">$n$</span> (which in this case is greater than one).</p>
-<p>Then, if <span class="arithmatex">$b$</span> is not divisible by <span class="arithmatex">$g$</span>, there is no solution. In fact, for any <span class="arithmatex">$x$</span> the left side of the equation <span class="arithmatex">$a \cdot x \pmod n$</span> , is always divisible by <span class="arithmatex">$g$</span>, while the right-hand side is not divisible by it, hence it follows that there are no solutions.</p>
-<p>If <span class="arithmatex">$g$</span> divides <span class="arithmatex">$b$</span>, then by dividing both sides of the equation by <span class="arithmatex">$g$</span> (i.e. dividing <span class="arithmatex">$a$</span>, <span class="arithmatex">$b$</span> and <span class="arithmatex">$n$</span> by <span class="arithmatex">$g$</span>), we receive a new equation:</p>
+<p>Agora considere o caso em que <span class="arithmatex">$a$</span> e <span class="arithmatex">$n$</span> <strong>não são coprimos</strong> (<span class="arithmatex">$\gcd(a, n) \ne 1$</span>).
+Então a solução nem sempre existirá (por exemplo, <span class="arithmatex">$2 \cdot x \equiv 1 \pmod 4$</span> não tem solução).</p>
+<p>Seja <span class="arithmatex">$g = \gcd(a, n)$</span>, ou seja, o <a href="euclid-algorithm.html">máximo divisor comum</a> de <span class="arithmatex">$a$</span> e <span class="arithmatex">$n$</span> (que neste caso é maior que um).</p>
+<p>Então, se <span class="arithmatex">$b$</span> não for divisível por <span class="arithmatex">$g$</span>, não há solução. De fato, para qualquer <span class="arithmatex">$x$</span> o lado esquerdo da equação <span class="arithmatex">$a \cdot x \pmod n$</span> , é sempre divisível por <span class="arithmatex">$g$</span>, enquanto o lado direito não é divisível por ele, logo não há soluções.</p>
+<p>Se <span class="arithmatex">$g$</span> divide <span class="arithmatex">$b$</span>, então dividindo ambos os lados da equação por <span class="arithmatex">$g$</span> (ou seja, dividindo <span class="arithmatex">$a$</span>, <span class="arithmatex">$b$</span> e <span class="arithmatex">$n$</span> por <span class="arithmatex">$g$</span>), recebemos uma nova equação:</p>
 <div class="arithmatex">$$a^\prime \cdot x \equiv b^\prime \pmod{n^\prime}$$</div>
-<p>in which <span class="arithmatex">$a^\prime$</span> and <span class="arithmatex">$n^\prime$</span> are already relatively prime, and we have already learned how to handle such an equation.
-We get <span class="arithmatex">$x^\prime$</span> as solution for <span class="arithmatex">$x$</span>.</p>
-<p>It is clear that this <span class="arithmatex">$x^\prime$</span> will also be a solution of the original equation.
-However it will <strong>not be the only solution</strong>.
-It can be shown that the original equation has exactly <span class="arithmatex">$g$</span> solutions, and they will look like this:</p>
-<div class="arithmatex">$$x_i \equiv (x^\prime + i\cdot n^\prime) \pmod n \quad \text{for } i = 0 \ldots g-1$$</div>
-<p>Summarizing, we can say that the <strong>number of solutions</strong> of the linear congruence equation is equal to either <span class="arithmatex">$g = \gcd(a, n)$</span> or to zero.</p>
-<h2 id="solution-with-the-extended-euclidean-algorithm">Solution with the Extended Euclidean Algorithm<a class="headerlink" href="#solution-with-the-extended-euclidean-algorithm" title="Permanent link">&para;</a></h2>
-<p>We can rewrite the linear congruence to the following Diophantine equation:</p>
+<p>na qual <span class="arithmatex">$a^\prime$</span> e <span class="arithmatex">$n^\prime$</span> já são relativamente primos, e já aprendemos a lidar com uma equação desse tipo.
+Obtemos <span class="arithmatex">$x^\prime$</span> como solução para <span class="arithmatex">$x$</span>.</p>
+<p>É claro que esse <span class="arithmatex">$x^\prime$</span> também será uma solução da equação original.
+No entanto, <strong>não será a única solução</strong>.
+Pode-se mostrar que a equação original tem exatamente <span class="arithmatex">$g$</span> soluções, e elas ficarão assim:</p>
+<div class="arithmatex">$$x_i \equiv (x^\prime + i\cdot n^\prime) \pmod n \quad \text{para } i = 0 \ldots g-1$$</div>
+<p>Resumindo, podemos dizer que o <strong>número de soluções</strong> da equação de congruência linear é igual a <span class="arithmatex">$g = \gcd(a, n)$</span> ou a zero.</p>
+<h2 id="solucao-com-o-algoritmo-de-euclides-estendido">Solução com o Algoritmo de Euclides Estendido<a class="headerlink" href="#solucao-com-o-algoritmo-de-euclides-estendido" title="Permanent link">&para;</a></h2>
+<p>Podemos reescrever a congruência linear para a seguinte equação Diofantina:</p>
 <div class="arithmatex">$$a \cdot x + n \cdot k = b,$$</div>
-<p>where <span class="arithmatex">$x$</span> and <span class="arithmatex">$k$</span> are unknown integers.</p>
-<p>The method of solving this equation is described in the corresponding article <a href="linear-diophantine-equation.html">Linear Diophantine equations</a> and it consists of applying the <a href="extended-euclid-algorithm.html">Extended Euclidean Algorithm</a>.</p>
-<p>It also describes the method of obtaining all solutions of this equation from one found solution, and incidentally this method, when carefully considered, is absolutely equivalent to the method described in the previous section.</p>
+<p>onde <span class="arithmatex">$x$</span> e <span class="arithmatex">$k$</span> são inteiros desconhecidos.</p>
+<p>O método de resolução dessa equação é descrito no artigo correspondente <a href="linear-diophantine-equation.html">Equações Diofantinas Lineares</a> e consiste na aplicação do <a href="extended-euclid-algorithm.html">Algoritmo de Euclides Estendido</a>.</p>
+<p>Ele também descreve o método de obter todas as soluções dessa equação a partir de uma solução encontrada, e incidentalmente esse método, quando considerado cuidadosamente, é absolutamente equivalente ao método descrito na seção anterior.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/jaideeppyne" title="jaideeppyne" data-bi-name="contributorprofile" target="_blank">jaideeppyne</a> (64.29%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (19.64%)</li><li><a href="https://github.com/jakobkogler" title="jakobkogler" data-bi-name="contributorprofile" target="_blank">jakobkogler</a> (7.14%)</li><li><a href="https://github.com/sundaram123krishnan" title="sundaram123krishnan" data-bi-name="contributorprofile" target="_blank">sundaram123krishnan</a> (7.14%)</li><li><a href="https://github.com/AbhijeetKrishnan" title="AbhijeetKrishnan" data-bi-name="contributorprofile" target="_blank">AbhijeetKrishnan</a> (1.79%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="https://github.com/filipemsilv4" title="filipemsilv4" data-bi-name="contributorprofile" target="_blank">filipemsilv4</a> (42.86%)</li><li><a href="https://github.com/jaideeppyne" title="jaideeppyne" data-bi-name="contributorprofile" target="_blank">jaideeppyne</a> (39.29%)</li><li><a href="https://github.com/adamant-pwn" title="adamant-pwn" data-bi-name="contributorprofile" target="_blank">adamant-pwn</a> (12.5%)</li><li><a href="https://github.com/sundaram123krishnan" title="sundaram123krishnan" data-bi-name="contributorprofile" target="_blank">sundaram123krishnan</a> (5.36%)</li></ul>
 </ul>
                 
               </article>
