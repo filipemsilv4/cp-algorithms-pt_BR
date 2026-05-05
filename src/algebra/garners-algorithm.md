@@ -1,48 +1,48 @@
-# Garner's algorithm
+# Algoritmo de Garner
 
-A consequence of the [Chinese Remainder Theorem](chinese-remainder-theorem.md) is, that we can represent big numbers using an array of small integers.
-For example, let $p$ be the product of the first $1000$ primes. $p$ has around $3000$ digits.
+Uma consequência do [Teorema Chinês do Resto](chinese-remainder-theorem.md) é que podemos representar números grandes usando um array de inteiros pequenos.
+Por exemplo, seja $p$ o produto dos primeiros $1000$ números primos. $p$ tem cerca de $3000$ dígitos.
 
-Any number $a$ less than $p$ can be represented as an array  $a_1, \ldots, a_k$, where $a_i \equiv a \pmod{p_i}$.
-But to do this we obviously need to know how to get back the number $a$ from its representation.
-One way is discussed in the article about the Chinese Remainder Theorem.
+Qualquer número $a$ menor que $p$ pode ser representado como um array $a_1, \ldots, a_k$, onde $a_i \equiv a \pmod{p_i}$.
+Mas para fazer isso nós obviamente precisamos saber como obter o número original $a$ a partir da sua representação.
+Uma maneira é discutida no artigo sobre o Teorema Chinês do Resto.
 
-In this article we discuss an alternative, Garner's Algorithm, which can also be used for this purpose.
+Neste artigo discutiremos uma alternativa, o Algoritmo de Garner, que também pode ser usado para este propósito.
 
-## Mixed Radix Representation
+## Representação de Raiz Mista
 
-We can represent the number $a$ in the **mixed radix** representation:
+Nós podemos representar o número $a$ na representação de **raiz mista** (*mixed radix*):
 
-$$a = x_1 + x_2 p_1 + x_3 p_1 p_2 + \ldots + x_k p_1 \cdots p_{k-1} \text{ with }x_i \in [0, p_i)$$
+$$a = x_1 + x_2 p_1 + x_3 p_1 p_2 + \ldots + x_k p_1 \cdots p_{k-1} \text{ com }x_i \in [0, p_i)$$
 
-A mixed radix representation is a positional numeral system, that's a generalization of the typical number systems, like the binary numeral system or the decimal numeral system.
-For instance, the decimal numeral system is a positional numeral system with the radix (or base) 10.
-Every number is represented as a string of digits $d_1 d_2 d_3 \dots d_n$ between $0$ and $9$. For example, the string $415$ represents the number $4 \cdot 10^2 + 1 \cdot 10^1 + 5 \cdot 10^0$.
-In general the string of digits $d_1 d_2 d_3 \dots d_n$ represents the number $d_1 b^{n-1} + d_2 b^{n-2} + \cdots + d_n b^0$ in the positional numeral system with radix $b$.
+Uma representação de raiz mista é um sistema de numeração posicional, sendo uma generalização dos sistemas numéricos típicos, como o sistema de numeração binário ou o sistema de numeração decimal.
+Por exemplo, o sistema decimal é um sistema de numeração posicional com a raiz (ou base) 10.
+Todo número é representado como uma string de dígitos $d_1 d_2 d_3 \dots d_n$ entre $0$ e $9$. Por exemplo, a string $415$ representa o número $4 \cdot 10^2 + 1 \cdot 10^1 + 5 \cdot 10^0$.
+Em geral a string de dígitos $d_1 d_2 d_3 \dots d_n$ representa o número $d_1 b^{n-1} + d_2 b^{n-2} + \cdots + d_n b^0$ no sistema de numeração posicional com raiz $b$.
 
-In a mixed radix system, we don't have one radix any more. The base varies from position to position.
+Em um sistema de raiz mista, não temos mais apenas uma raiz. A base varia de posição para posição.
 
-## Garner's algorithm
+## Algoritmo de Garner
 
-Garner's algorithm computes the digits $x_1, \ldots, x_k$.
-Notice, that the digits are relatively small.
-The digit $x_i$ is an integer between $0$ and $p_i - 1$.
+O algoritmo de Garner computa os dígitos $x_1, \ldots, x_k$.
+Note que os dígitos são relativamente pequenos.
+O dígito $x_i$ é um inteiro entre $0$ e $p_i - 1$.
 
-Let $r_{ij}$ denote the inverse of $p_i$ modulo $p_j$
+Seja $r_{ij}$ o inverso de $p_i$ módulo $p_j$:
 
 $$r_{ij} = (p_i)^{-1} \pmod{p_j}$$
 
-which can be found using the algorithm described in [Modular Inverse](module-inverse.md).
+o qual pode ser encontrado usando o algoritmo descrito em [Inverso Multiplicativo Modular](module-inverse.md).
 
-Substituting $a$ from the mixed radix representation into the first congruence equation we obtain
+Substituindo $a$ da representação de raiz mista na primeira equação de congruência, obtemos:
 
 $$a_1 \equiv x_1 \pmod{p_1}.$$
 
-Substituting into the second equation yields
+Substituindo na segunda equação, resulta em:
 
 $$a_2 \equiv x_1 + x_2 p_1 \pmod{p_2},$$
 
-which can be rewritten by subtracting $x_1$ and dividing by $p_1$ to get
+que pode ser reescrita subtraindo $x_1$ e dividindo por $p_1$ para obter:
 
 $$\begin{array}{rclr}
     a_2 - x_1 &\equiv& x_2 p_1 &\pmod{p_2} \\
@@ -50,11 +50,11 @@ $$\begin{array}{rclr}
     x_2 &\equiv& (a_2 - x_1) r_{12} &\pmod{p_2}
 \end{array}$$
 
-Similarly we get that
+Similarmente, obtemos que:
 
 $$x_3 \equiv ((a_3 - x_1) r_{13} - x_2) r_{23} \pmod{p_3}.$$
 
-Now, we can clearly see an emerging pattern, which can be expressed by the following code:
+Agora, podemos ver claramente um padrão surgindo, que pode ser expresso pelo seguinte código:
 
 ```cpp
 for (int i = 0; i < k; ++i) {
@@ -69,20 +69,20 @@ for (int i = 0; i < k; ++i) {
 }
 ```
 
-So we learned how to calculate digits $x_i$ in $O(k^2)$ time. The number $a$ can now be calculated using the previously mentioned formula
+Então, aprendemos a calcular os dígitos $x_i$ em tempo $O(k^2)$. O número $a$ agora pode ser calculado usando a fórmula mencionada anteriormente:
 
 $$a = x_1 + x_2 \cdot p_1 + x_3 \cdot p_1 \cdot p_2 + \ldots + x_k \cdot p_1 \cdots p_{k-1}$$
 
-It is worth noting that in practice, we almost probably need to compute the answer $a$ using [Arbitrary-Precision Arithmetic](big-integer.md), but the digits $x_i$ (because they are small) can usually be calculated using built-in types, and therefore Garner's algorithm is very efficient.
+Vale ressaltar que, na prática, quase certamente precisaremos calcular a resposta $a$ usando [Aritmética de Precisão Arbitrária](big-integer.md), mas os dígitos $x_i$ (por serem pequenos) geralmente podem ser calculados utilizando os tipos nativos das linguagens (built-in types), e portanto, o algoritmo de Garner é muito eficiente.
 
-## Implementation of Garner's Algorithm
+## Implementação do Algoritmo de Garner
 
-It is convenient to implement this algorithm using Java, because it has built-in support for large numbers through the `BigInteger` class.
+É conveniente implementar este algoritmo usando Java, pois ele possui suporte nativo para números grandes com a classe `BigInteger`.
 
-Here we show an implementation that can store big numbers in the form of a set of congruence equations.
-It supports addition, subtraction and multiplication.
-And with Garner's algorithm we can convert the set of equations into the unique integer.
-In this code, we take 100 prime numbers greater than $10^9$, which allows representing numbers as large as $10^{900}$.
+Aqui mostramos uma implementação que consegue armazenar números grandes na forma de um conjunto de equações de congruência.
+Ele suporta adição, subtração e multiplicação.
+E com o algoritmo de Garner, nós podemos converter o conjunto de equações em um único número inteiro.
+Neste código, consideramos 100 números primos maiores que $10^9$, o que permite representar números de até $10^{900}$.
 
 ```java
 final int SZ = 100;
